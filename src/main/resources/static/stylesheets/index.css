@@ -1,0 +1,16 @@
+body{
+    background-color: #FFFFFF;
+}
+
+.menu-div{
+    width: 100%;
+}
+
+.body-div{
+    width: 100%;
+}
+
+.footer-div{
+    width: 100%;
+    border-top: 1px solid #46A7CF ;
+}

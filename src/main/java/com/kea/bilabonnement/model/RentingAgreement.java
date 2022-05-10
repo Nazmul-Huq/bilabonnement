@@ -1,4 +1,4 @@
 package com.kea.bilabonnement.model;
 
-public class Rent {
+public class RentingAgreement {
 }
