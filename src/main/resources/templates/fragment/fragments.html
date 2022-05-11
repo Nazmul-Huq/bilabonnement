@@ -1,11 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
+<!-- menu div fragment start here -->
+<div th:fragment="menu">
+
+    <div class="dropdown">
+        <button class="dropbtn"><a th:href="@{/index}" href="../index">Home</a></button>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Car Service</button>
+        <div class="dropdown-content">
+            <a th:href="@{/car/register-new-car}" href="../car/make-renting-agreement">Register New Car</a>
+            <a th:href="@{/car/see-car-current-status}" href="../car/see-car-current-status">See Car’s Current Status</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Report</button>
+        <div class="dropdown-content">
+            <a th:href="@{/report/make-damage-report}" href="../report/make-damage-report">Make Damage Report</a>
+            <a th:href="@{/report/make-condition-report}" href="../report/make-condition-report">Make Condition Report</a>
+            <a th:href="@{/report/make-registration-report}" href="../report/make-registration-report">Make Registration Report</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Invoice</button>
+        <div class="dropdown-content">
+            <a th:href="@{/invoice/make-invoice}" href="../invoice/make-invoice">Make Invoice</a>
+            <a th:href="@{/invoice/see-an-invoice-detail}" href="../invoice/see-an-invoice-detail">See An Invoice Detail</a>
+            <a th:href="@{/invoice/see-all-due-invoice}" href="../invoice/see-all-due-invoice">See All Due Invoice</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Alarm</button>
+        <div class="dropdown-content">
+            <a th:href="@{/alarm/see-recent-alarm}" href="../alarm/see-recent-alarm">See Recent Alarm</a>
+            <a th:href="@{/alarm/see-payment-alarm}" href="../alarm/see-payment-alarm">See Payment Alarm</a>
+            <a th:href="@{/alarm/see-transport-alarm}" href="../alarm/see-transport-alarm">See Transport Alarm</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Rent</button>
+        <div class="dropdown-content">
+            <a th:href="@{/rent/make-renting-agreement}" href="../rent/make-renting-agreement">Renting Agreement</a>
+            <a th:href="@{/rent/finish-renting-periode}" href="../rent/finish-renting-periode">Finish Renting Periode</a>
+            <a th:href="@{/rent/register-pickup-car}" href="../rent/register-pickup-car">Register Pickup Car</a>
+            <a th:href="@{/rent/register-returned-car}" href="../rent/register-returned-car">Register Returned Car</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Statistic</button>
+        <div class="dropdown-content">
+            <a th:href="@{/statistic/average-renting-time}" href="../statistic/average-renting-time">Average Renting Time</a>
+            <a th:href="@{/statistic/average-pay-time}" href="../statistic/average-pay-time">Average Pay Time</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Transport</button>
+        <div class="dropdown-content">
+            <a th:href="@{/transport/order-transport}" href="../transport/order-transport">Order Transport</a>
+        </div>
+    </div>
+
+</div>
+<!-- menu div fragment finish here -->
+
+
+<!-- footer fragment start here-->
+<div th:fragment="footer">
+
+        <div class="footer-detail">
+            <div class="footer-logo">
+                Bilabonnement logo
+            </div>
+            <div class="footer-links-1">
+                Om Bilabonnement</br>
+                Spørgsmål og svar</br>
+                Indhold på siden</br>
+                Samarbejdspartnere</br>
+                Kontakt os</br>
+            </div>
+            <div class="footer-links-2">
+                Information om cookies</br>
+                Persondatapolitik</br>
+                Samtykke</br>
+                Opbevaring af dine oplysninger</br>
+            </div>
+            <div class="footer-social-media">
+                Følg os på Facebook
+            </div>
+        </div>
+        <div class="footer-address">
+            <p class="footer-address-header">Bilabonnement A/S</p>
+            <p>Slotsherrensvej 411c 2610 Rødovre CVR-nr. 37856827</p>
+        </div>
+</div>
+<!-- footer fragments ends here -->
 
 </body>
 </html>
