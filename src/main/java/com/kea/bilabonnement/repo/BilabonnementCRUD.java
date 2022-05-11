@@ -9,7 +9,7 @@ public interface BilabonnementCRUD <T>{
 
     //Read
     public T getSingleEntityById(int id);
-    public List<T> getallEntities();
+    public List<T> getAllEntities();
     public List<T> getAllEntitiesById(int id);
 
     //Update

@@ -72,11 +72,7 @@ public class ReportRepo implements BilabonnementCRUD<DamageReport> {
         return (DamageReport) singleDamageReport;
     }
 
-    @Override
-    public List<DamageReport> getallEntities() {
-        return null;
-    }
-
+    //Shows
     @Override
     public List<DamageReport> getAllEntities() {
 
