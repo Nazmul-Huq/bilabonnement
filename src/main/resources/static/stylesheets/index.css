@@ -1,13 +1,20 @@
 body{
-    background-color: #FFFFFF;
+    background-color: gainsboro;
 }
 
 .menu-div{
     width: 100%;
+    padding: 0px 75px 0px 75px;
+    background-color: #459C98;
+}
+.menu-div li{
+    display: flex;
+    flex-direction: row;
 }
 
 .body-div{
     width: 100%;
+
 }
 
 .footer-div{
