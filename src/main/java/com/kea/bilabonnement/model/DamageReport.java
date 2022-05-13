@@ -10,7 +10,22 @@ public class DamageReport {
     private int employeeId;
     private int carRegNr;
 
-    //Constructor
+
+    //Default Constructor
+    public DamageReport() {
+
+    }
+
+    //Constructor without DamageNumber
+    public DamageReport(String damageDescription, int noOfDamage, int damageLevel, int employeeId, int carRegNr) {
+        this.damageDescription = damageDescription;
+        this.noOfDamage = noOfDamage;
+        this.damageLevel = damageLevel;
+        this.employeeId = employeeId;
+        this.carRegNr = carRegNr;
+    }
+
+    //Constructor with all attributes
     public DamageReport(int damageNumber, String damageDescription, int noOfDamage, int damageLevel, int employeeId, int carRegNr) {
         this.damageNumber = damageNumber;
         this.damageDescription = damageDescription;

@@ -8,6 +8,17 @@ public class RegReport {
     private int regReportEmployeeId;
     private int regReportCarRegNr;
 
+    //Default Constructor
+    public RegReport() {
+    }
+
+    //Constructor without reReportNumber
+    public RegReport(int regReportDate, int regReportEmployeeId, int regReportCarRegNr) {
+        this.regReportDate = regReportDate;
+        this.regReportEmployeeId = regReportEmployeeId;
+        this.regReportCarRegNr = regReportCarRegNr;
+    }
+
     //Constructor
     public RegReport(int regReportNumber, int regReportDate, int regReportEmployeeId, int regReportCarRegNr) {
         this.regReportNumber = regReportNumber;

@@ -10,33 +10,34 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportRepo implements BilabonnementCRUD<DamageReport> {
+/*
+    Author: Mo
+ */
+
+public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
     // TODO: 11-05-2022 unit testing ctrl-shift-t
-    // TODO: 11-05-2022 check if code is right by teacher
+
 
     Connection conn = DatabaseConnectionHandler.getConnection();
     PreparedStatement prepStmt;
     ResultSet rs;
 
 
-
-
-
     //DamageReport starts here
     //------------------------------------------------------------------------------------------------------------------
+
     // Creates a table with the Values
     @Override
     public boolean addEntity(DamageReport entity) {
 
         try {
-            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_damage_report VALUES (?,?,?,?,?,?)");
+            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_damage_report (`damage_description`, `no_of_damage`, `damage_level`, `employee_id`, `car_reg_number`) VALUES (?,?,?,?,?)");
 
-            prepStmt.setInt(1,entity.getNumber());
-            prepStmt.setString(2,entity.getDamageDescription());
-            prepStmt.setInt(3,entity.getNoOfDamage());
-            prepStmt.setInt(4,entity.getDamageLevel());
-            prepStmt.setInt(5,entity.getEmployeeId());
-            prepStmt.setInt(6,entity.getCarRegNr());
+            prepStmt.setString(1,entity.getDamageDescription());
+            prepStmt.setInt(2,entity.getNoOfDamage());
+            prepStmt.setInt(3,entity.getDamageLevel());
+            prepStmt.setInt(4,entity.getEmployeeId());
+            prepStmt.setInt(5,entity.getCarRegNr());
 
             prepStmt.executeUpdate();
 
@@ -52,7 +53,8 @@ public class ReportRepo implements BilabonnementCRUD<DamageReport> {
 
     }
 
-    // Shows 1 table gotten from ID number
+    // Shows 1 value gotten from ID number
+    //not made in service!
     @Override
     public DamageReport getSingleEntityById(int number) {
 
@@ -172,7 +174,7 @@ public class ReportRepo implements BilabonnementCRUD<DamageReport> {
 
     }
 
-    //Deletes a row by ID number
+    //Deletes a table by ID number
     @Override
     public boolean deleteEntityById(int number) {
 

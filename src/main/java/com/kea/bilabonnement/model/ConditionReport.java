@@ -4,16 +4,29 @@ public class ConditionReport {
 
     //Attributes
     private int conditionNumber;
-    private int date;
+    private int conditionDate;
     private String conditionDescription;
     private int conditionLevel;
     private int conditionEmployeeId;
     private int conditionCarRegNr;
 
+    //Default Constructor
+    public ConditionReport() {
+    }
+
+    //Constructor without ConditionNumber
+    public ConditionReport(int conditionDate, String conditionDescription, int conditionLevel, int conditionEmployeeId, int conditionCarRegNr) {
+        this.conditionDate = conditionDate;
+        this.conditionDescription = conditionDescription;
+        this.conditionLevel = conditionLevel;
+        this.conditionEmployeeId = conditionEmployeeId;
+        this.conditionCarRegNr = conditionCarRegNr;
+    }
+
     //Constructor
-    public ConditionReport(int conditionNumber, int date, String conditionDescription, int conditionLevel, int conditionEmployeeId, int conditionCarRegNr) {
+    public ConditionReport(int conditionNumber, int conditionDate, String conditionDescription, int conditionLevel, int conditionEmployeeId, int conditionCarRegNr) {
        this.conditionNumber = conditionNumber;
-       this.date = date;
+       this.conditionDate = conditionDate;
        this.conditionDescription =conditionDescription;
        this.conditionLevel = conditionLevel;
        this.conditionEmployeeId = conditionEmployeeId;
@@ -25,8 +38,8 @@ public class ConditionReport {
         return conditionNumber;
     }
 
-    public int getDate() {
-        return date;
+    public int getConditionDate() {
+        return conditionDate;
     }
 
     public String getConditionDescription() {
@@ -52,7 +65,7 @@ public class ConditionReport {
     public String toString() {
         return "ConditionReport{" +
                 "conditionNumber=" + conditionNumber +
-                ", date=" + date +
+                ", date=" + conditionDate +
                 ", conditionDescription='" + conditionDescription + '\'' +
                 ", conditionLevel=" + conditionLevel +
                 ", conditionEmployeeId=" + conditionEmployeeId +

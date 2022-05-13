@@ -10,9 +10,32 @@
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
 <div class="body-div">
-    Write body content here.
-    Maybe add one more div here with your own name and modify in the css
+    <section class="registration-form-section">
+        <form method="post" th:action="@{/report/add-registration-report}" >
+            <h1>Registration Report</h1>
 
+            <div>
+                <h3> Date: </h3>
+                <h4>yymmdd</h4>
+                <input type="tel" name="regDate">
+            </div>
+
+            <div>
+                <h3> Employee Id</h3><input type="tel" name="regEmployeeId">
+            </div>
+
+            <div>
+                <h3> Car Registration Number</h3><input type="tel" name="regCarRegNumber">
+            </div>
+
+            <br>
+
+            <div>
+                <input type="submit" name="submit" value="submit">
+            </div>
+
+        </form>
+    </section>
 </div>
 
 <!-- footer content inserted from fragments-->
