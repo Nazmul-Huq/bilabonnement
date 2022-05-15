@@ -1,5 +1,7 @@
 package com.kea.bilabonnement.model;
 
+import java.util.List;
+
 public class RentingAgreement {
 
     private int agreementNumber;
@@ -8,6 +10,10 @@ public class RentingAgreement {
     private int customerId;
     private int carRegNumber;
     private int employeeId;
+
+    public RentingAgreement(){
+
+    }
 
     public RentingAgreement(int agreementNumber, int price, String description, int customerId, int carRegNumber, int employeeId){
         this.agreementNumber = agreementNumber;

@@ -3,16 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
-    <title>Title</title>
+    <title>Aftale</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
 <div class="body-div">
-    Write body content here.
-    Maybe add one more div here with your own name and modify in the css
-
+    <form style="text-align: center
+" th:action="@{/rent/add-renting-agreement}" method="post">
+        <h1>Renting Agreement
+        </h1>
+        <div>
+            <label>Pris:
+                <input type="tel" min="3.099 kr./md" max="5.999 kr./md"  placeholder="Fra 3.099 kr./md" required>
+            </label>
+        </div>
+        <div>
+            <!-- Hvilken beskrivelse?-->
+            <label>Description:
+                <input type="text" placeholder="description" required>
+            </label>
+        </div>
+        <div>
+            Type:
+            <div>
+                <label>Limited
+                    <input type="radio" name="type">
+                </label>
+            </div>
+            <div>
+                <label>Unlimited
+                    <input type="radio" name="type">
+                </label>
+            </div>
+        </div>
+        <label>Kunde Id:
+            <input type="tel" placeholder="kundenr." required>
+        </label>
+        <div>
+            <label>Bil registeringsnr:
+                <input type="tel" placeholder="Bilens registringsnr." required>
+            </label>
+        </div>
+        <div>
+            <label> Medarbejder Id:
+                <input type="tel" placeholder="Dit medarbejdernr." required>
+            </label>
+        </div>
+        <button>Submit</button>
+    </form>
 </div>
 
 <!-- footer content inserted from fragments-->
