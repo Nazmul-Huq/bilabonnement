@@ -12,6 +12,7 @@ public class RentService {
     public void makeRentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId){
         RentingAgreement rentingAgreement = new RentingAgreement(price, description, customerId, carRegNumber, employeeId);
         rentRepo.addEntity(rentingAgreement);
+        rentRepo.writeToFile();
     }
     public void endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employee, Date endingDate){
         RentingAgreement rentingAgreement = new RentingAgreement(agreementNumber, carRegNumber, customerId, description, employee, endingDate);

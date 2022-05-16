@@ -3,6 +3,8 @@ package com.kea.bilabonnement.repo;
 import com.kea.bilabonnement.model.RentingAgreement;
 import com.kea.bilabonnement.utility.DatabaseConnectionHandler;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -151,5 +153,25 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
              System.out.println("Noget gik galt med sletningen af aftalen");
          }
         return false;
+    }
+
+    // TODO: Unit test FileWriter-method
+    public void writeToFile(){
+        try {
+            prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_reting_agreement");
+
+            FileWriter fileWriter = new FileWriter("agreement.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String line = "this is only a test";
+            while (rs.next()){
+                line = rs.getInt("price") + "\t" + rs.getString("description") + "\t" + rs.getInt("customer_id") + "\t" + rs.getInt("car_reg_number") + "\t" + rs.getInt("employee_id");
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
