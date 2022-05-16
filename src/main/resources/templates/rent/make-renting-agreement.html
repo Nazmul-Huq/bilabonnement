@@ -12,17 +12,17 @@
 <div class="body-div">
     <form style="text-align: center
 " th:action="@{/rent/add-renting-agreement}" method="post">
-        <h1>Renting Agreement
+        <h1>Ny lejeaftale
         </h1>
         <div>
             <label>Pris:
-                <input type="tel" min="3.099 kr./md" max="5.999 kr./md"  placeholder="Fra 3.099 kr./md" required>
+                <input type="number" min="2999" max="5999" name="price" placeholder="Fra 2.999 kr./md" required>
             </label>
         </div>
         <div>
             <!-- Hvilken beskrivelse?-->
             <label>Description:
-                <input type="text" placeholder="description" required>
+                <input type="text" name="description" placeholder="beskrivelse">
             </label>
         </div>
         <div>
@@ -39,16 +39,16 @@
             </div>
         </div>
         <label>Kunde Id:
-            <input type="tel" placeholder="kundenr." required>
+            <input type="number" name="customerId" placeholder="kundenr." required>
         </label>
         <div>
             <label>Bil registeringsnr:
-                <input type="tel" placeholder="Bilens registringsnr." required>
+                <input type="number" name="carRegNumber" placeholder="Bilens registringsnr." required>
             </label>
         </div>
         <div>
             <label> Medarbejder Id:
-                <input type="tel" placeholder="Dit medarbejdernr." required>
+                <input type="number" name="employeeId" placeholder="Dit medarbejdernr." required>
             </label>
         </div>
         <button>Submit</button>
