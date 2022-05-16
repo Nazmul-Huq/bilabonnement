@@ -26,7 +26,8 @@ public class RentingAgreement {
         this.employeeId = employeeId;
     }
     //Constructor for "endRentingAgreement"
-    public RentingAgreement(int carRegNumber, int customerId, String description, int employeeId, Date endingDate) {
+    public RentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, Date endingDate) {
+        this.agreementNumber = agreementNumber;
         this.description = description;
         this.customerId = customerId;
         this.carRegNumber = carRegNumber;

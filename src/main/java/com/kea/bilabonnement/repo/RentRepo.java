@@ -29,7 +29,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             prepStmt.setInt(5, entity.getEmployeeId());
 
             prepStmt.executeUpdate();
-            conn.close();
+            //conn.close();
 
             return true;
 
@@ -63,7 +63,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 RentingAgreement singleRentingAgreements = new RentingAgreement();
                 singleRentingAgreement.add(singleRentingAgreements);
 
-                conn.close();
+                //conn.close();
             }
 
         }
@@ -95,7 +95,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
                 RentingAgreement allRentingAgreements = new RentingAgreement();
                 allRentingAgreement.add(allRentingAgreements);
-                conn.close();
+                //conn.close();
             }
         }
         catch (Exception e){
@@ -128,7 +128,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
             int rowUpdate = prepStmt.executeUpdate();
             System.out.println("Tabellen blev succesfuldt updateret");
-            conn.close();
+            //conn.close();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,7 +143,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
              prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_renting_agreement WHERE agreement_number");
 
              int rowDeletion = prepStmt.executeUpdate();
-             conn.close();
+             //conn.close();
 
         }
          catch (Exception e){

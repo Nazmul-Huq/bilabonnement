@@ -13,8 +13,8 @@ public class RentService {
         RentingAgreement rentingAgreement = new RentingAgreement(price, description, customerId, carRegNumber, employeeId);
         rentRepo.addEntity(rentingAgreement);
     }
-    public void endRentingAgreement(int carRegNumber, int customerId, String description, int employee, Date endingDate){
-        RentingAgreement rentingAgreement = new RentingAgreement(carRegNumber, customerId, description, employee, endingDate);
+    public void endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employee, Date endingDate){
+        RentingAgreement rentingAgreement = new RentingAgreement(agreementNumber, carRegNumber, customerId, description, employee, endingDate);
         rentRepo.deleteEntityById(rentingAgreement.getAgreementNumber());
     }
 }
