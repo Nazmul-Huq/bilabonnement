@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
+
+    <title>Condition Reports</title>
+</head>
+<body>
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<table>
+    <tr>
+        <th> &nbsp; Condition Date &nbsp; </th>
+        <th> &nbsp; Condition Description &nbsp; </th>
+        <th> &nbsp; Condition Level &nbsp; </th>
+        <th> &nbsp; Employee Id &nbsp; </th>
+        <th> &nbsp; Car Registration Number &nbsp; </th>
+    </tr>
+
+    <tr th:each=" conditionreport : ${conditionreports}">
+        <td th:text="${conditionreport.getConditionDate()}"></td>
+        <td th:text="${conditionreport.getConditionDescription()}"></td>
+        <td th:text="${conditionreport.getConditionLevel()}"></td>
+        <td th:text="${conditionreport.getConditionEmployeeId()}"></td>
+        <td th:text="${conditionreport.getConditionCarRegNr()}"></td>
+    </tr>
+</table>
+
+
+
+
+
+
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+
+</body>
+</html>

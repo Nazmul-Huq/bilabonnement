@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
+    <title>Delete Report</title>
+</head>
+<body>
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+
+<div class="delete-damage-body-div">
+    <section class="delete-damage-form-section">
+        <form method="post" th:action="@{/report/delete-report}" >
+            <h1>Delete Damage Report</h1>
+
+            <input type="number" name="number">
+            <br>
+            <br>
+            <input type="submit" value="delete">
+        </form>
+    </section>
+</div>
+
+
+
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>

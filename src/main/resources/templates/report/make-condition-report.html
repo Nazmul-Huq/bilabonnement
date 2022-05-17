@@ -9,15 +9,15 @@
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-<div class="body-div">
+<div class="make-condition-body-div">
     <section class="condition-form-section">
         <form method="post" th:action="@{/report/add-condition-report}" >
             <h1>Condition Report</h1>
 
             <div>
                 <h3> Date: </h3>
-                <h4>yymmdd</h4>
-                <input type="tel" name="conditionDate">
+
+                <input type="number" name="conditionDate">
             </div>
 
             <div>
@@ -29,11 +29,11 @@
             </div>
 
             <div>
-                <h3> Employee Id</h3><input type="tel" name="conditionEmployeeId">
+                <h3> Employee Id</h3><input type="number" min="0" name="conditionEmployeeId">
             </div>
 
             <div>
-                <h3> Car Registration Number</h3><input type="tel" name="conditionCarRegNumber">
+                <h3> Car Registration Number</h3><input type="number" min="0" name="conditionCarRegNumber">
             </div>
 
             <br>

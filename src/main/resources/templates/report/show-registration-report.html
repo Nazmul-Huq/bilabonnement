@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
+
+    <title>Registration Reports</title>
+</head>
+<body>
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<table>
+    <tr>
+        <th> &nbsp; Registration Date &nbsp; </th>
+        <th> &nbsp; Employee Id &nbsp; </th>
+        <th> &nbsp; Car Registration Number &nbsp; </th>
+    </tr>
+
+    <tr th:each=" registrationreport : ${registrationreports}">
+        <td th:text="${registrationreport.getRegReportDate()}"></td>
+        <td th:text="${registrationreport.getRegReportEmployeeId()}"></td>
+        <td th:text="${registrationreport.getRegReportCarRegNr()}"></td>
+    </tr>
+</table>
+
+
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+
+</body>
+</html>

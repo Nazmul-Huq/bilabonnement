@@ -13,9 +13,9 @@ import java.util.List;
 public class ReportService {
 
 
-    DamageReportRepo damageReportRepo;
-    ConditionReportRepo conditionReportRepo;
-    RegistrationReportRepo registrationReportRepo;
+    DamageReportRepo damageReportRepo = new DamageReportRepo();
+    ConditionReportRepo conditionReportRepo = new ConditionReportRepo();
+    RegistrationReportRepo registrationReportRepo = new RegistrationReportRepo();
 
 
 
@@ -23,8 +23,8 @@ public class ReportService {
     //------------------------------------------------------------------------------------------------------------------
 
     //Damage
-    public void makeDamageReport(String damageDescription, int damageLevel, int employeeId, int carRagNumber) {
-        DamageReport damageReport = new DamageReport(damageDescription,1,damageLevel,employeeId,carRagNumber);
+    public void makeDamageReport(String damageDescription, int noOfDamage, int damageLevel, int employeeId, int carRagNumber) {
+        DamageReport damageReport = new DamageReport(damageDescription,noOfDamage,damageLevel,employeeId,carRagNumber);
         damageReportRepo.addEntity(damageReport);
     }
 
@@ -39,6 +39,26 @@ public class ReportService {
         RegReport regReport = new RegReport(regDate, regEmployeeId, regCarRegNr);
         registrationReportRepo.addEntity(regReport);
     }
+
+
+    //Gets single entity by Ids
+    //------------------------------------------------------------------------------------------------------------------
+
+    //Damage
+    public void getSingleDamageEntityById() {
+
+    }
+
+    //Condition
+    public void getSingleConditionEntityById() {
+
+    }
+
+    //Registration
+    public void getSingleRegistrationById() {
+
+    }
+
 
     //Gets reports by Ids
     //------------------------------------------------------------------------------------------------------------------
@@ -65,18 +85,18 @@ public class ReportService {
     //------------------------------------------------------------------------------------------------------------------
 
     //Damage
-    public void getAllDamageReports() {
-        damageReportRepo.getAllEntities();
+    public List<DamageReport> getAllDamageReports() {
+        return damageReportRepo.getAllEntities();
     }
 
     //Condition
-    public void getAllConditionReports() {
-        conditionReportRepo.getAllEntities();
+    public List<ConditionReport> getAllConditionReports() {
+        return conditionReportRepo.getAllEntities();
     }
 
     //Registration
-    public void getAllRegistrationReports() {
-        registrationReportRepo.getAllEntities();
+    public List<RegReport> getAllRegistrationReports() {
+        return registrationReportRepo.getAllEntities();
     }
 
     //Updates Tables
@@ -104,8 +124,9 @@ public class ReportService {
     //------------------------------------------------------------------------------------------------------------------
 
     //Damage
-    public void deleteDamageReportById(int number) {
+    public Object deleteDamageReportById(int number) {
         damageReportRepo.deleteEntityById(number);
+        return number;
     }
 
     //Condition

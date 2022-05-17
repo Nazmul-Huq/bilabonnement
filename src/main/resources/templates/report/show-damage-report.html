@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
+    <title>Damage Reports</title>
+</head>
+<body>
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+    <h1>Overview of Condition Reports</h1>
+
+    <table>
+        <tr>
+            <th> &nbsp; Damage Description &nbsp; </th>
+            <th> &nbsp; Number of Damage &nbsp; </th>
+            <th> &nbsp; Damage Level &nbsp; </th>
+            <th> &nbsp; Employee Id &nbsp; </th>
+            <th> &nbsp; Car Registration Number &nbsp; </th>
+        </tr>
+
+        <tr th:each="damagereport : ${damagereports}">
+            <td th:text="${damagereport.getDamageDescription()}"></td>
+            <td th:text="${damagereport.getNoOfDamage()}"></td>
+            <td th:text="${damagereport.getDamageLevel()}"></td>
+            <td th:text="${damagereport.getEmployeeId()}"></td>
+            <td th:text="${damagereport.getCarRegNr()}"></td>
+        </tr>
+    </table>
+
+
+</body>
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</html>

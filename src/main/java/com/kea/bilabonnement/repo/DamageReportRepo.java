@@ -61,7 +61,7 @@ public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
         List<DamageReport> singleDamageReport = new ArrayList<DamageReport>();
 
         try {
-            prepStmt = conn.prepareStatement("SELECT number OR damage_description OR no_of_damage OR damage_level OR employee_id OR car_reg_number FROM db_bilabonnement.tbl_damage_report");
+            prepStmt = conn.prepareStatement("SELECT id_number OR damage_description OR no_of_damage OR damage_level OR employee_id OR car_reg_number FROM db_bilabonnement.tbl_damage_report");
             rs = prepStmt.executeQuery();
 
 
@@ -85,9 +85,9 @@ public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
 
     //Shows all tables
     @Override
-    public List<DamageReport> getAllEntities() {
+    public ArrayList<DamageReport> getAllEntities() {
 
-        List<DamageReport> allDamageReports = new ArrayList<DamageReport>();
+        ArrayList<DamageReport> allDamageReports = new ArrayList<DamageReport>();
 
         try {
             prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_damage_report");
@@ -150,7 +150,7 @@ public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
         try {
             prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_damage_report SET number=?, damage_description=?, " +
              "no_of_damage=?, damage_level=?, employee_id=?, car_reg_number=?" +
-             "WHERE number=? OR damage_description=? OR no_of_damage=? OR damage_level OR emloyee_id=? OR car_reg_number"
+             "WHERE id_number=? OR damage_description=? OR no_of_damage=? OR damage_level OR emloyee_id=? OR car_reg_number"
             );
 
             prepStmt.setInt(1,entity.getNumber());
@@ -179,9 +179,12 @@ public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
     public boolean deleteEntityById(int number) {
 
         try {
-            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_damage_report WHERE number");
+            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_damage_report WHERE number= `id_nummber`");
+
+
 
             int rowsDeleted = prepStmt.executeUpdate();
+
             if (rowsDeleted > 0) {
                 System.out.println("row Was successfully deleted");
             }

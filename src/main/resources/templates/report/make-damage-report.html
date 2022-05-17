@@ -9,26 +9,29 @@
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-<div class="body-div">
+<div class="make-damage-body-div">
     <section class="damage-form-section">
         <form method="post" th:action="@{/report/add-damage-report}" >
             <h1>Damage Report</h1>
 
             <div>
-                <h3> Damage description: </h3> <input type="text" name="damageDescription">
+                <h3> Damage description: </h3> <input type="text" name="damageDescription" id="damage-description">
             </div>
 
-            <!-- to do: make with number of damage-->
+            <div>
+                <h3> Number of Damage: </h3> <input type="number" min="0" name="noOfDamage">
+            </div>
+
             <div>
                 <h3> Damage Level: </h3><input type="number" min="0" max="5" name="damageLevel">
             </div>
 
             <div>
-                <h3> Employee Id</h3><input type="tel" name="employeeId">
+                <h3> Employee Id</h3><input type="number" min="0" name="employeeId">
             </div>
 
             <div>
-                <h3> Car Registration Number</h3><input type="tel" name="carRegNumber">
+                <h3> Car Registration Number</h3><input type="number" min="0" name="carRegNumber">
             </div>
 
             <br>
