@@ -137,7 +137,7 @@ public class ReportController {
         return "/report/delete-registration-report";
     }
 
-    @PostMapping("/report/delete-registration-report")
+    @PostMapping("/report/delete-reg-report")
     public String deleteRegistrationReport(@RequestParam int number){
         reportService.deleteRegistrationReportById(number);
         return "/report/delete-registration-report";
