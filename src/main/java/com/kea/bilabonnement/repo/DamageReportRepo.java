@@ -179,15 +179,13 @@ public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
     public boolean deleteEntityById(int number) {
 
         try {
-            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_damage_report WHERE number= `id_nummber`");
+            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_damage_report WHERE id_number= ?");
 
+            prepStmt.setInt(1,number);
 
+            
+            prepStmt.executeUpdate();
 
-            int rowsDeleted = prepStmt.executeUpdate();
-
-            if (rowsDeleted > 0) {
-                System.out.println("row Was successfully deleted");
-            }
 
             return true;
         } catch (SQLException e) {

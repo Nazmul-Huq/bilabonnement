@@ -173,19 +173,22 @@ public class ConditionReportRepo implements BilabonnementCRUD<ConditionReport> {
     //Deletes a table by id number
     @Override
     public boolean deleteEntityById(int number) {
-        try {
-            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_condition_report WHERE number");
 
-            int rowsDeleted = prepStmt.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("row Was successfully deleted");
-            }
+        try {
+            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_condition_report WHERE id_number= ?");
+
+            prepStmt.setInt(1,number);
+
+
+            prepStmt.executeUpdate();
+
 
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
+
     }
 
     //ConditionReport ends here

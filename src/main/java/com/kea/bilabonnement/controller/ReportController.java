@@ -94,6 +94,19 @@ public class ReportController {
         return "/report/show-condition-report";
     }
 
+
+    //Delete
+    @GetMapping("/report/delete-condition-report")
+    public String deleteConditionReportById() {
+        return "/report/delete-condition-report";
+    }
+
+    @PostMapping("/report/delete-condition-report")
+    public String deleteConditionReport(@RequestParam int number){
+        reportService.deleteConditionReportById(number);
+        return "/report/delete-condition-report";
+    }
+
     //Registration Reports
     //---------------------------------------------------------------------------------------------------
 
@@ -116,5 +129,17 @@ public class ReportController {
     public String showRegistrationReports(Model model) {
         model.addAttribute("registrationreports", reportService.getAllRegistrationReports());
         return "/report/show-registration-report";
+    }
+
+    //Delete
+    @GetMapping("/report/delete-registration-report")
+    public String deleteRegistrationReportById() {
+        return "/report/delete-registration-report";
+    }
+
+    @PostMapping("/report/delete-registration-report")
+    public String deleteRegistrationReport(@RequestParam int number){
+        reportService.deleteRegistrationReportById(number);
+        return "/report/delete-registration-report";
     }
 }

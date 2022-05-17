@@ -160,19 +160,22 @@ public class RegistrationReportRepo implements BilabonnementCRUD<RegReport> {
     //Deletes a table
     @Override
     public boolean deleteEntityById(int number) {
-        try {
-            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_reg_report WHERE number");
 
-            int rowsDeleted = prepStmt.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("row Was successfully deleted");
-            }
+        try {
+            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_reg_report WHERE id_number= ?");
+
+            prepStmt.setInt(1,number);
+
+
+            prepStmt.executeUpdate();
+
 
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
+
     }
 
     //Registration report ends here
