@@ -12,37 +12,43 @@ public class RentingAgreement {
     private int carRegNumber;
     private int employeeId;
     private Date endingDate;
+    private boolean rentingStatus;
 
     public RentingAgreement(){
 
     }
 
     //Constructor without agreementNumber for "make renting agreement"
-    public RentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId) {
+    public RentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus) {
         this.price = price;
         this.description = description;
         this.customerId = customerId;
         this.carRegNumber = carRegNumber;
         this.employeeId = employeeId;
+        this.rentingStatus = rentingStatus;
+
     }
     //Constructor for "endRentingAgreement"
-    public RentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, Date endingDate) {
+    public RentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, boolean rentingStatus, Date endingDate) {
         this.agreementNumber = agreementNumber;
         this.description = description;
         this.customerId = customerId;
         this.carRegNumber = carRegNumber;
         this.employeeId = employeeId;
+        this.rentingStatus = rentingStatus;
         this.endingDate = endingDate;
     }
 
-    public RentingAgreement(int agreementNumber, int price, String description, int customerId, int carRegNumber, int employeeId, Date endingDate){
+    public RentingAgreement(int agreementNumber, int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date endingDate){
         this.agreementNumber = agreementNumber;
         this.price = price;
         this.description = description;
         this.customerId = customerId;
         this.carRegNumber = carRegNumber;
         this.employeeId = employeeId;
+        this.rentingStatus = rentingStatus;
         this.endingDate = endingDate;
+
     }
 
     public int getAgreementNumber(){
@@ -87,6 +93,8 @@ public class RentingAgreement {
     public void setEndingDate(Date endingDate){
         this.endingDate = endingDate;
     }
+    public boolean isRentingStatus(){ return rentingStatus;}
+    public void setRentingStatus(boolean rentingStatus){this.rentingStatus = rentingStatus;}
 
     @Override
     public String toString(){
@@ -97,6 +105,7 @@ public class RentingAgreement {
                 ", Customer Id = " + customerId +
                 ", Car Reg Number = " + carRegNumber +
                 ", Employee Id = " + employeeId +
-                ", Ending Date" + endingDate;
+                ", Ending Date" + endingDate +
+                ", Renting Status" + rentingStatus;
     }
 }

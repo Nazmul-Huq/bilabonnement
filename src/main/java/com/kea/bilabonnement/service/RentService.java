@@ -9,13 +9,13 @@ public class RentService {
 
     RentRepo rentRepo = new RentRepo();
 
-    public void makeRentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId){
-        RentingAgreement rentingAgreement = new RentingAgreement(price, description, customerId, carRegNumber, employeeId);
+    public void makeRentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus){
+        RentingAgreement rentingAgreement = new RentingAgreement(price, description, customerId, carRegNumber, employeeId, rentingStatus);
         rentRepo.addEntity(rentingAgreement);
-        rentRepo.writeToFile();
+
     }
-    public void endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employee, Date endingDate){
-        RentingAgreement rentingAgreement = new RentingAgreement(agreementNumber, carRegNumber, customerId, description, employee, endingDate);
+    public void endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employee, boolean rentingStatus, Date endingDate){
+        RentingAgreement rentingAgreement = new RentingAgreement(agreementNumber, carRegNumber, customerId, description, employee, rentingStatus, endingDate);
         rentRepo.deleteEntityById(rentingAgreement.getAgreementNumber());
     }
 }

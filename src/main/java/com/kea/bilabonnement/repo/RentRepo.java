@@ -22,13 +22,14 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
     public boolean addEntity(RentingAgreement entity) {
 
         try{
-            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(`price`, `description`, `customer_id`, `car_reg_number`, `employee_id` ) VALUES (?, ?, ?, ?, ?)");
+            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(`price`, `description`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`) VALUES (?, ?, ?, ?, ?, ?)");
 
             prepStmt.setInt(1, entity.getPrice());
             prepStmt.setString(2, entity.getDescription());
             prepStmt.setInt(3, entity.getCustomerId());
             prepStmt.setInt(4, entity.getCarRegNumber());
             prepStmt.setInt(5, entity.getEmployeeId());
+            prepStmt.setBoolean(6, entity.isRentingStatus());
 
             prepStmt.executeUpdate();
             //conn.close();
@@ -61,6 +62,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 rs.getInt("customer_id");
                 rs.getInt("car_reg_number");
                 rs.getInt("employee_id");
+                rs.getBoolean("renting_status");
 
                 RentingAgreement singleRentingAgreements = new RentingAgreement();
                 singleRentingAgreement.add(singleRentingAgreements);
@@ -94,6 +96,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 rs.getInt("customer_id");
                 rs.getInt("car_reg_number");
                 rs.getInt("employee_id");
+                rs.getBoolean("renting_status");
 
                 RentingAgreement allRentingAgreements = new RentingAgreement();
                 allRentingAgreement.add(allRentingAgreements);
@@ -118,8 +121,8 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
         try {
 
-            prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET agreement_number=?, price=?, description=?, customer_id=?, car_reg_number=?, employee_id=?" +
-                    "WHERE agreement_number, price, describtion, customer_id, car_reg_number, employee_id");
+            prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET agreement_number=?, price=?, description=?, customer_id=?, car_reg_number=?, employee_id=?, renting_status=?" +
+                    "WHERE agreement_number, price, describtion, customer_id, car_reg_number, employee_id, renting_status");
 
             prepStmt.setInt(1, entity.getAgreementNumber());
             prepStmt.setInt(2, entity.getPrice());
@@ -127,6 +130,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             prepStmt.setInt(4, entity.getCustomerId());
             prepStmt.setInt(5, entity.getCarRegNumber());
             prepStmt.setInt(6, entity.getEmployeeId());
+            prepStmt.setBoolean(7, entity.isRentingStatus());
 
             int rowUpdate = prepStmt.executeUpdate();
             System.out.println("Tabellen blev succesfuldt updateret");
@@ -153,25 +157,5 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
              System.out.println("Noget gik galt med sletningen af aftalen");
          }
         return false;
-    }
-
-    // TODO: Unit test FileWriter-method
-    public void writeToFile(){
-        try {
-            prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_reting_agreement");
-
-            FileWriter fileWriter = new FileWriter("agreement.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            String line = "this is only a test";
-            while (rs.next()){
-                line = rs.getInt("price") + "\t" + rs.getString("description") + "\t" + rs.getInt("customer_id") + "\t" + rs.getInt("car_reg_number") + "\t" + rs.getInt("employee_id");
-                bufferedWriter.write(line);
-                bufferedWriter.newLine();
-            }
-            bufferedWriter.close();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
     }
 }

@@ -3,11 +3,9 @@ package com.kea.bilabonnement.controller;
 import com.kea.bilabonnement.service.RentService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,7 +16,7 @@ public class RentController {
     RentService rentService = new RentService();
 
     @InitBinder
-    public void initBinder(WebDataBinder binder){
+    public void initBinderDate(WebDataBinder binder){
         DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
@@ -34,9 +32,10 @@ public class RentController {
             @RequestParam String description,
             @RequestParam int customerId,
             @RequestParam int carRegNumber,
-            @RequestParam int employeeId){
+            @RequestParam int employeeId,
+            @RequestParam boolean rentingStatus){
 
-        rentService.makeRentingAgreement(price, description, customerId, carRegNumber, employeeId);
+        rentService.makeRentingAgreement(price, description, customerId, carRegNumber, employeeId, rentingStatus);
         return "redirect:/rent/make-renting-agreement";
     }
 
@@ -52,9 +51,16 @@ public class RentController {
             @RequestParam int customerId,
             @RequestParam String description,
             @RequestParam int employeeId,
+            @RequestParam boolean rentingStatus,
             @RequestParam Date endingDate){
-        rentService.endRentingAgreement(agreementNumber, carRegNumber, customerId, description, employeeId, endingDate);
+        rentService.endRentingAgreement(agreementNumber, carRegNumber, customerId, description, employeeId, rentingStatus, endingDate);
         return "redirect:/rent/finish-renting-periode";
+    }
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public void handleMissingParams(MissingServletRequestParameterException ex) {
+        String name = ex.getParameterName();
+        String location = ex.getLocalizedMessage();
+        System.out.println(name + " parameter is missing " + " at " + location);
     }
 
 }
