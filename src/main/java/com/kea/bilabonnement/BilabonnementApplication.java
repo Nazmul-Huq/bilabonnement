@@ -1,21 +1,14 @@
 package com.kea.bilabonnement;
 
-import com.kea.bilabonnement.utility.AutomaticTaskExecutor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BilabonnementApplication implements CommandLineRunner {
+public class BilabonnementApplication {
 
-    private final AutomaticTaskExecutor automaticTaskExecutor = new AutomaticTaskExecutor();
 
     public static void main(String[] args) {
         SpringApplication.run(BilabonnementApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        automaticTaskExecutor.task();
-    }
 }

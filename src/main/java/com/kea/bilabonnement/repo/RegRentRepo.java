@@ -20,7 +20,7 @@ public class RegRentRepo implements BilabonnementCRUD<RegRent> {
     public boolean addEntity(RegRent entity) {
 
         try{
-            prepStmt = conn.prepareStatement("INSERT INTO ")
+            prepStmt = conn.prepareStatement("INSERT INTO ");
 
         }
         catch (SQLException e){

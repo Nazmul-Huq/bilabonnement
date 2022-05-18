@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <link rel="stylesheet" th:href="@{/stylesheets/table.css}" href="..\static\stylesheets\table.css">
     <title>Title</title>
 </head>
 <body>
@@ -10,8 +11,22 @@
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
 <div class="body-div">
-    Write body content here.
-    Maybe add one more div here with your own name and modify in the css
+
+    <h1>Recent Transport Alarms</h1>
+    <div class="div-table" >
+        <div class="table-cell table-header">Description</div>
+        <div class="table-cell table-header">Receiver</div>
+        <div class="table-cell table-header">Date</div>
+        <div class="table-cell table-header">Car Reg Number</div>
+        <div class="table-cell table-header">Send Alarm</div>
+        <div class="table-row" th:each="transportAlarm:${transportAlarms}">
+            <div class="table-cell" th:text="${transportAlarm.getAlarmDescription()}"></div>
+            <div class="table-cell" th:text="${transportAlarm.getAlarmReceiver()}"></div>
+            <div class="table-cell" th:text="${transportAlarm.getAlarmDate()}"></div>
+            <div class="table-cell" th:text="${transportAlarm.getCarRegNumber()}"></div>
+            <div class="table-cell" >Send Alarm</div>
+        </div>
+    </div>
 
 </div>
 

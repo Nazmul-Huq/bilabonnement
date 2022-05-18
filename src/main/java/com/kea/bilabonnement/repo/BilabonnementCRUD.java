@@ -1,7 +1,10 @@
 package com.kea.bilabonnement.repo;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface BilabonnementCRUD <T>{
 
     //Create
