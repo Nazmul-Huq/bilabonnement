@@ -1,15 +1,19 @@
 package com.kea.bilabonnement.controller;
 
+import com.kea.bilabonnement.model.RentingAgreement;
 import com.kea.bilabonnement.service.RentService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class RentController {
@@ -33,9 +37,10 @@ public class RentController {
             @RequestParam int customerId,
             @RequestParam int carRegNumber,
             @RequestParam int employeeId,
-            @RequestParam boolean rentingStatus){
+            @RequestParam boolean rentingStatus,
+            @RequestParam Date agreementDate){
 
-        rentService.makeRentingAgreement(price, description, customerId, carRegNumber, employeeId, rentingStatus);
+        rentService.makeRentingAgreement(price, description, customerId, carRegNumber, employeeId, rentingStatus, agreementDate);
         return "redirect:/rent/make-renting-agreement";
     }
 
@@ -56,11 +61,24 @@ public class RentController {
         rentService.endRentingAgreement(agreementNumber, carRegNumber, customerId, description, employeeId, rentingStatus, endingDate);
         return "redirect:/rent/finish-renting-periode";
     }
+
+    @GetMapping("/rent/show-renting-agreement")
+    public String showRentingAgreement(Model model){
+        List<RentingAgreement> agreementList = rentService.getAgreementList();
+        model.addAttribute("showAgreements", agreementList);
+        return "/rent/show-renting-agreement";
+    }
+    @PostMapping("/")
+
+
+
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {
         String name = ex.getParameterName();
         String location = ex.getLocalizedMessage();
         System.out.println(name + " parameter is missing " + " at " + location);
     }
+
+
 
 }

@@ -5,10 +5,7 @@ import com.kea.bilabonnement.utility.DatabaseConnectionHandler;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
     public boolean addEntity(RentingAgreement entity) {
 
         try{
-            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(`price`, `description`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`) VALUES (?, ?, ?, ?, ?, ?)");
+            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(`price`, `description`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
             prepStmt.setInt(1, entity.getPrice());
             prepStmt.setString(2, entity.getDescription());
@@ -30,6 +27,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             prepStmt.setInt(4, entity.getCarRegNumber());
             prepStmt.setInt(5, entity.getEmployeeId());
             prepStmt.setBoolean(6, entity.isRentingStatus());
+            prepStmt.setDate(7, (Date) entity.getAgreementDate());
 
             prepStmt.executeUpdate();
             //conn.close();
@@ -63,6 +61,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 rs.getInt("car_reg_number");
                 rs.getInt("employee_id");
                 rs.getBoolean("renting_status");
+                rs.getDate("agreement_date");
 
                 RentingAgreement singleRentingAgreements = new RentingAgreement();
                 singleRentingAgreement.add(singleRentingAgreements);
@@ -97,6 +96,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 rs.getInt("car_reg_number");
                 rs.getInt("employee_id");
                 rs.getBoolean("renting_status");
+                rs.getDate("agreement_date");
 
                 RentingAgreement allRentingAgreements = new RentingAgreement();
                 allRentingAgreement.add(allRentingAgreements);
@@ -121,18 +121,17 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
         try {
 
-            prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET agreement_number=?, price=?, description=?, customer_id=?, car_reg_number=?, employee_id=?, renting_status=?" +
-                    "WHERE agreement_number, price, describtion, customer_id, car_reg_number, employee_id, renting_status");
+            //prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET agreement_number=?, price=?, description=?, customer_id=?, car_reg_number=?, employee_id=?, renting_status=?, agreement_date=?" +
+                    //"WHERE agreement_number, price, description, customer_id, car_reg_number, employee_id, renting_status, agreement_date");
 
-            prepStmt.setInt(1, entity.getAgreementNumber());
-            prepStmt.setInt(2, entity.getPrice());
-            prepStmt.setString(3, entity.getDescription());
-            prepStmt.setInt(4, entity.getCustomerId());
-            prepStmt.setInt(5, entity.getCarRegNumber());
-            prepStmt.setInt(6, entity.getEmployeeId());
-            prepStmt.setBoolean(7, entity.isRentingStatus());
+            prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET renting_status=?, ending_date=? WHERE (agreement_number=?)");
 
-            int rowUpdate = prepStmt.executeUpdate();
+
+            prepStmt.setBoolean(1, entity.isRentingStatus());
+            prepStmt.setDate(2, entity.getEndingDate());
+            prepStmt.setInt(3, entity.getAgreementNumber());
+
+            prepStmt.executeUpdate();
             System.out.println("Tabellen blev succesfuldt updateret");
             //conn.close();
             return true;

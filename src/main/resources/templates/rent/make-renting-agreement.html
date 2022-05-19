@@ -55,14 +55,19 @@
             Lejeaftale status:
             <div>
                 <label>Aktiv:
-                    <input type="radio" name="agreementStatus">
+                    <input type="radio" name="rentingStatus" value="true">
                 </label>
             </div>
             <div>
                 <label>Afsluttet:
-                    <input type="radio" name="agreementStatus">
+                    <input type="radio" name="rentingStatus" value="false">
                 </label>
             </div>
+        </div>
+        <div>
+            <label>Dato:
+                <input type="date" name="agreementDate" placeholder="Dato for afslutning af lejemål">
+            </label>
         </div>
         <button>Submit</button>
     </form>

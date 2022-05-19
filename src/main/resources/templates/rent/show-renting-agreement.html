@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview Agreement</title>
+</head>
+<body>
+<div class="body-div">
+
+    <h1>Recent Transport Alarms</h1>
+    <div class="div-table" >
+        <div class="table-cell table-header">Aftalenr.</div>
+        <div class="table-cell table-header">Pris</div>
+        <div class="table-cell table-header">Beskrivelse</div>
+        <div class="table-cell table-header">Kundenr.</div>
+        <div class="table-cell table-header">Registreringsnr.</div>
+        <div class="table-cell table-header">Medarbejder nr.</div>
+        <div class="table-cell table-header">Aftale status</div>
+        <div class="table-cell table-header">Starts dato</div>
+        <div class="table-cell table-header">Afslutnings dato</div>
+
+        <div class="table-row" th:each="showAgreement:${showAgreements}">
+            <div class="table-cell" th:text="${showAgreement.getAgreementNumber()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getPrice()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getDescription()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getCustomerId()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getCarRegNumber()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getEmployeeId()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getAgreementDate()}"></div>
+            <div class="table-cell" th:text="${showAgreement.isRentingStatus()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getEndingDate()}"></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

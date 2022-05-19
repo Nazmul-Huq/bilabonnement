@@ -1,6 +1,6 @@
 package com.kea.bilabonnement.model;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class RentingAgreement {
@@ -12,6 +12,7 @@ public class RentingAgreement {
     private int carRegNumber;
     private int employeeId;
     private Date endingDate;
+    private Date agreementDate;
     private boolean rentingStatus;
 
     public RentingAgreement(){
@@ -19,13 +20,14 @@ public class RentingAgreement {
     }
 
     //Constructor without agreementNumber for "make renting agreement"
-    public RentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus) {
+    public RentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate) {
         this.price = price;
         this.description = description;
         this.customerId = customerId;
         this.carRegNumber = carRegNumber;
         this.employeeId = employeeId;
         this.rentingStatus = rentingStatus;
+        this.agreementDate = agreementDate;
 
     }
     //Constructor for "endRentingAgreement"
@@ -39,7 +41,7 @@ public class RentingAgreement {
         this.endingDate = endingDate;
     }
 
-    public RentingAgreement(int agreementNumber, int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date endingDate){
+    public RentingAgreement(int agreementNumber, int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date endingDate, Date agreementDate){
         this.agreementNumber = agreementNumber;
         this.price = price;
         this.description = description;
@@ -48,7 +50,7 @@ public class RentingAgreement {
         this.employeeId = employeeId;
         this.rentingStatus = rentingStatus;
         this.endingDate = endingDate;
-
+        this.agreementDate = agreementDate;
     }
 
     public int getAgreementNumber(){
@@ -93,8 +95,18 @@ public class RentingAgreement {
     public void setEndingDate(Date endingDate){
         this.endingDate = endingDate;
     }
-    public boolean isRentingStatus(){ return rentingStatus;}
-    public void setRentingStatus(boolean rentingStatus){this.rentingStatus = rentingStatus;}
+    public boolean isRentingStatus() {
+        return rentingStatus;
+    }
+    public void setRentingStatus(boolean rentingStatus){
+        this.rentingStatus = rentingStatus;
+    }
+    public Date getAgreementDate(){
+        return agreementDate;
+    }
+    public void setAgreementDate(){
+        this.agreementDate = agreementDate;
+    }
 
     @Override
     public String toString(){
@@ -106,6 +118,7 @@ public class RentingAgreement {
                 ", Car Reg Number = " + carRegNumber +
                 ", Employee Id = " + employeeId +
                 ", Ending Date" + endingDate +
-                ", Renting Status" + rentingStatus;
+                ", Renting Status" + rentingStatus +
+                ", Agreement Date" + agreementDate;
     }
 }
