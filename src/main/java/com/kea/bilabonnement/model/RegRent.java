@@ -59,7 +59,7 @@ public class RegRent {
     public void setReturnDate(Date returnDate){
         this.returnDate = returnDate;
     }
-    public String getConditionReport(){
+    public int getConditionReport(){
         return conditionReport;
     }
     public void setConditionReport(int conditionReport){

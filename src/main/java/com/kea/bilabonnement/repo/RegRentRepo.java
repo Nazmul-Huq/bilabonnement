@@ -34,7 +34,7 @@ public class RegRentRepo implements BilabonnementCRUD<RegRent> {
             prepStmt.setDate(3, (Date) entity.getPickupDate());
             prepStmt.setDouble(4, entity.getDrivenReturnKm());
             prepStmt.setDate(5, (Date) entity.getReturnDate());
-            prepStmt.setString(6, entity.getConditionReport());
+            prepStmt.setInt(6, entity.getConditionReport());
             prepStmt.setInt(7, entity.getCarRegNumber());
             prepStmt.setInt(8, entity.getCustomerId());
             prepStmt.setInt(9, entity.getEmployeeId());
@@ -131,7 +131,7 @@ public class RegRentRepo implements BilabonnementCRUD<RegRent> {
             prepStmt.setDate(3, (Date) entity.getPickupDate());
             prepStmt.setDouble(4, entity.getDrivenReturnKm());
             prepStmt.setDate(5, (Date) entity.getReturnDate());
-            prepStmt.setString(6, entity.getConditionReport());
+            prepStmt.setInt(6, entity.getConditionReport());
             prepStmt.setInt(7, entity.getCarRegNumber());
             prepStmt.setInt(8, entity.getCustomerId());
             prepStmt.setInt(9, entity.getEmployeeId());
