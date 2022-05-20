@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
-    <link rel="stylesheet" th:href="@{/stylesheets/table.css}" href="..\static\stylesheets\table.css">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
     <title>Title</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
+<!--
+*** Author Nazmul
+-->
 <div class="body-div">
 
     <h1>Recent Transport Alarms</h1>
@@ -24,7 +26,16 @@
             <div class="table-cell" th:text="${transportAlarm.getAlarmReceiver()}"></div>
             <div class="table-cell" th:text="${transportAlarm.getAlarmDate()}"></div>
             <div class="table-cell" th:text="${transportAlarm.getCarRegNumber()}"></div>
-            <div class="table-cell" >Send Alarm</div>
+            <div class="table-cell" >
+                <form th:action="@{/send-message/send-email}" method="post">
+                    <input type="hidden" name="alarmDescription" th:value="${transportAlarm.getAlarmDescription()}" />
+                    <input type="hidden" name="alarmDate" th:value="${#dates.format(transportAlarm.getAlarmDate(), 'dd-MM-yyyy')}" />
+                    <input type="hidden" name="alarmReceiver" th:value="${transportAlarm.getAlarmReceiver()}" />
+                    <input type="hidden" name="alarmType" th:value="${transportAlarm.getAlarmType()}" />
+                    <input type="hidden" name="carRegNumber" th:value="${transportAlarm.getCarRegNumber()}" />
+                    <input type="submit" value="Send Alarm by Email">
+                </form>
+            </div>
         </div>
     </div>
 

@@ -1,4 +1,4 @@
-package com.kea.bilabonnement.utility;
+package com.kea.bilabonnement.config;
 
 
 import com.kea.bilabonnement.model.Alarm;
@@ -6,6 +6,7 @@ import com.kea.bilabonnement.model.Invoice;
 import com.kea.bilabonnement.model.Transport;
 import com.kea.bilabonnement.repo.*;
 import com.kea.bilabonnement.service.AutomaticAlarmGeneratorService;
+import com.kea.bilabonnement.utility.DateTimeHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;

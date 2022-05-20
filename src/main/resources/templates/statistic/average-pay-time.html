@@ -2,13 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
     <title>Title</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
+<!--
+*** Author Nazmul
+-->
 <div class="body-div">
     <h1>Average Pay Time (in days): <span th:text="${averagePayTimeInDays}"></span></h1>
 

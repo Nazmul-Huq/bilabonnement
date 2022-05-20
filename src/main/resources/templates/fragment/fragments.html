@@ -2,6 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
+<!-- fragment to link css and javascript starts here -->
+<div th:fragment="head">
+    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <link rel="stylesheet" th:href="@{/stylesheets/table.css}" href="..\static\stylesheets\table.css">
+    <link rel="stylesheet" th:href="@{/stylesheets/renting.css}" href="..\static\stylesheets\renting.css">
+    <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle.css">
+</div>
+<!-- fragment to link css and javascript finish here -->
+
+
 <!-- menu div fragment start here -->
 <div th:fragment="menu">
 

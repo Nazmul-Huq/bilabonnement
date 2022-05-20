@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <link rel="stylesheet" th:href="@{/stylesheets/table.css}" href="..\static\stylesheets\table.css">
     <title>Title</title>
 </head>
 <body>
@@ -13,7 +14,8 @@
 *** Author Nazmul
 -->
 <div class="body-div">
-    <h1>Average Renting Time (in days): <span th:text="${averageRentingTimeInDays}"></span></h1>
+
+    <h1>Email was sent successfully</h1>
 
 </div>
 

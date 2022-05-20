@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Title</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<!--
+*** Author Nazmul
+-->
+<div class="body-div">
+
+    <h1>Send an Email</h1>
+    <form th:action="@{/send-message/send-email-handler}" method="post">
+
+        <label for="emailRecipient">Recipient's Email</label></br>
+        <input type="text" name="emailRecipient" id="emailRecipient" > </br>
+
+        <label for="emailCc">Cc</label></br>
+        <input type="text" name="emailCc" id="emailCc" ></br>
+
+        <label for="emailSubject">Subject</label></br>
+        <input type="text" name="emailSubject" id="emailSubject"></br>
+
+        <label for="alarmDescription">Alarm Description</label></br>
+        <textarea name="alarmDescription" id="alarmDescription" th:text="${alarm.getAlarmDescription()}"></textarea></br>
+
+        <label for="alarmDate">Alarm Date</label></br>
+        <input type="text" name="alarmDate" id="alarmDate" th:value="${#dates.format(alarm.getAlarmDate(), 'dd-MM-yyyy')}" /></br>
+
+        <label for="alarmReceiver">Alarm Receiver</label></br>
+        <input type="text" name="alarmReceiver" id="alarmReceiver" th:value="${alarm.getAlarmReceiver()}" /></br>
+
+        <label for="alarmType">Alarm Type</label></br>
+        <input type="text" name="alarmType" id="alarmType" th:value="${alarm.getAlarmType()}" /></br>
+
+        <label for="carRegNumber">Car Registration Number</label></br>
+        <input type="int" name="carRegNumber" id="carRegNumber" th:value="${alarm.getCarRegNumber()}" /></br>
+
+        <label for="comment">Any Further Comment</label></br>
+        <textarea name="comment" id="comment"></textarea></br>
+
+        <input type="submit" value="Send The Email">
+    </form>
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>
