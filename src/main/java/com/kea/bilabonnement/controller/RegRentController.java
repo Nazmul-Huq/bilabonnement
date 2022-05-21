@@ -1,7 +1,9 @@
 package com.kea.bilabonnement.controller;
 
 import com.kea.bilabonnement.service.RegRentService;
+import com.kea.bilabonnement.service.ReportService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,8 +29,6 @@ public class RegRentController {
             @RequestParam int customerId,
             @RequestParam int employeeId
             ){
-
-
       return "redirect:/rent/register-pickup-car";
     }
 
@@ -47,8 +47,6 @@ public class RegRentController {
             @RequestParam int customerId,
             @RequestParam int employeeId
     ){
-
-
         return "redirect:/rent/register-returned-car";
     }
 }

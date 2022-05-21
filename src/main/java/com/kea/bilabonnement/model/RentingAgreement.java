@@ -8,6 +8,7 @@ public class RentingAgreement {
     private int agreementNumber;
     private int price;
     private String description;
+    private String type;
     private int customerId;
     private int carRegNumber;
     private int employeeId;
@@ -20,9 +21,10 @@ public class RentingAgreement {
     }
 
     //Constructor without agreementNumber for "make renting agreement"
-    public RentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate) {
+    public RentingAgreement(int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate) {
         this.price = price;
         this.description = description;
+        this.type = type;
         this.customerId = customerId;
         this.carRegNumber = carRegNumber;
         this.employeeId = employeeId;
@@ -45,6 +47,7 @@ public class RentingAgreement {
         this.agreementNumber = agreementNumber;
         this.price = price;
         this.description = description;
+        this.type = type;
         this.customerId = customerId;
         this.carRegNumber = carRegNumber;
         this.employeeId = employeeId;
@@ -70,6 +73,12 @@ public class RentingAgreement {
     }
     public void setDescription(String description){
         this.description = description;
+    }
+    public String getType(){
+        return type;
+    }
+    public void setType(String type){
+        this.type = type;
     }
     public int getCustomerId(){
         return customerId;

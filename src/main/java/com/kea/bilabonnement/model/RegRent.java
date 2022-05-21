@@ -13,6 +13,7 @@ public class RegRent {
     private int carRegNumber;
     private int customerId;
     private int employeeId;
+    private String location;
 
     public RegRent() {
     }

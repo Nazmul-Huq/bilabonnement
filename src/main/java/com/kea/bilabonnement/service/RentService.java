@@ -10,9 +10,9 @@ public class RentService {
 
     RentRepo rentRepo = new RentRepo();
 
-    public void makeRentingAgreement(int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate){
+    public void makeRentingAgreement(int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate){
 
-        RentingAgreement rentingAgreement = new RentingAgreement(price, description, customerId, carRegNumber, employeeId, rentingStatus, (java.sql.Date) agreementDate);
+        RentingAgreement rentingAgreement = new RentingAgreement(price, description, type, customerId, carRegNumber, employeeId, rentingStatus, (java.sql.Date) agreementDate);
         rentRepo.addEntity(rentingAgreement);
 
     }
@@ -22,7 +22,6 @@ public class RentService {
     }
 
     public List<RentingAgreement> getAgreementList() {
-
-        return null;
+        return rentRepo.getAllEntities();
     }
 }

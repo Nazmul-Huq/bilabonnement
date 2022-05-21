@@ -34,13 +34,14 @@ public class RentController {
     public String addRentingAgreement(
             @RequestParam int price,
             @RequestParam String description,
+            @RequestParam String type,
             @RequestParam int customerId,
             @RequestParam int carRegNumber,
             @RequestParam int employeeId,
             @RequestParam boolean rentingStatus,
             @RequestParam Date agreementDate){
 
-        rentService.makeRentingAgreement(price, description, customerId, carRegNumber, employeeId, rentingStatus, agreementDate);
+        rentService.makeRentingAgreement(price, description, type, customerId, carRegNumber, employeeId, rentingStatus, agreementDate);
         return "redirect:/rent/make-renting-agreement";
     }
 
@@ -68,9 +69,6 @@ public class RentController {
         model.addAttribute("showAgreements", agreementList);
         return "/rent/show-renting-agreement";
     }
-    @PostMapping("/")
-
-
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {
@@ -78,7 +76,4 @@ public class RentController {
         String location = ex.getLocalizedMessage();
         System.out.println(name + " parameter is missing " + " at " + location);
     }
-
-
-
 }

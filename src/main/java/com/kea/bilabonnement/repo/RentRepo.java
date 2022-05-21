@@ -19,15 +19,16 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
     public boolean addEntity(RentingAgreement entity) {
 
         try{
-            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(`price`, `description`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(`price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
             prepStmt.setInt(1, entity.getPrice());
             prepStmt.setString(2, entity.getDescription());
-            prepStmt.setInt(3, entity.getCustomerId());
-            prepStmt.setInt(4, entity.getCarRegNumber());
-            prepStmt.setInt(5, entity.getEmployeeId());
-            prepStmt.setBoolean(6, entity.isRentingStatus());
-            prepStmt.setDate(7, (Date) entity.getAgreementDate());
+            prepStmt.setString(3, entity.getType());
+            prepStmt.setInt(4, entity.getCustomerId());
+            prepStmt.setInt(5, entity.getCarRegNumber());
+            prepStmt.setInt(6, entity.getEmployeeId());
+            prepStmt.setBoolean(7, entity.isRentingStatus());
+            prepStmt.setDate(8, (Date) entity.getAgreementDate());
 
             prepStmt.executeUpdate();
             //conn.close();
@@ -57,6 +58,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 rs.getInt("agreement_number");
                 rs.getInt("price");
                 rs.getString("description");
+                rs.getString("Type");
                 rs.getInt("customer_id");
                 rs.getInt("car_reg_number");
                 rs.getInt("employee_id");
@@ -92,6 +94,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 rs.getInt("agreement_number");
                 rs.getInt("price");
                 rs.getString("description");
+                rs.getString("type");
                 rs.getInt("customer_id");
                 rs.getInt("car_reg_number");
                 rs.getInt("employee_id");

@@ -13,7 +13,6 @@ public class RegRentRepo implements BilabonnementCRUD<RegRent> {
     PreparedStatement prepStmt;
     ResultSet rs;
 
-
     @Override
     public boolean addEntity(RegRent entity) {
 
@@ -71,7 +70,6 @@ public class RegRentRepo implements BilabonnementCRUD<RegRent> {
 
                 RegRent singleRentReg = new RegRent();
                 singleRentRegistration.add(singleRentReg);
-
             }
         }
         catch (Exception e){

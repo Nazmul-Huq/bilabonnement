@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Overview Agreement</title>
+    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <title>Oversigt over lejeaftaler</title>
 </head>
 <body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 <div class="body-div">
+    <form style="text-align: center
+" th:action="@{/rent/show-renting-agreement}" method="post">
 
-    <h1>Recent Transport Alarms</h1>
+    <h1>Oversigt over lejeaftaler</h1>
     <div class="div-table" >
         <div class="table-cell table-header">Aftalenr.</div>
         <div class="table-cell table-header">Pris</div>
@@ -31,7 +36,7 @@
             <div class="table-cell" th:text="${showAgreement.getEndingDate()}"></div>
         </div>
     </div>
-
+    </form>
 </div>
 
 </body>

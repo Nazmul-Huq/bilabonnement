@@ -14,17 +14,19 @@
 " th:action="@{/rent/add-renting-agreement}" method="post">
         <h1>Ny lejeaftale
         </h1>
+        <br>
         <div>
             <label>Pris:
                 <input type="number" min="2999" max="5999" name="price" placeholder="Fra 2.999 kr./md" required>
             </label>
         </div>
+        <br>
         <div>
-            <!-- Hvilken beskrivelse?-->
             <label>Description:
-                <input type="text" name="description" placeholder="beskrivelse">
+                <input type="text" name="description" placeholder="Ekstra info">
             </label>
         </div>
+        <br>
         <div>
             Type:
             <div>
@@ -32,25 +34,32 @@
                     <input type="radio" name="type">
                 </label>
             </div>
+            <br>
             <div>
                 <label>Unlimited
                     <input type="radio" name="type">
                 </label>
             </div>
+            <br>
         </div>
+        <div>
         <label>Kunde Id:
             <input type="number" name="customerId" placeholder="kundenr." required>
         </label>
+        </div>
+        <br>
         <div>
             <label>Bil registeringsnr:
                 <input type="number" name="carRegNumber" placeholder="Bilens registringsnr." required>
             </label>
         </div>
+        <br>
         <div>
             <label> Medarbejder Id:
                 <input type="number" name="employeeId" placeholder="Dit medarbejdernr." required>
             </label>
         </div>
+        <br>
         <div>
             Lejeaftale status:
             <div>
@@ -58,12 +67,14 @@
                     <input type="radio" name="rentingStatus" value="true">
                 </label>
             </div>
+            <br>
             <div>
                 <label>Afsluttet:
                     <input type="radio" name="rentingStatus" value="false">
                 </label>
             </div>
         </div>
+        <br>
         <div>
             <label>Dato:
                 <input type="date" name="agreementDate" placeholder="Dato for afslutning af lejemål">
