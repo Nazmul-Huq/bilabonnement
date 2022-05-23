@@ -2,6 +2,7 @@ package com.kea.bilabonnement.controller;
 
 import com.kea.bilabonnement.model.RentingAgreement;
 import com.kea.bilabonnement.service.RentService;
+import com.kea.bilabonnement.service.ReportService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -50,7 +50,7 @@ public class RentController {
         return "/rent/finish-renting-periode";
     }
 
-    @PostMapping("/rent/finish-renting-agreement")
+    @PostMapping("/rent/add-finish-renting-periode")
     public String finishRentingAgreement(
             @RequestParam int agreementNumber,
             @RequestParam int carRegNumber,
@@ -69,6 +69,8 @@ public class RentController {
         model.addAttribute("showAgreements", agreementList);
         return "/rent/show-renting-agreement";
     }
+
+
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {

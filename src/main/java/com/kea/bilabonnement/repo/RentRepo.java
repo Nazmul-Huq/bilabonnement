@@ -58,7 +58,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
                 rs.getInt("agreement_number");
                 rs.getInt("price");
                 rs.getString("description");
-                rs.getString("Type");
+                rs.getString("type");
                 rs.getInt("customer_id");
                 rs.getInt("car_reg_number");
                 rs.getInt("employee_id");

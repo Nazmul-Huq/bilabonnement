@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
@@ -28,8 +28,7 @@
         <br>
         <div>
             <label>Tilstandsreport
-                <p th:each=" conditionreport : ${conditionreports}"></p>
-                <p th:text="${conditionreport.getConditionDate()}">
+                <div th:each="conditionReport: ${conditionReportForReturned}"></div>
             </label>
         </div>
         <br>

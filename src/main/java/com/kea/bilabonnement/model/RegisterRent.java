@@ -2,7 +2,7 @@ package com.kea.bilabonnement.model;
 
 import java.util.Date;
 
-public class RegRent {
+public class RegisterRent {
 
     private int id;
     private double drivenPickupKm;
@@ -15,10 +15,10 @@ public class RegRent {
     private int employeeId;
     private String location;
 
-    public RegRent() {
+    public RegisterRent() {
     }
 
-    public RegRent(int id, double drivenPickupKm, Date pickupDate, double drivenReturnKm, Date returnDate, int conditionReport, int carRegNumber, int customerId, int employeeId) {
+    public RegisterRent(int id, double drivenPickupKm, Date pickupDate, double drivenReturnKm, Date returnDate, int conditionReport, int carRegNumber, int customerId, int employeeId) {
         this.id = id;
         this.drivenPickupKm = drivenPickupKm;
         this.pickupDate = pickupDate;
