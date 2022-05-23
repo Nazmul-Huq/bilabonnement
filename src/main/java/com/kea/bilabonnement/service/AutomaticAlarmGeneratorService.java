@@ -7,6 +7,7 @@ import com.kea.bilabonnement.model.Transport;
 import com.kea.bilabonnement.repo.BilabonnementCRUD;
 import com.kea.bilabonnement.repo.CheckAddAlarm;
 import com.kea.bilabonnement.utility.DateTimeHandler;
+//import com.kea.bilabonnement.utility.DateTimeHandler;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class AutomaticAlarmGeneratorService {
     /**
      * check and make alarm for outdated payment
      */
+
     public void generatePaymentAlarm(){
         // get a list of outdated payments
         List<Invoice> invoices = invoiceCheckAddAlarm.getOutdatedEntities(dateTimeHandler.getYesterdayDate());
@@ -57,6 +59,7 @@ public class AutomaticAlarmGeneratorService {
     /**
      * check and make alarm for any outdated undelivered job
      */
+
     public void generateTransportAlarm(){
         // get a list of outdated undelivered job
         List<Transport> transports = transportCheckAddAlarm.getOutdatedEntities(dateTimeHandler.getYesterdayDate());

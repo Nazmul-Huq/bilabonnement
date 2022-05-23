@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
+    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+
+
+    <title>Search Damage Reports</title>
+</head>
+<body>
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<h1>Search result of Damage Reports</h1>
+
+<table>
+    <tr>
+        <th> &nbsp; Damage Description &nbsp; </th>
+        <th> &nbsp; Number of Damage &nbsp; </th>
+        <th> &nbsp; Damage Level &nbsp; </th>
+        <th> &nbsp; Employee Id &nbsp; </th>
+        <th> &nbsp; Car Registration Number &nbsp; </th>
+    </tr>
+
+    <tr th:each="damagereport : ${damagereport}">
+        <td th:text="${damagereport.}"></td>
+
+    </tr>
+</table>
+
+
+</body>
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>

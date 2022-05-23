@@ -5,16 +5,17 @@
     <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
 
-    <title>Delete Report</title>
+    <title>Damage report</title>
 </head>
 <body>
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
+<h1>Search Damage Reports</h1>
 
 <div class="delete-damage-body-div">
     <section class="delete-damage-form-section">
-        <form method="post" th:action="@{/report/delete-report}" >
-            <h1>Delete Damage Report</h1>
+        <form method="post" th:action="@{/report/search-report}" >
+
 
             <label for="number"> Input id number of the report:</label>
             <input type="number" name="number" id="number" >
@@ -29,6 +30,7 @@
         </form>
     </section>
 </div>
+
 
 
 

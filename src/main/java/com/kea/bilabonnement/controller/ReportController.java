@@ -50,6 +50,15 @@ public class ReportController {
         return "/report/show-damage-report";
     }
 
+    //Read single Damage Report
+    @GetMapping("/report/search-damage-result")
+    public String showSingleDamageReport(Model model, int number) {
+        System.out.println(reportService.getSingleDamageReportById(number));
+
+        model.addAttribute("damagereport",reportService.getSingleDamageReportById(number));
+        return "/report/search-damage-result";
+    }
+
 
     //Delete
     @GetMapping("/report/delete-damage-report")
@@ -63,8 +72,17 @@ public class ReportController {
         return "/report/delete-damage-report";
     }
 
+    //Search
+    @GetMapping("/report/search-damage-report")
+    public String searchDamageReports() {
+        return "/report/search-damage-report";
+    }
 
-
+    @PostMapping("/report/search-report")
+    public String searchDamageReportById(@RequestParam int number) {
+        reportService.getSingleDamageReportById(number);
+        return "/report/search-damage-result";
+    }
 
 
     //Condition Reports

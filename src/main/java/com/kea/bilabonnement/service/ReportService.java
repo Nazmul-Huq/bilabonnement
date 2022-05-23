@@ -64,9 +64,8 @@ public class ReportService {
     //------------------------------------------------------------------------------------------------------------------
 
     //Damage
-    public void getSingleDamageReportById(int number) {
-
-        damageReportRepo.getAllEntitiesById(number);
+    public Object getSingleDamageReportById(int number) {
+        return damageReportRepo.getAllEntitiesById(number);
     }
 
     //Condition

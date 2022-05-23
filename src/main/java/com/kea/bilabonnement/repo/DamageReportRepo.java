@@ -119,24 +119,16 @@ public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
         List<DamageReport> singleDamageReport = new ArrayList<DamageReport>();
 
         try {
-            prepStmt = conn.prepareStatement("SELECT number FROM db_bilabonnement.tbl_damage_report");
+            prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_damage_report WHERE id_number = ?");
+
+            prepStmt.setInt(1,number);
+
             rs = prepStmt.executeQuery();
 
 
-            while (rs.next()) {
-                DamageReport singleDamageReportVar = new DamageReport(
-                rs.getInt(1),
-                rs.getString(2),
-                rs.getInt(3),
-                rs.getInt(4),
-                rs.getInt(5),
-                rs.getInt(6)
-                );
-                singleDamageReport.add(singleDamageReportVar);
-            }
-
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
         return singleDamageReport;
 
