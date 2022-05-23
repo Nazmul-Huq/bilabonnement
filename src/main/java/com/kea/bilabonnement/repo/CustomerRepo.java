@@ -18,6 +18,11 @@ public class CustomerRepo implements BilabonnementCRUD<Customer> {
     Connection connection = DatabaseConnectionHandler.getConnection();
 
 
+    /**
+     * add a customer to the database
+     * @param entity
+     * @return
+     */
     @Override
     public boolean addEntity(Customer entity) {
         try{
@@ -45,6 +50,11 @@ public class CustomerRepo implements BilabonnementCRUD<Customer> {
         }
     }
 
+    /**
+     * get a customer's detail by customer's id
+     * @param id
+     * @return
+     */
     @Override
     public Customer getSingleEntityById(int id) {
 
@@ -92,4 +102,4 @@ public class CustomerRepo implements BilabonnementCRUD<Customer> {
     public boolean deleteEntityById(int id) {
         return false;
     }
-}
+} // class ends here

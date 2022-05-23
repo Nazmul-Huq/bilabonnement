@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Author Nazmul
+ */
 public class StatisticRepoImpl implements StatisticRepo{
 
     /**
@@ -65,4 +68,4 @@ public class StatisticRepoImpl implements StatisticRepo{
         }
         return deliveryTimes;
     }
-}
+} // class ends here

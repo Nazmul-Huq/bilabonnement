@@ -23,6 +23,11 @@ public class AlarmRepo implements CheckAddAlarm<Alarm>, BilabonnementCRUD<Alarm>
         return null;
     }
 
+    @Override
+    public List<Alarm> getUnpaidEntities() {
+        return null;
+    }
+
     /**
      * get alarms by tpye from database and send returned to alarm service
      * @param alarmType

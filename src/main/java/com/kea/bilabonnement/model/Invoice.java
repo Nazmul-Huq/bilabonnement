@@ -1,6 +1,6 @@
 package com.kea.bilabonnement.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Author Nazmul

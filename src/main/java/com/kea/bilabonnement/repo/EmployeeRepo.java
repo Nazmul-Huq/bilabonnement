@@ -1,6 +1,5 @@
 package com.kea.bilabonnement.repo;
 
-import com.kea.bilabonnement.enums.Department;
 import com.kea.bilabonnement.model.Employee;
 import com.kea.bilabonnement.utility.DatabaseConnectionHandler;
 
@@ -10,11 +9,20 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Author Nazmul
+ */
+
 public class EmployeeRepo implements BilabonnementCRUD<Employee>{
 
     Connection connection = DatabaseConnectionHandler.getConnection();
 
 
+    /**
+     * add an employee to the database
+     * @param entity
+     * @return
+     */
     @Override
     public boolean addEntity(Employee entity) {
 

@@ -15,6 +15,8 @@ public interface CheckAddAlarm<T>{
 
     List<T> getOutdatedEntities(Date date);
 
+    List<T> getUnpaidEntities();
+
     List<T> getRecentAlarmsByType(AlarmType alarmType);
 
 }

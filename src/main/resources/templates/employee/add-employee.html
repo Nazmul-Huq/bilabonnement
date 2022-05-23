@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Title</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<!--
+*** Author Nazmul
+-->
+<div class="body-div">
+
+    <h1>Add an Employee</h1>
+    <form method="post" th:action="@{/employee/add-employee}">
+
+        <label class="label">Full Name</label>
+        <input type="text" name="name">
+
+        <label class="label">CPR Number</label>
+        <input type="number" name="cprNumber">
+
+        <label class="label">Username</label>
+        <input type="text" name="username" />
+
+        <label class="label">Password</label>
+        <input type="text" name="password" />
+
+        <label class="label">Hire Date</label>
+        <input type="date" name="hireDate">
+
+        <input type="radio" id="ceo" name="department" value="ceo">
+        <label for="ceo">CEO</label><br>
+
+        <input type="radio" id="admin" name="department" value="admin">
+        <label for="admin">Admin</label><br>
+
+        <input type="radio" id="accountant" name="department" value="accountant">
+        <label for="accountant">Accountant</label><br>
+
+        <input type="radio" id="hr_manager" name="department" value="hr_manager">
+        <label for="hr_manager">HR Manager</label><br>
+
+        <input type="radio" id="logistic" name="department" value="logistic">
+        <label for="logistic">Logistic</label><br>
+
+        <input type="radio" id="workshop_manager" name="department" value="workshop_manager">
+        <label for="workshop_manager">Workshop Manager</label><br>
+
+        <input type="radio" id="mechanic" name="department" value="mechanic">
+        <label for="mechanic">Mechanic</label><br>
+
+
+
+        <input type="submit" value="Add User">
+    </form>
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>

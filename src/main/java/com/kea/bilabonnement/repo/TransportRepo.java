@@ -50,6 +50,11 @@ public class TransportRepo implements CheckAddAlarm<Transport>{
     }
 
     @Override
+    public List<Transport> getUnpaidEntities() {
+        return null;
+    }
+
+    @Override
     public List<Transport> getRecentAlarmsByType(AlarmType alarmType) {
         return null;
     }

@@ -2,15 +2,50 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
     <title>Title</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
+<!--
+*** Author Nazmul
+-->
 <div class="body-div">
-    Test if autowired work or not
+
+    <h1>Make an Invoice</h1>
+    <form method="post" th:action="@{/invoice/make-invoice}">
+
+        <label class="label">Invoice Date</label>
+        <input type="Date" name="invoiceDate">
+
+        <label class="label">Invoice Receiver</label>
+        <input type="text" name="invoiceReceiver" />
+
+        <label class="label">Invoice Type</label>
+        <input type="text" name="invoiceType" />
+
+        <label class="label">Payment Amount</label>
+        <input type="number" name="paymentAmount" />
+
+        <label class="label">Payment Deadline</label>
+        <input type="date" name="paymentDeadline">
+
+        <label class="label">Car Registration Number</label>
+        <input type="number" name="carRegNumber" />
+
+        <label class="label">Employee Id</label>
+        <input type="number" name="employeeId" />
+
+        <label class="label">Agreement Number</label>
+        <input type="number" name="agreementNumber" />
+
+        <label class="label">Customer Id</label>
+        <input type="number" name="customerId" />
+
+        <input type="submit" value="Make Invoice">
+    </form>
 
 </div>
 
