@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/stylesheets/table.css}" href="..\static\stylesheets\table.css">
     <link rel="stylesheet" th:href="@{/stylesheets/renting.css}" href="..\static\stylesheets\renting.css">
     <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle.css">
+    <link rel="stylesheet" th:href="@{/stylesheets/form.css}" href="..\static\stylesheets\form.css">
 </div>
 <!-- fragment to link css and javascript finish here -->
 
@@ -83,6 +84,16 @@
         <button class="dropbtn">Transport</button>
         <div class="dropdown-content">
             <a th:href="@{/transport/order-transport}" href="../transport/order-transport">Order Transport</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Customer</button>
+        <div class="dropdown-content">
+            <a th:href="@{/customer/login-customer}" href="../customer/logn-customer">Customer Login</a>
+            <a th:href="@{/customer/add-customer}" href="../customer/add-customer">Add customer</a>
+            <a th:href="@{/customer/edit-customer}" href="../customer/edit-customer">Edit customer</a>
+            <a th:href="@{/customer/delete-customer}" href="../customer/delete-customer">Delete customer</a>
         </div>
     </div>
 

@@ -20,4 +20,5 @@ public interface BilabonnementCRUD <T>{
 
     //Delete
     public boolean deleteEntityById(int id);
+
 }

@@ -18,4 +18,15 @@ public class HomeController {
         return "index";
     }
 
+    // show the error page
+    @GetMapping("/error")
+    public String error(){
+        return "error";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
 }

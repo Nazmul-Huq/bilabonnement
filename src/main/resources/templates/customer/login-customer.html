@@ -10,11 +10,20 @@
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
 <!--
-*** Mr. XYZ
+*** Nazmul
 -->
 <div class="body-div">
-    Write body content here.
-    Maybe add one more div here with your own name and modify in the css
+    <h1> Login </h1>
+    <form method="post" th:action="@{/customer/login-customer}">
+
+        <label class="label">Username</label>
+        <input type="text" name="username" />
+
+        <label class="label">Password</label>
+        <input type="text" name="password" />
+
+        <input type="submit" value="Add User">
+    </form>
 
 </div>
 

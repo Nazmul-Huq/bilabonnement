@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Title</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<!--
+*** Author Nazmul
+-->
+<div class="body-div">
+
+    <h1>Registar User</h1>
+    <form method="post" th:action="@{/customer/add-customer}" th:object="${customer}">
+
+        <label class="label">Full Name</label>
+        <input type="text" name="name">
+
+        <label class="label">CPR Number</label>
+        <input type="number" name="cprNumber">
+
+        <label class="label">Username</label>
+        <input type="text" name="username" />
+
+        <label class="label">Password</label>
+        <input type="text" name="password" />
+
+        <label class="label">Address</label>
+        <input type="text" name="address">
+
+        <label class="label">Driving License</label>
+        <input type="text" name="drivingLicense">
+
+        <label class="label">Passport Number</label>
+        <input type="text" name="passportNumber">
+
+        <label class="label">Phone Number</label>
+        <input type="number" name="phoneNumber" />
+
+        <label class="label">Credit Rating</label>
+        <input type="number" name="creditRating" />
+
+        <label class="label">Credit Card</label>
+        <input type="number" name="creditCard" />
+
+
+
+
+        <input type="submit" value="Add User">
+    </form>
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>
