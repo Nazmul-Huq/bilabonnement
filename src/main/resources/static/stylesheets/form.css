@@ -24,6 +24,19 @@ input[type=number]{
     box-sizing: border-box;
 }
 
+input[type=date]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=radio]{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
 
 input[type=file]{
     border: 1px solid #999;

@@ -50,7 +50,7 @@ public class LoginRepoImpl {
      * @param password
      * @return
      */
-    public int verifyAdminLogin(String username, String password){
+    public int verifyEmployeeLogin(String username, String password){
         int employeeId = 0;
         try {
             String sql = "SELECT * FROM `tbl_employee` WHERE username=? AND password=?";

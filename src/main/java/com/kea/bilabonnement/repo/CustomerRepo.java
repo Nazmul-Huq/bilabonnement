@@ -21,7 +21,7 @@ public class CustomerRepo implements BilabonnementCRUD<Customer> {
     @Override
     public boolean addEntity(Customer entity) {
         try{
-            String query = " insert into `tbl_user` (name, username, password, address, driving_license, passport_number, phone_number, credit_rating, credit_card)" +
+            String query = " insert into `tbl_customer` (name, cpr_number, username, password, address, driving_license, passport_number, phone_number, credit_rating, credit_card)" +
                     " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             // create the mysql insert prepared statement

@@ -30,7 +30,7 @@ public class LoginService {
      * @param password
      * @return
      */
-    public int verifyAdminLogin(String username, String password){
-        return loginRepo.verifyAdminLogin(username, password);
+    public int verifyEmployeeLogin(String username, String password) {
+        return loginRepo.verifyEmployeeLogin(username, password);
     }
 }

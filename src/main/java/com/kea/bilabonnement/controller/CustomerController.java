@@ -22,7 +22,7 @@ public class CustomerController {
     private final LoginRepoImpl loginRepo = new LoginRepoImpl();
     private final LoginService loginService = new LoginService(loginRepo);
 
-    // show user registration page
+    // show customer registration page
     @GetMapping("/add-customer")
     public String addCustomer() {
         return "/customer/add-customer";

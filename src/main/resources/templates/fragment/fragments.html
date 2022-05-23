@@ -90,10 +90,20 @@
     <div class="dropdown">
         <button class="dropbtn">Customer</button>
         <div class="dropdown-content">
-            <a th:href="@{/customer/login-customer}" href="../customer/logn-customer">Customer Login</a>
+            <a th:href="@{/customer/login-customer}" href="../customer/login-customer">Customer Login</a>
             <a th:href="@{/customer/add-customer}" href="../customer/add-customer">Add customer</a>
             <a th:href="@{/customer/edit-customer}" href="../customer/edit-customer">Edit customer</a>
             <a th:href="@{/customer/delete-customer}" href="../customer/delete-customer">Delete customer</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Employee</button>
+        <div class="dropdown-content">
+            <a th:href="@{/employee/login-employee}" href="../employee/login-employee">Employee Login</a>
+            <a th:href="@{/employee/add-employee}" href="../employee/add-employee">Add Employee</a>
+            <a th:href="@{/employee/edit-employee}" href="../employee/edit-employee">Edit Employee</a>
+            <a th:href="@{/employee/delete-employee}" href="../employee/delete-employee">Delete Employee</a>
         </div>
     </div>
 
