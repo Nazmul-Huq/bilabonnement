@@ -11,10 +11,10 @@ import java.sql.SQLException;
 /**
  * Author Nazmul
  */
-public class LoginRepoImpl {
+public class LoginRepoImpl implements LoginRepo{
 
     // instantiate necessary object
-    Connection connection = DatabaseConnectionHandler.getConnection();
+    private final Connection connection = DatabaseConnectionHandler.getConnection();
 
 
     /**
@@ -25,6 +25,7 @@ public class LoginRepoImpl {
      * @param password
      * @return
      */
+    @Override
     public int verifyCustomerLogin(String username, String password){
         int customerId = 0;
         try {
@@ -50,6 +51,7 @@ public class LoginRepoImpl {
      * @param password
      * @return
      */
+    @Override
     public int verifyEmployeeLogin(String username, String password){
         int employeeId = 0;
         try {

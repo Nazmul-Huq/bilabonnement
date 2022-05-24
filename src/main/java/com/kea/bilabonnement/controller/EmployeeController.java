@@ -1,7 +1,6 @@
 package com.kea.bilabonnement.controller;
 
 import com.kea.bilabonnement.enums.Department;
-import com.kea.bilabonnement.model.Customer;
 import com.kea.bilabonnement.model.Employee;
 import com.kea.bilabonnement.repo.BilabonnementCRUD;
 import com.kea.bilabonnement.repo.EmployeeRepo;
@@ -44,25 +43,9 @@ public class EmployeeController {
 
         Employee employee = new Employee(name, cprNumber, username, password, hireDate, Department.valueOf(department));
         if (employeeService.addEmployee(employee)) {
-            return "redirect:/employee/login-employee";
+            return "redirect:/login/login-employee";
         } else {
             return "redirect:/error";
-        }
-    }
-
-    @GetMapping("/login-employee")
-    public String loginEmployee(){
-        return "/employee/login-employee";
-    }
-
-
-    @PostMapping("/login-employee")
-    public String loginEmployeeHandler(@RequestParam String username, @RequestParam String password){
-        int isLoginValid = loginService.verifyEmployeeLogin(username, password);
-        if (isLoginValid != 0) {
-            return "redirect:/employee/profile-employee";
-        } else {
-            return "redirect:/employee/login-employee";
         }
     }
 
@@ -71,4 +54,16 @@ public class EmployeeController {
     public String profileCustomer(){
         return "/employee/profile-employee";
     }
+
+    @GetMapping("edit-employee")
+    public String editEmployee(){
+        return "/employee/edit-employee";
+    }
+
+    @GetMapping("/delete-employee")
+    public String deleteEmployee(){
+        return "/employee/delete-employee";
+    }
+
+
 }

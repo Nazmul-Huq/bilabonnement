@@ -1,5 +1,6 @@
 package com.kea.bilabonnement.service;
 
+import com.kea.bilabonnement.repo.LoginRepo;
 import com.kea.bilabonnement.repo.LoginRepoImpl;
 
 /**
@@ -7,10 +8,10 @@ import com.kea.bilabonnement.repo.LoginRepoImpl;
  */
 public class LoginService {
 
-    // instantiate necessary objectss
-    LoginRepoImpl loginRepo;
+    // instantiate necessary objects
+    private final LoginRepo loginRepo;
 
-    public LoginService(LoginRepoImpl loginRepo) {
+    public LoginService(LoginRepo loginRepo) {
         this.loginRepo = loginRepo;
     }
 

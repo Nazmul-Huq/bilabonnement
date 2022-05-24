@@ -32,25 +32,10 @@ public class CustomerController {
      @PostMapping("/add-customer")
         public String addCustomerHandler(@ModelAttribute Customer customer) {
         if (customerService.addUser(customer)) {
-             return "redirect:/customer/login-customer";
+             return "redirect:/login/login-customer";
          } else {
              return "redirect:/error";
          }
-    }
-
-    @GetMapping("/login-customer")
-    public String loginCustomer(){
-        return "/customer/login-customer";
-    }
-
-    @PostMapping("/login-customer")
-    public String loginCustomerHandler(@RequestParam String username, @RequestParam String password){
-        int isLoginValid = loginService.verifyCustomerLogin(username, password);
-        if (isLoginValid != 0) {
-            return "redirect:/customer/profile-customer";
-        } else {
-            return "redirect:/customer/login-customer";
-        }
     }
 
 
@@ -60,6 +45,15 @@ public class CustomerController {
     }
 
 
+    @GetMapping("/delete-customer")
+    public String deleteCustomer(){
+        return "/customer/delete-customer";
+    }
+
+    @GetMapping("/edit-customer")
+    public String editCustomer(){
+        return "/customer/edit-customer";
+    }
 
 
 }
