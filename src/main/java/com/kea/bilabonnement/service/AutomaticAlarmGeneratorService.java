@@ -65,7 +65,7 @@ public class AutomaticAlarmGeneratorService {
         List<Transport> transports = transportCheckAddAlarm.getOutdatedEntities(dateTimeHandler.getYesterdayDate());
         for (Transport transport:transports) {
             // make and add alarm for each outdated undelivered job
-            String alarmDescription = "Delivery pending for Transport Number: " + transport.getId() + ", Delivery time:  " + transport.getDeliveryTime() + ", Car registration number:  " + transport.getCarRegNumber();
+            String alarmDescription = "Delivery pending for Transport Number: " + transport.getId() + ", Delivery time:  " + transport.getDeliveryDeadline() + ", Car registration number:  " + transport.getCarRegNumber();
             Alarm alarm = new Alarm(alarmDescription, dateTimeHandler.getSqlTodayDate(), "manager", AlarmType.transport, transport.getCarRegNumber());
             alarmRepo.addEntity(alarm);
         }

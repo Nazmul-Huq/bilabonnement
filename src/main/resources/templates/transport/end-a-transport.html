@@ -13,8 +13,17 @@
 *** Author Nazmul
 -->
 <div class="body-div">
-    <h1>Something went wrong</h1>
-    <h2>Please try again later</h2>
+    <h1>End a Transport</h1>
+    <form th:action="@{/transport/end-a-transport}" method="post">
+
+        <laberl for="id"> Enter Transport Id </laberl>
+        <input type="number" id="id" name="id">
+
+        <label for="deliveryDate">Delivery Date</label>
+        <input type="date" id="deliveryDate" name="deliveryDate">
+
+        <input type="submit" value="End the Transport">
+    </form>
 
 </div>
 

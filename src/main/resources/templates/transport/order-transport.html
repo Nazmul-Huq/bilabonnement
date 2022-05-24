@@ -2,16 +2,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
     <title>Title</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
+<!--
+*** Author Nazmul
+-->
 <div class="body-div">
-    Write body content here.
-    Maybe add one more div here with your own name and modify in the css
+
+    <h1>Order Transport</h1>
+    <form method="post" th:action="@{/transport/order-transport}" th:object="${transport}">
+
+        <label class="label">Pickup Date</label>
+        <input type="date" name="pickupDate">
+
+        <label class="label">Pickup Location</label>
+        <input type="text" name="pickupLocation">
+
+        <label class="label">Delivery Location</label>
+        <input type="text" name="deliveryLocation" />
+
+        <label class="label">Delivery Deadline</label>
+        <input type="date" name="deliveryDeadline" />
+
+        <label class="label">Note</label>
+        <input type="text" name="note">
+
+        <label class="label">Car Registration Number</label>
+        <input type="number" name="carRegNumber">
+
+        <input type="submit" value="Order Transport">
+    </form>
 
 </div>
 

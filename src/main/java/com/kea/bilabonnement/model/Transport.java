@@ -1,6 +1,6 @@
 package com.kea.bilabonnement.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Author Nazmul
@@ -9,9 +9,12 @@ import java.util.Date;
 public class Transport {
 
     private int id;
-    private String description;
-    private Date startTime;
-    private Date deliveryTime;
+    private Date pickupDate;
+    private String pickupLocation;
+    private String deliveryLocation;
+    private Date deliveryDeadline;
+    private String note;
+    private Date deliveryDate; // initially will be null, later when a car is delivered the date wil set
     private int carRegNumber;
 
     //default constructor
@@ -19,22 +22,32 @@ public class Transport {
     }
 
     // constructor without id attributes
-    public Transport(String description, Date startTime, Date deliveryTime, int carRegNumber) {
-        this.description = description;
-        this.startTime = startTime;
-        this.deliveryTime = deliveryTime;
+
+    public Transport(Date pickupDate, String pickupLocation, String deliveryLocation, Date deliveryDeadline, String note, Date deliveryDate, int carRegNumber) {
+        this.pickupDate = pickupDate;
+        this.pickupLocation = pickupLocation;
+        this.deliveryLocation = deliveryLocation;
+        this.deliveryDeadline = deliveryDeadline;
+        this.note = note;
+        this.deliveryDate = deliveryDate;
         this.carRegNumber = carRegNumber;
     }
 
     // constructor with all attributes
-    public Transport(int id, String description, Date startTime, Date deliveryTime, int carRegNumber) {
+
+
+    public Transport(int id, Date pickupDate, String pickupLocation, String deliveryLocation, Date deliveryDeadline, String note, Date deliveryDate, int carRegNumber) {
         this.id = id;
-        this.description = description;
-        this.startTime = startTime;
-        this.deliveryTime = deliveryTime;
+        this.pickupDate = pickupDate;
+        this.pickupLocation = pickupLocation;
+        this.deliveryLocation = deliveryLocation;
+        this.deliveryDeadline = deliveryDeadline;
+        this.note = note;
+        this.deliveryDate = deliveryDate;
         this.carRegNumber = carRegNumber;
     }
 
+    //getters and setters
     public int getId() {
         return id;
     }
@@ -43,28 +56,52 @@ public class Transport {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public Date getPickupDate() {
+        return pickupDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPickupDate(Date pickupDate) {
+        this.pickupDate = pickupDate;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public String getPickupLocation() {
+        return pickupLocation;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setPickupLocation(String pickupLocation) {
+        this.pickupLocation = pickupLocation;
     }
 
-    public Date getDeliveryTime() {
-        return deliveryTime;
+    public String getDeliveryLocation() {
+        return deliveryLocation;
     }
 
-    public void setDeliveryTime(Date deliveryTime) {
-        this.deliveryTime = deliveryTime;
+    public void setDeliveryLocation(String deliveryLocation) {
+        this.deliveryLocation = deliveryLocation;
+    }
+
+    public Date getDeliveryDeadline() {
+        return deliveryDeadline;
+    }
+
+    public void setDeliveryDeadline(Date deliveryDeadline) {
+        this.deliveryDeadline = deliveryDeadline;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     public int getCarRegNumber() {
@@ -75,15 +112,19 @@ public class Transport {
         this.carRegNumber = carRegNumber;
     }
 
+    //to string
+
     @Override
     public String toString() {
         return "Transport{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
-                ", startTime=" + startTime +
-                ", deliveryTime=" + deliveryTime +
+                ", pickupDate=" + pickupDate +
+                ", pickupLocation='" + pickupLocation + '\'' +
+                ", deliveryLocation='" + deliveryLocation + '\'' +
+                ", deliveryDeadline=" + deliveryDeadline +
+                ", note='" + note + '\'' +
+                ", deliveryDate=" + deliveryDate +
                 ", carRegNumber=" + carRegNumber +
                 '}';
     }
-
 } // class ends here
