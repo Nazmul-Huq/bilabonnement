@@ -31,13 +31,13 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             prepStmt.setDate(8, (Date) entity.getAgreementDate());
 
             prepStmt.executeUpdate();
-            //conn.close();
 
             return true;
 
         }
         catch (SQLException e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med at tlføje en enhed");
             return false;
         }
 
@@ -67,14 +67,12 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
                 RentingAgreement singleRentingAgreements = new RentingAgreement();
                 singleRentingAgreement.add(singleRentingAgreements);
-
-                //conn.close();
             }
 
         }
         catch (Exception e){
             e.printStackTrace();
-            System.out.println("Noget gik gal med getSingleEntityById");
+            System.out.println("Noget gik galt med finde enkle enheder");
         }
         return (RentingAgreement) singleRentingAgreement;
     }
@@ -103,12 +101,11 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
                 RentingAgreement allRentingAgreements = new RentingAgreement();
                 allRentingAgreement.add(allRentingAgreements);
-                //conn.close();
             }
         }
         catch (Exception e){
             e.printStackTrace();
-            System.out.println("Something wet wrong with getAllEntity");
+            System.out.println("Noget gik galt med at finde alle enhederne");
         }
 
         return allRentingAgreement;
@@ -151,8 +148,6 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
              prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_renting_agreement WHERE agreement_number");
 
              int rowDeletion = prepStmt.executeUpdate();
-             //conn.close();
-
         }
          catch (Exception e){
              e.printStackTrace();

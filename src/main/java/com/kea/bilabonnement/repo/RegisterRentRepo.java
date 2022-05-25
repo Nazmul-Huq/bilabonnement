@@ -43,6 +43,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         }
         catch (SQLException e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med at tlføje en enhed");
         }
         return false;
     }
@@ -75,6 +76,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         }
         catch (Exception e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med finde enkle enheder");
         }
         return (RegisterRent) singleRentRegistration;
     }
@@ -107,6 +109,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         }
         catch (Exception e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med at finde alle enhederne");
         }
         return allRentRegistration;
     }
@@ -140,6 +143,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         }
         catch (Exception e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med updateringen");
         }
         return false;
     }
@@ -155,6 +159,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         }
         catch (Exception e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med sletningen af aftalen");
         }
         return false;
     }
@@ -186,6 +191,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         }
         catch(Exception e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med at hente tilstandsreporten");
         }
         return null;
     }

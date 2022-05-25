@@ -10,8 +10,9 @@
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
 <div class="body-div">
-    <form th:action="@{/rent/add-pickup-car}" method="post">
-        <h1>
+    <form style="text-align: center;
+   "th:action="@{/rent/add-pickup-car}" method="post">
+        <h1>Registrering af PickUp biler
         </h1>
         <div>
             <label>Registreringsnr.:
@@ -28,7 +29,7 @@
         <br>
         <div>
             <label>Tilstandsreport
-                <div th:each="conditionReport: ${conditionReportForReturned}"></div>
+                <!--<div th:each="conditionReport: ${conditionReportForReturned}"></div>-->
             </label>
         </div>
         <br>
@@ -37,11 +38,13 @@
                 <input type="date" name="returnDate">
             </label>
         </div>
+        <br>
         <div>
             <label>Medarbejdernr.:
                 <input type="number" name="employeeId">
             </label>
         </div>
+        <br>
     </form>
 </div>
 
