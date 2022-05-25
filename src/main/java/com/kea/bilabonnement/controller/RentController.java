@@ -63,7 +63,7 @@ public class RentController {
         return "redirect:/rent/finish-renting-periode";
     }
 
-    @GetMapping("/rent/show-renting-agreement")
+    @GetMapping("/rent/show-renting-agreement.html")
     public String showRentingAgreement(Model model){
         List<RentingAgreement> agreementList = rentService.getAgreementList();
         model.addAttribute("showAgreements", agreementList);

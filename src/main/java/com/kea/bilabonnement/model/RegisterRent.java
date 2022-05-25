@@ -18,7 +18,7 @@ public class RegisterRent {
     public RegisterRent() {
     }
 
-    public RegisterRent(int id, double drivenPickupKm, Date pickupDate, double drivenReturnKm, Date returnDate, int conditionReport, int carRegNumber, int customerId, int employeeId) {
+    public RegisterRent(int id, double drivenPickupKm, Date pickupDate, double drivenReturnKm, Date returnDate, int conditionReport, int carRegNumber, int customerId, int employeeId, String location) {
         this.id = id;
         this.drivenPickupKm = drivenPickupKm;
         this.pickupDate = pickupDate;
