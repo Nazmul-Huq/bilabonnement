@@ -59,7 +59,7 @@ public class RentController {
             @RequestParam int employeeId,
             @RequestParam boolean rentingStatus,
             @RequestParam Date endingDate){
-        rentService.endRentingAgreement(agreementNumber, carRegNumber, customerId, description, employeeId, rentingStatus, endingDate);
+        rentService.endRentingAgreement(agreementNumber, carRegNumber, customerId, description, employeeId, endingDate, rentingStatus);
         return "redirect:/rent/finish-renting-periode";
     }
 

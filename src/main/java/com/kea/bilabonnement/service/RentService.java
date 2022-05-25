@@ -16,8 +16,8 @@ public class RentService {
         rentRepo.addEntity(rentingAgreement);
 
     }
-    public void endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employee, boolean rentingStatus, Date endingDate){
-        RentingAgreement rentingAgreement = new RentingAgreement(agreementNumber, carRegNumber, customerId, description, employee, rentingStatus, (java.sql.Date) endingDate);
+    public void endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, Date endingDate, boolean rentingStatus){
+        RentingAgreement rentingAgreement = new RentingAgreement(agreementNumber, carRegNumber, customerId, description, employeeId, (java.sql.Date) endingDate, rentingStatus);
         rentRepo.updateEntity(rentingAgreement);
     }
 

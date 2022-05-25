@@ -12,12 +12,26 @@ public class RentingAgreement {
     private int customerId;
     private int carRegNumber;
     private int employeeId;
+    private boolean rentingStatus;
     private Date endingDate;
     private Date agreementDate;
-    private boolean rentingStatus;
+
 
     public RentingAgreement(){
 
+    }
+
+    public RentingAgreement(int agreementNumber, int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date endingDate, Date agreementDate) {
+        this.agreementNumber = agreementNumber;
+        this.price = price;
+        this.description = description;
+        this.type = type;
+        this.customerId = customerId;
+        this.carRegNumber = carRegNumber;
+        this.employeeId = employeeId;
+        this.rentingStatus = rentingStatus;
+        this.endingDate = endingDate;
+        this.agreementDate = agreementDate;
     }
 
     //Constructor without agreementNumber for "make renting agreement"
@@ -30,30 +44,17 @@ public class RentingAgreement {
         this.employeeId = employeeId;
         this.rentingStatus = rentingStatus;
         this.agreementDate = agreementDate;
-
     }
+
     //Constructor for "endRentingAgreement"
-    public RentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, boolean rentingStatus, Date endingDate) {
+    public RentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, Date endingDate, boolean rentingStatus) {
         this.agreementNumber = agreementNumber;
-        this.description = description;
-        this.customerId = customerId;
         this.carRegNumber = carRegNumber;
-        this.employeeId = employeeId;
-        this.rentingStatus = rentingStatus;
-        this.endingDate = endingDate;
-    }
-
-    public RentingAgreement(int agreementNumber, int price, String description, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date endingDate, Date agreementDate){
-        this.agreementNumber = agreementNumber;
-        this.price = price;
-        this.description = description;
-        this.type = type;
         this.customerId = customerId;
-        this.carRegNumber = carRegNumber;
+        this.description = description;
         this.employeeId = employeeId;
-        this.rentingStatus = rentingStatus;
         this.endingDate = endingDate;
-        this.agreementDate = agreementDate;
+        this.rentingStatus = rentingStatus;
     }
 
     public int getAgreementNumber(){

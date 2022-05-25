@@ -87,19 +87,19 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             rs = prepStmt.executeQuery();
 
             if (rs.next() == false){
-                conn.close();
             } else {
-                rs.getInt("agreement_number");
-                rs.getInt("price");
-                rs.getString("description");
-                rs.getString("type");
-                rs.getInt("customer_id");
-                rs.getInt("car_reg_number");
-                rs.getInt("employee_id");
-                rs.getBoolean("renting_status");
-                rs.getDate("agreement_date");
 
-                RentingAgreement allRentingAgreements = new RentingAgreement();
+
+                RentingAgreement allRentingAgreements = new RentingAgreement(rs.getInt("agreement_number"),
+                rs.getInt("price"),
+                rs.getString("description"),
+                rs.getString("type"),
+                rs.getInt("customer_id"),
+                rs.getInt("car_reg_number"),
+                rs.getInt("employee_id"),
+                rs.getBoolean("renting_status"),
+                rs.getDate("agreement_date"),
+                rs.getDate("ending_date"));
                 allRentingAgreement.add(allRentingAgreements);
             }
         }

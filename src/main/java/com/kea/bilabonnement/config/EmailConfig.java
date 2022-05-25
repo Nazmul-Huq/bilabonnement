@@ -2,6 +2,7 @@ package com.kea.bilabonnement.config;
 
 import org.springframework.context.annotation.Configuration;
 
+
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
