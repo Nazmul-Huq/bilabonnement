@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
-    // TODO: 11-05-2022 unit testing ctrl-shift-t
+
 
 
     Connection conn = DatabaseConnectionHandler.getConnection();

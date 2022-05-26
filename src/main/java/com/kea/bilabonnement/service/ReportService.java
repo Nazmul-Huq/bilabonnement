@@ -3,6 +3,7 @@ package com.kea.bilabonnement.service;
 import com.kea.bilabonnement.model.ConditionReport;
 import com.kea.bilabonnement.model.DamageReport;
 import com.kea.bilabonnement.model.RegReport;
+import com.kea.bilabonnement.repo.BilabonnementCRUD;
 import com.kea.bilabonnement.repo.ConditionReportRepo;
 import com.kea.bilabonnement.repo.DamageReportRepo;
 import com.kea.bilabonnement.repo.RegistrationReportRepo;
@@ -13,18 +14,23 @@ import java.util.List;
 public class ReportService {
 
 
-    DamageReportRepo damageReportRepo = new DamageReportRepo();
-    ConditionReportRepo conditionReportRepo = new ConditionReportRepo();
-    RegistrationReportRepo registrationReportRepo = new RegistrationReportRepo();
+    BilabonnementCRUD<DamageReport> damageReportRepo;
+    BilabonnementCRUD<ConditionReport> conditionReportRepo;
+    BilabonnementCRUD<RegReport> registrationReportRepo;
 
 
+    public ReportService(BilabonnementCRUD<DamageReport> damageReportRepo,BilabonnementCRUD<ConditionReport> conditionReportRepo, BilabonnementCRUD<RegReport> registrationReportRepo) {
+        this.damageReportRepo = damageReportRepo;
+        this.conditionReportRepo = conditionReportRepo;
+        this.registrationReportRepo = registrationReportRepo;
+    }
 
     //Makes a table
     //------------------------------------------------------------------------------------------------------------------
 
     //Damage
-    public void makeDamageReport(String damageDescription, int noOfDamage, int damageLevel, int employeeId, int carRagNumber) {
-        DamageReport damageReport = new DamageReport(damageDescription,noOfDamage,damageLevel,employeeId,carRagNumber);
+    public void makeDamageReport(String damageDescription, int noOfDamage, int damageLevel, int employeeId, int carRegNumber) {
+        DamageReport damageReport = new DamageReport(damageDescription,noOfDamage,damageLevel,employeeId,carRegNumber);
         damageReportRepo.addEntity(damageReport);
     }
 
@@ -65,7 +71,7 @@ public class ReportService {
 
     //Damage
     public Object getSingleDamageReportById(int number) {
-        return damageReportRepo.getAllEntitiesById(number);
+        return damageReportRepo.getSingleEntityById(number);
     }
 
     //Condition

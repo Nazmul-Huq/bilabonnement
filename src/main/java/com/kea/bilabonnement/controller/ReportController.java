@@ -1,6 +1,12 @@
 package com.kea.bilabonnement.controller;
 
+import com.kea.bilabonnement.model.ConditionReport;
 import com.kea.bilabonnement.model.DamageReport;
+import com.kea.bilabonnement.model.RegReport;
+import com.kea.bilabonnement.repo.BilabonnementCRUD;
+import com.kea.bilabonnement.repo.ConditionReportRepo;
+import com.kea.bilabonnement.repo.DamageReportRepo;
+import com.kea.bilabonnement.repo.RegistrationReportRepo;
 import com.kea.bilabonnement.service.ReportService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +17,13 @@ import java.util.List;
 
 @Controller
 public class ReportController {
+    BilabonnementCRUD<DamageReport> damageReportRepo = new DamageReportRepo();
+    BilabonnementCRUD<ConditionReport> conditionReportRepo = new ConditionReportRepo();
+    BilabonnementCRUD<RegReport>registrationReportRepo = new RegistrationReportRepo();
 
-    ReportService reportService = new ReportService();
+
+
+    ReportService reportService = new ReportService(damageReportRepo,conditionReportRepo,registrationReportRepo);
 
 /*
     public ReportController(ReportService reportService) {
