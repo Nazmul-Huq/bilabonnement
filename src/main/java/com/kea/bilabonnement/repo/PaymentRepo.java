@@ -123,14 +123,18 @@ public class PaymentRepo implements BilabonnementCRUD<Payment> {
         List<RentingAgreement> overviewOfPayments = new ArrayList<>();
 
         try{
-            prepStmt = conn.prepareStatement("SELECT price " +
+            prepStmt = conn.prepareStatement("SELECT agree.car_reg_number, agree.type, agree.renting_status, agree.price " +
                     "FROM tbl_registration_rent AS reg" +
                     "INNER JOIN tbl_renting_agreement as agree" +
+                    "INNER JOIN customer" +
                     "ON tbl_reg.car_reg_number = agree.car_reg_number");
 
             rs = prepStmt.executeQuery();
 
             while(rs.next()){
+                int carRegNumber = rs.getInt("car_reg_number");
+                String type = rs.getString("type");
+                boolean rentingStatus = rs.getBoolean("renting_status");
                 int price = rs.getInt("price");
 
                 RentingAgreement payment = new RentingAgreement(price);

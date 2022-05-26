@@ -9,9 +9,9 @@
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 <div class="body-div">
-
+    <div style="text-align: center">
     <h1>Oversigt over lejeaftaler</h1>
-    <div class="div-table" >
+    <div class="div-table" style="text-align: center" >
         <div class="table-cell table-header">Aftalenr.</div>
         <div class="table-cell table-header">Pris</div>
         <div class="table-cell table-header">Beskrivelse</div>
@@ -33,6 +33,7 @@
             <div class="table-cell" th:text="${showAgreement.isRentingStatus()}"></div>
             <div class="table-cell" th:text="${showAgreement.getEndingDate()}"></div>
         </div>
+    </div>
     </div>
 </div>
 </body>

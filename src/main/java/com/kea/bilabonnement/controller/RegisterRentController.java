@@ -15,12 +15,12 @@ public class RegisterRentController {
 
     RegisterRentService registerRentService = new RegisterRentService();
 
-    @GetMapping("/rent/register-pickup-car")
+    @GetMapping("/rent/register-pickup-car.php")
     public String registerPickupCar(){
         return "register-pickup-car.php";
     }
 
-    @PostMapping("/rent/add-pickup-car")
+    @PostMapping("/rent/add-pickup-car.php")
     public String addPickupCar(
             @RequestParam int id,
             @RequestParam int drivenPickupKm,
@@ -30,14 +30,11 @@ public class RegisterRentController {
             @RequestParam int customerId,
             @RequestParam int employeeId
             ){
-      return "redirect:/rent/register-pickup-car";
+      return "redirect:/rent/register-pickup-car.php";
     }
 
     @GetMapping("/rent/register-returned-car")
-    public String registerReturnCar(Model model){
-
-        //List<ConditionReport> conditionReportForReturned = registerRentService.showingConditionReport();
-        //model.addAttribute("conditionReportForReturned", conditionReportForReturned);
+    public String registerReturnCar(){
         return "/rent/register-returned-car";
     }
 

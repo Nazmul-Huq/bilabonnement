@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Oversigt over betalinger</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+<div class="body-div">
+
+    <h1>Oversigt over betalinger</h1>
+    <div class="div-table" >
+        <div class="div-table" style="text-align: center" >
+            <div class="table-cell table-header">Registreringnr.</div>
+            <div class="table-cell table-header">Type</div>
+            <div class="table-cell table-header">Leje status</div>
+            <div class="table-cell table-header">Price</div>
+
+
+            <div class="table-row" th:each="showAgreement:${showAgreements}">
+                <div class="table-cell" th:text="${showAgreement.getAgreementNumber()}"></div>
+                <div class="table-cell" th:text="${showAgreement.getPrice()}"></div>
+                <div class="table-cell" th:text="${showAgreement.getDescription()}"></div>
+                <div class="table-cell" th:text="${showAgreement.getCustomerId()}"></div>
+                <div class="table-cell" th:text="${showAgreement.getCarRegNumber()}"></div>
+                <div class="table-cell" th:text="${showAgreement.getEmployeeId()}"></div>
+                <div class="table-cell" th:text="${showAgreement.getAgreementDate()}"></div>
+                <div class="table-cell" th:text="${showAgreement.isRentingStatus()}"></div>
+                <div class="table-cell" th:text="${showAgreement.getEndingDate()}"></div>
+            </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,12 +7,14 @@
 </head>
 <body>
 <!-- menu inserted from fragments-->
+<?php
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 <script src="conditionreport.js" defer></script>
 
 <div class="body-div">
     <form style="text-align: center;
    "th:action="@{/rent/add-pickup-car}" method="post">
+
         <h1>Registrering af PickUp biler
         </h1>
         <div>
@@ -67,6 +68,6 @@
 
 <!-- footer content inserted from fragments-->
 <div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
-
+ ?>
 </body>
 </html>
