@@ -29,6 +29,14 @@
     </div>
 
     <div class="dropdown">
+        <button class="dropbtn">Leasing Information</button>
+        <div class="dropdown-content">
+            <a th:href="@{/lease/register-lease}" href="../lease/register-lease">Register Lease</a>
+            <a th:href="@{/lease/finish-lease}" href="../lease/finish-lease">Slutgør Lease</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
         <button class="dropbtn">Report</button>
         <div class="dropdown-content">
             <a th:href="@{/report/delete-damage-report}" href="../report/delete-damage-report">Delete Damage Report</a>

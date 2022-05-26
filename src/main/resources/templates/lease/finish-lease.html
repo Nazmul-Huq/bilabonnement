@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Finish Lease</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<!--
+*** Author Nazmul
+-->
+<div class="body-div">
+
+    <h1>Finish Lease</h1>
+    <form method="post" enctype="multipart/form-data" th:action="@{/lease/finish-lease}">
+
+        <label class="label">Leasing Id</label>
+        <input type="number" name="id">
+
+        <label class="label">Leasing Slutdato</label>
+        <input type="date" name="leasingFinishDate" />
+
+        <label class="label">Car Registration Number</label>
+        <input type="number" name="carRegNumber">
+
+        <label class="label">Upload Registration Certificate</label>
+        <input type="file" name="regCertificate" accept="application/pdf, application/vnd.ms-excel" />
+
+        <input type="submit" value="Finish Lease">
+    </form>
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>
+
+
