@@ -5,6 +5,7 @@ import java.util.Date;
 public class RegisterRent {
 
     private int id;
+    private int location;
     private double drivenPickupKm;
     private Date pickupDate;
     private double drivenReturnKm;
@@ -13,12 +14,12 @@ public class RegisterRent {
     private int carRegNumber;
     private int customerId;
     private int employeeId;
-    private String location;
 
     public RegisterRent() {
     }
 
-    public RegisterRent(int id, double drivenPickupKm, Date pickupDate, double drivenReturnKm, Date returnDate, int conditionReport, int carRegNumber, int customerId, int employeeId, String location) {
+    public RegisterRent(int location, int id, double drivenPickupKm, Date pickupDate, double drivenReturnKm, Date returnDate, int conditionReport, int carRegNumber, int customerId, int employeeId) {
+        this.location = location;
         this.id = id;
         this.drivenPickupKm = drivenPickupKm;
         this.pickupDate = pickupDate;
@@ -28,6 +29,25 @@ public class RegisterRent {
         this.carRegNumber = carRegNumber;
         this.customerId = customerId;
         this.employeeId = employeeId;
+
+    }
+    //Constructor for "registerReturnedCar"
+    public RegisterRent(int carRegNumber, double drivenReturnKm, int conditionReport, java.sql.Date returnDate, int employeeId){
+        this.carRegNumber = carRegNumber;
+        this.drivenReturnKm = drivenReturnKm;
+        this.conditionReport = conditionReport;
+        this.returnDate = returnDate;
+        this.employeeId = employeeId;
+    }
+
+    //Constructor for "registerPickupCar"
+    public RegisterRent(int location, int carRegNumber, double drivenPickupKm, int conditionReport, java.sql.Date pickupDate, int employeeId){
+        this.location = location;
+        this.carRegNumber = carRegNumber;
+        this.drivenPickupKm = drivenPickupKm;
+        this.conditionReport = conditionReport;
+        this.pickupDate = pickupDate;
+        this.employeeId = employeeId;
     }
 
     public int getId(){
@@ -35,6 +55,12 @@ public class RegisterRent {
     }
     public void setId(int id){
         this.id = id;
+    }
+    public int getLocation(){
+        return location;
+    }
+    public void setLocation(int location){
+        this.location = location;
     }
     public double getDrivenPickupKm(){
         return drivenPickupKm;

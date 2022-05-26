@@ -8,6 +8,7 @@
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+<script src="conditionreport.js" defer></script>
 
 <div class="body-div">
     <form style="text-align: center;
@@ -29,7 +30,15 @@
         <br>
         <div>
             <label>Tilstandsreport
-                <!--<div th:each="conditionReport: ${conditionReportForReturned}"></div>-->
+                <select name="users" onchange="showUser(this.value)">
+                    <option value="">Vælg registreringsnr.</option>
+                    <option value="1">124454</option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    <option value="6"></option>
+                </select>
             </label>
         </div>
         <br>
@@ -45,7 +54,9 @@
             </label>
         </div>
         <br>
+        <button>Submit</button>
     </form>
+    <div id="txtHint"><b>Tilstandsreport vil blive listet her</b></div>
 </div>
 
 <!-- footer content inserted from fragments-->

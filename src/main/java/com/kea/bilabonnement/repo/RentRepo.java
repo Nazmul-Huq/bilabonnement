@@ -86,9 +86,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             prepStmt =conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_renting_agreement");
             rs = prepStmt.executeQuery();
 
-            if (rs.next() == false){
-            } else {
-
+            while (rs.next()){
 
                 RentingAgreement allRentingAgreements = new RentingAgreement(rs.getInt("agreement_number"),
                 rs.getInt("price"),
@@ -146,8 +144,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
     public boolean deleteEntityById(int agreementNumber){
          try {
              prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_renting_agreement WHERE agreement_number");
-
-             int rowDeletion = prepStmt.executeUpdate();
+             prepStmt.executeUpdate();
         }
          catch (Exception e){
              e.printStackTrace();

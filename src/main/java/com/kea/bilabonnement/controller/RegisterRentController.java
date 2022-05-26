@@ -1,9 +1,6 @@
 package com.kea.bilabonnement.controller;
 
-import com.kea.bilabonnement.model.ConditionReport;
-import com.kea.bilabonnement.model.RegisterRent;
 import com.kea.bilabonnement.service.RegisterRentService;
-import com.kea.bilabonnement.service.ReportService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
-import java.util.List;
 
 
 @Controller
@@ -21,7 +17,7 @@ public class RegisterRentController {
 
     @GetMapping("/rent/register-pickup-car")
     public String registerPickupCar(){
-        return "/rent/register-pickup-car";
+        return "register-pickup-car.php";
     }
 
     @PostMapping("/rent/add-pickup-car")
@@ -40,8 +36,8 @@ public class RegisterRentController {
     @GetMapping("/rent/register-returned-car")
     public String registerReturnCar(Model model){
 
-        List<ConditionReport> conditionReportForReturned = registerRentService.showingConditionReport();
-        model.addAttribute("conditionReportForReturned", conditionReportForReturned);
+        //List<ConditionReport> conditionReportForReturned = registerRentService.showingConditionReport();
+        //model.addAttribute("conditionReportForReturned", conditionReportForReturned);
         return "/rent/register-returned-car";
     }
 

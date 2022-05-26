@@ -24,7 +24,6 @@ public class Payment {
     }
 
     // constructor with all attribute
-
     public Payment(int id, Date invoiceDate, Date payDate, int invoiceNumber) {
         this.id = id;
         this.invoiceDate = invoiceDate;

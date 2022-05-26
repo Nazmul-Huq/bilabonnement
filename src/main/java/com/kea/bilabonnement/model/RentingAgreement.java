@@ -57,6 +57,11 @@ public class RentingAgreement {
         this.rentingStatus = rentingStatus;
     }
 
+    //Constructor for "overviewOfPayments"
+    public RentingAgreement(int price){
+        this.price = price;
+    }
+
     public int getAgreementNumber(){
         return agreementNumber;
     }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,12 +9,27 @@
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+<script src="conditionreport.js" defer></script>
 
 <div class="body-div">
     <form style="text-align: center;
    "th:action="@{/rent/add-pickup-car}" method="post">
         <h1>Registrering af PickUp biler
         </h1>
+        <div>
+            <label>Lokation:
+                <select name="location" onchange="showLocation(this.value)">
+                    <option value="">Vælg DS forhandler</option>
+                    <option value="1">Silkeborg</option>
+                    <option value="2">Aalborg</option>
+                    <option value="3">Holstebro</option>
+                    <option value="4">Odense</option>
+                    <option value="5">Virum</option>
+                    <option value="6">Århus</option>
+                </select>
+            </label>
+        </div>
+        <br>
         <div>
             <label>Registreringsnr.:
                 <input type="number" name="carRegNumber" placeholder="Registreringsnr.">
@@ -45,6 +61,7 @@
             </label>
         </div>
         <br>
+        <button>Submit</button>
     </form>
 </div>
 

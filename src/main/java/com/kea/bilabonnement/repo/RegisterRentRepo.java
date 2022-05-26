@@ -57,9 +57,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
             prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement_tbl_registration_rent WHERE id =" + id);
             rs = prepStmt.executeQuery();
 
-            if(rs.next() == false){
-                conn.close();
-            } else {
+            while(rs.next()){
                 rs.getInt("id");
                 rs.getDouble("driven_pickup_km");
                 rs.getDate("pickup_date");
@@ -90,9 +88,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
             prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_registration_rent");
             rs = prepStmt.executeQuery();
 
-            if (rs.next() == false){
-                conn.close();
-            } else {
+            while(rs.next()){
                 rs.getInt("id");
                 rs.getDouble("driven_pickup_km");
                 rs.getDate("pickup_date");
@@ -164,7 +160,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         return false;
     }
 
-    public List<ConditionReport> getConditionReport(){
+    /*public List<ConditionReport> getConditionReport(){
 
         List<ConditionReport> conditionsReporter = new ArrayList<>();
 
@@ -195,4 +191,6 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
         }
         return null;
     }
+
+     */
 }
