@@ -75,15 +75,13 @@ public class ReportService {
     }
 
     //Condition
-    public void getSingleConditionById(int number) {
-
-        conditionReportRepo.getAllEntitiesById(number);
+    public Object getSingleConditionById(int number) {
+        return conditionReportRepo.getSingleEntityById(number);
     }
 
     //Registration
-    public void getSingleRegistrationReport(int number) {
-
-        registrationReportRepo.getAllEntitiesById(number);
+    public Object getSingleRegistrationReportById(int number) {
+        return registrationReportRepo.getSingleEntityById(number);
     }
 
     //Gets All Tables

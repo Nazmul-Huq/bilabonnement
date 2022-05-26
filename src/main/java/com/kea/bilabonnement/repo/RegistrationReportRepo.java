@@ -1,6 +1,7 @@
 package com.kea.bilabonnement.repo;
 
 import com.kea.bilabonnement.model.ConditionReport;
+import com.kea.bilabonnement.model.DamageReport;
 import com.kea.bilabonnement.model.RegReport;
 import com.kea.bilabonnement.utility.DatabaseConnectionHandler;
 
@@ -54,27 +55,27 @@ public class RegistrationReportRepo implements BilabonnementCRUD<RegReport> {
     @Override
     public RegReport getSingleEntityById(int number) {
 
-        List<RegReport> singleRegReport = new ArrayList<RegReport>();
+
+        List<RegReport> singleRegistrationReport = new ArrayList<RegReport>();
 
         try {
-            prepStmt = conn.prepareStatement("SELECT number OR date OR employee_id OR car_reg_number FROM db_bilabonnement.tbl_reg_report");
+            prepStmt = conn.prepareStatement("SELECT id_number OR reg_date OR employee_id OR car_reg_number FROM db_bilabonnement.tbl_reg_report");
             rs = prepStmt.executeQuery();
 
 
             while (rs.next()) {
-                RegReport singleRegReportVar = new RegReport(
+                RegReport singleRegistrationReportVar = new RegReport(
                         rs.getInt(1),
                         rs.getInt(2),
-                        rs.getInt(3),
-                        rs.getInt(4)
+                        rs.getInt(3)
                 );
-                singleRegReport.add(singleRegReportVar);
+                singleRegistrationReport.add(singleRegistrationReportVar);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return (RegReport) singleRegReport;
+        return (RegReport) singleRegistrationReport;
     }
 
     //Shows all Registration tables

@@ -13,7 +13,9 @@ public class ConditionReportTestRepo implements BilabonnementCRUD<ConditionRepor
 
     @Override
     public ConditionReport getSingleEntityById(int id) {
-        return null;
+        ConditionReport singleConditionReport = new ConditionReport(1,12032022,"test",1,1,33333);
+
+        return singleConditionReport;
     }
 
     @Override

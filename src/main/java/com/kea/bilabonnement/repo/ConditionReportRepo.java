@@ -1,6 +1,7 @@
 package com.kea.bilabonnement.repo;
 
 import com.kea.bilabonnement.model.ConditionReport;
+import com.kea.bilabonnement.model.DamageReport;
 import com.kea.bilabonnement.utility.DatabaseConnectionHandler;
 
 import java.sql.Connection;
@@ -54,21 +55,21 @@ public class ConditionReportRepo implements BilabonnementCRUD<ConditionReport> {
     @Override
     public ConditionReport getSingleEntityById(int number) {
 
+
         List<ConditionReport> singleConditionReport = new ArrayList<ConditionReport>();
 
         try {
-            prepStmt = conn.prepareStatement("SELECT number OR condition_date OR condition_description  OR condition_level OR employee_id OR car_reg_number FROM db_bilabonnement.tbl_condition_report");
+            prepStmt = conn.prepareStatement("SELECT id_number OR condition_date OR condition_description OR condition_level OR employee_id OR car_reg_number FROM db_bilabonnement.tbl_condition_report");
             rs = prepStmt.executeQuery();
 
 
             while (rs.next()) {
                 ConditionReport singleConditionReportVar = new ConditionReport(
                         rs.getInt(1),
-                        rs.getInt(2),
-                        rs.getString(3),
+                        rs.getString(2),
+                        rs.getInt(3),
                         rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6)
+                        rs.getInt(5)
                 );
                 singleConditionReport.add(singleConditionReportVar);
             }
@@ -77,8 +78,6 @@ public class ConditionReportRepo implements BilabonnementCRUD<ConditionReport> {
             e.printStackTrace();
         }
         return (ConditionReport) singleConditionReport;
-
-
     }
 
     //Shows all condition tables

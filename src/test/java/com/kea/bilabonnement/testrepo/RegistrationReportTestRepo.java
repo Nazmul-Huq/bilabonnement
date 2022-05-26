@@ -13,7 +13,8 @@ public class RegistrationReportTestRepo implements BilabonnementCRUD<RegReport> 
 
     @Override
     public RegReport getSingleEntityById(int id) {
-        return null;
+        RegReport singleRegistrationReport = new RegReport(1,12052004,1,22222);
+        return singleRegistrationReport;
     }
 
     @Override

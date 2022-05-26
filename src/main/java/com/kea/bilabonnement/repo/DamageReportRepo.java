@@ -54,7 +54,7 @@ public class DamageReportRepo implements BilabonnementCRUD<DamageReport> {
     }
 
     // Shows 1 value gotten from ID number
-    //not made in service!
+
     @Override
     public DamageReport getSingleEntityById(int number) {
 

@@ -21,28 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReportServiceTest {
 
 
-
-
-
-
     @Test
-    void makeDamageReport() {
-        //Arrange
-        BilabonnementCRUD<DamageReport> damageReportTestRepo = new DamageReportTestRepo();
-        BilabonnementCRUD<ConditionReport> conditionReportTestRepo = new ConditionReportTestRepo();
-        BilabonnementCRUD<RegReport> registrationReportTestRepo = new RegistrationReportTestRepo();
-
-        ReportService reportService = new ReportService(damageReportTestRepo,conditionReportTestRepo,registrationReportTestRepo);
-
-        //Assign
-
-        //Assert
-
-    }
-
-
-    @Test
-    void getSingleEntityById() {
+    void getSingleConditionEntityById() {
         //Arrange
         BilabonnementCRUD<DamageReport> damageReportTestRepo = new DamageReportTestRepo();
         BilabonnementCRUD<ConditionReport> conditionReportTestRepo = new ConditionReportTestRepo();
@@ -50,6 +30,27 @@ class ReportServiceTest {
 
         ReportService reportService = new ReportService(damageReportTestRepo,conditionReportTestRepo,registrationReportTestRepo);
         int idnumber = 1;
+
+
+        //Assign
+        ConditionReport singleConditionReport = (ConditionReport) reportService.getSingleConditionById(idnumber);
+
+        //Assert
+        assertEquals(singleConditionReport.getConditionNumber(),idnumber);
+
+    }
+
+
+    @Test
+    void getSingleDamageEntityById() {
+        //Arrange
+        BilabonnementCRUD<DamageReport> damageReportTestRepo = new DamageReportTestRepo();
+        BilabonnementCRUD<ConditionReport> conditionReportTestRepo = new ConditionReportTestRepo();
+        BilabonnementCRUD<RegReport> registrationReportTestRepo = new RegistrationReportTestRepo();
+
+        ReportService reportService = new ReportService(damageReportTestRepo,conditionReportTestRepo,registrationReportTestRepo);
+        int idnumber = 1;
+
         //Assign
         DamageReport singleReport = (DamageReport) reportService.getSingleDamageReportById(idnumber);
 
@@ -58,6 +59,27 @@ class ReportServiceTest {
 
 
     }
+
+
+    @Test
+    void getSingleRegistrationEntityById() {
+        //Arrange
+        BilabonnementCRUD<DamageReport> damageReportTestRepo = new DamageReportTestRepo();
+        BilabonnementCRUD<ConditionReport> conditionReportTestRepo = new ConditionReportTestRepo();
+        BilabonnementCRUD<RegReport> registrationReportTestRepo = new RegistrationReportTestRepo();
+
+        ReportService reportService = new ReportService(damageReportTestRepo,conditionReportTestRepo,registrationReportTestRepo);
+        int idnumber = 1;
+
+
+        //Assign
+        RegReport singleRegistrationReport = (RegReport) reportService.getSingleRegistrationReportById(idnumber);
+        //Assert
+        assertEquals(singleRegistrationReport.getRegReportNumber(),idnumber);
+
+    }
+
+
 
 
 }
