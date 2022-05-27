@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Bestil en Bil</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<!--
+*** Author Nazmul
+-->
+<div class="body-div">
+    <h1>Søg en Bil</h1>
+
+    <form>
+        <label> Select Car Brand </label><br>
+        <input type="checkbox" id="volvo" name="carBrandVolvo" value="volvo">
+        <label for="volvo">Volvo</label><br>
+        <input type="checkbox" id="bmw" name="carBrandBmw" value="bmw">
+        <label for="bmw">BMW</label><br>
+        <input type="checkbox" id="mercedes" name="carBrandMercedes" value="mercedes">
+        <label for="mercedes">Mercedes</label><br>
+        <input type="checkbox" id="volkswagen" name="carBrandVolkswagen" value="volkswagen">
+        <label for="volkswagen">Volkswagen</label><br>
+
+        <label> Select Fuel Type </label><br>
+        <input type="checkbox" id="benzin" name="carBrand" value="benzin">
+        <label for="bmw">benzin</label><br>
+        <input type="checkbox" id="diesel" name="carBrand" value="diesel">
+        <label for="diesel">Mercedes</label><br>
+        <input type="checkbox" id="hybrid" name="carBrand" value="hybrid">
+        <label for="hybrid">Volkswagen</label><br>
+        <input type="checkbox" id="electric" name="carBrand" value="electric">
+        <label for="electric">Volkswagen</label><br>
+
+        <input type="submit" value="Søg Bil">
+    </form>
+
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>

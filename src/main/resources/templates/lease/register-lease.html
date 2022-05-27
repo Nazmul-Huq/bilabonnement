@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Registrere Lejemål</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<!--
+*** Author Nazmul
+-->
+<div class="body-div">
+    <h1>Registrere Lease</h1>
+    <form method="post" th:action="@{/lease/register-lease}" th:object="${lease}">
+
+        <label class="label">Leasing Pris</label>
+        <input type="number" name="leasingPrice">
+
+        <label class="label">Leasing Selskab</label>
+        <input type="text" name="leasingCompany">
+
+        <label class="label">Leasing Startdato</label>
+        <input type="date" name="leasingStartDate" />
+
+        <label class="label">Car Registration Number</label>
+        <input type="number" name="carRegNumber">
+
+        <input type="submit" value="Registrere Lease">
+    </form>
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>
