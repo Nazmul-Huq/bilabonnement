@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+  <title>Oversigt over lejeaftaler</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+<div class="body-div">
+  <div style="text-align: center">
+    <h1>Oversigt over lejeaftaler</h1>
+    <div class="div-table" style="text-align: center" >
+      <div class="table-cell table-header">Registrerings</div>
+      <div class="table-cell table-header">Type</div>
+      <div class="table-cell table-header">Leje status</div>
+      <div class="table-cell table-header">Pris</div>
+
+
+      <div class="table-row" th:each="showPayment:${showPayments}">
+        <div class="table-cell" th:text="${showPayment.getCarRegNumber()}"></div>
+        <div class="table-cell" th:text="${showPayment.getType()}"></div>
+        <div class="table-cell" th:text="${showPayment.isRentingStatus()}"></div>
+        <div class="table-cell" th:text="${showPayment.getPrice()}"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

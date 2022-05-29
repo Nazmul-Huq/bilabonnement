@@ -20,7 +20,7 @@ public class PaymentRepo implements BilabonnementCRUD<Payment> {
     @Override
     public boolean addEntity(Payment entity) {
 
-        try {
+        try{
             prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_payment(" +
                     "`id`, " +
                     "`invoice_date`, " +
@@ -34,8 +34,9 @@ public class PaymentRepo implements BilabonnementCRUD<Payment> {
 
             prepStmt.executeUpdate();
         }
-        catch (Exception e){
+        catch(Exception e){
             e.printStackTrace();
+            System.out.println("Der gik noget galt med at tilføje en betaling");
         }
         return false;
     }
@@ -45,7 +46,48 @@ public class PaymentRepo implements BilabonnementCRUD<Payment> {
 
         List<Payment> getSinglePayment = new ArrayList<>();
 
-        try {
+        try{
+            prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_payment WHERE id=) + id");
+            rs = prepStmt.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Noget gik galt med at hente en enkel betaling");
+        }
+        return (Payment) getSinglePayment;
+    }
+
+    @Override
+    public List<Payment> getAllEntities() {
+        List<Payment> getAllPayments = new ArrayList<>();
+
+        try{
+            prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_payment");
+            rs = prepStmt.executeQuery();
+
+            while(rs.next()){
+                rs.getInt("id");
+                rs.getDate("invoice_date");
+                rs.getDate("pay_date");
+                rs.getInt("invoice_number");
+
+                Payment allPayments = new Payment();
+                getAllPayments.add(allPayments);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Noget gik galt med at hente alle betalinger");
+        }
+        return getAllPayments;
+    }
+
+    @Override
+    public List<Payment> getAllEntitiesById(int id) {
+
+        List<Payment> getAllPaymentsById = new ArrayList<>();
+
+        try{
             prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_payment WHERE id=) + id");
             rs = prepStmt.executeQuery();
 
@@ -55,97 +97,79 @@ public class PaymentRepo implements BilabonnementCRUD<Payment> {
                 rs.getDate("pay_date");
                 rs.getInt("invoice_number");
 
-                Payment singlePayments = new Payment();
-                getSinglePayment.add(singlePayments);
+                Payment allPaymentById = new Payment();
+                getAllPaymentsById.add(allPaymentById);
             }
+
         }
-        catch (Exception e){
+        catch(Exception e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med at hente alle betalinger ved Id");
         }
-        return (Payment) getSinglePayment;
-    }
 
-    @Override
-    public List<Payment> getAllEntities() {
-
-         List<Payment> getAllPayments = new ArrayList<>();
-
-         try{
-             prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_payment");
-             rs = prepStmt.executeQuery();
-
-             while(rs.next()){
-                 rs.getInt("id");
-                 rs.getDate("invoice_date");
-                 rs.getDate("pay_date");
-                 rs.getInt("invoice_number");
-
-                 Payment allPayments = new Payment();
-                 getAllPayments.add(allPayments);
-             }
-         }
-         catch (Exception e){
-             e.printStackTrace();
-         }
-         return getAllPayments;
-    }
-
-    @Override
-    public List<Payment> getAllEntitiesById(int id) {
-        return null;
+        return getAllPaymentsById;
     }
 
     @Override
     public boolean updateEntity(Payment entity) {
 
         try{
-            prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_payment SET invoice_date=?, pay_date=? WHERE (invoice_number=?)");
+            prepStmt = conn.prepareStatement("UPDATE db_bilabonnemt.tbl_payment SET invoice_date=?, pay_date=? WHERE (invoice_number=?)");
 
             prepStmt.setDate(1, (Date) entity.getInvoiceDate());
             prepStmt.setDate(2, (Date) entity.getPayDate());
 
             prepStmt.executeUpdate();
             System.out.println("Tabellen er opdateret");
-            }
-        catch (Exception e){
+        }
+        catch(Exception e){
             e.printStackTrace();
+            System.out.println("Noget gik galt med at opdatere tabellen");
         }
         return false;
     }
 
     @Override
     public boolean deleteEntityById(int id) {
+
+        try{
+            prepStmt = conn.prepareStatement("DELETE FROM db_bilabonnement.tbl_payment WHERE id");
+            prepStmt.executeUpdate();
+            System.out.println("Betalingen er slettet");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Noget gik galt med sletningen af betalingen");
+        }
         return false;
     }
 
-    public List<RentingAgreement> getOverviewOfPayments(){
+    public List<RentingAgreement> getOverviewOfPayments() {
 
         List<RentingAgreement> overviewOfPayments = new ArrayList<>();
 
-        try{
-            prepStmt = conn.prepareStatement("SELECT agree.car_reg_number, agree.type, agree.renting_status, agree.price " +
+        try {
+            prepStmt = conn.prepareStatement("SELECT agree.car_reg_number, agree.type, agree.renting_status, agree-price" +
                     "FROM tbl_registration_rent AS reg" +
-                    "INNER JOIN tbl_renting_agreement as agree" +
-                    "INNER JOIN customer" +
+                    "INNER JOIN tbl_renting_agreement AS agree" +
+                    "Inner JOIN customer" +
                     "ON tbl_reg.car_reg_number = agree.car_reg_number");
-
             rs = prepStmt.executeQuery();
 
-            while(rs.next()){
-                int carRegNumber = rs.getInt("car_reg_number");
-                String type = rs.getString("type");
-                boolean rentingStatus = rs.getBoolean("renting_status");
-                int price = rs.getInt("price");
+            while (rs.next()) {
+                rs.getInt("car_reg_number");
+                rs.getString("type");
+                rs.getBoolean("renting_status");
+                rs.getInt("price");
 
-                RentingAgreement payment = new RentingAgreement(price);
+                RentingAgreement payment = new RentingAgreement();
                 overviewOfPayments.add(payment);
             }
-            return overviewOfPayments;
         }
         catch (Exception e){
             e.printStackTrace();
-            System.out.println("Noget gik galt med at hente oversigten over betaling");
         }
-        return null;
+        return overviewOfPayments;
     }
 }
+

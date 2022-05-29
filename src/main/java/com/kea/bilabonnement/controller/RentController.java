@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 public class RentController {
-    RentService rentService = new RentService();
+    RentService rentService;
 
     @InitBinder
     public void initBinderDate(WebDataBinder binder){
@@ -63,14 +63,12 @@ public class RentController {
         return "redirect:/rent/finish-renting-periode";
     }
 
-    @GetMapping("/rent/show-renting-agreement.html")
+    @GetMapping("/rent/show-renting-agreement")
     public String showRentingAgreement(Model model){
         List<RentingAgreement> agreementList = rentService.getAgreementList();
         model.addAttribute("showAgreements", agreementList);
         return "/rent/show-renting-agreement";
     }
-
-
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {
