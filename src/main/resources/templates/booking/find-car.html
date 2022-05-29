@@ -15,30 +15,29 @@
 <div class="body-div">
     <h1>Søg en Bil</h1>
 
-    <form>
+    <form th:action="@{/booking/find-car}" method="post">
         <label> Select Car Brand </label><br>
-        <input type="checkbox" id="volvo" name="carBrandVolvo" value="volvo">
+        <input type="checkbox" id="volvo" name="carBrand" value="volvo">
         <label for="volvo">Volvo</label><br>
-        <input type="checkbox" id="bmw" name="carBrandBmw" value="bmw">
+        <input type="checkbox" id="bmw" name="carBrand" value="bmw">
         <label for="bmw">BMW</label><br>
-        <input type="checkbox" id="mercedes" name="carBrandMercedes" value="mercedes">
+        <input type="checkbox" id="mercedes" name="carBrand" value="mercedes">
         <label for="mercedes">Mercedes</label><br>
-        <input type="checkbox" id="volkswagen" name="carBrandVolkswagen" value="volkswagen">
+        <input type="checkbox" id="volkswagen" name="carBrand" value="volkswagen">
         <label for="volkswagen">Volkswagen</label><br>
 
         <label> Select Fuel Type </label><br>
-        <input type="checkbox" id="benzin" name="carBrand" value="benzin">
+        <input type="checkbox" id="benzin" name="fuelType" value="benzin">
         <label for="bmw">benzin</label><br>
-        <input type="checkbox" id="diesel" name="carBrand" value="diesel">
+        <input type="checkbox" id="diesel" name="fuelType" value="diesel">
         <label for="diesel">Mercedes</label><br>
-        <input type="checkbox" id="hybrid" name="carBrand" value="hybrid">
+        <input type="checkbox" id="hybrid" name="fuelType" value="hybrid">
         <label for="hybrid">Volkswagen</label><br>
-        <input type="checkbox" id="electric" name="carBrand" value="electric">
-        <label for="electric">Volkswagen</label><br>
+        <input type="checkbox" id="electric" name="fuelType" value="electric">
+        <label for="electric">Electric</label><br>
 
         <input type="submit" value="Søg Bil">
     </form>
-
 
 </div>
 

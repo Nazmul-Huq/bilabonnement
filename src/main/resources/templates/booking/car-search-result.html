@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
-    <title>Bestil en Bil</title>
+    <title>Bil som Du Kan Låne</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
@@ -13,11 +13,10 @@
 *** Author Nazmul
 -->
 <div class="body-div">
-    <h1>Bestil en Bil</h1>
-
-
-
-
+    <h1>Search result</h1>
+    <div th:each="car:${availableCars}">
+        <div th:text="${car.getRegNumber()}"></div>
+    </div>
 </div>
 
 <!-- footer content inserted from fragments-->

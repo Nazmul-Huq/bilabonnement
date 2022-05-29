@@ -5,11 +5,11 @@ import com.kea.bilabonnement.repo.SearchRepo;
 import com.kea.bilabonnement.repo.SearchRepoImpl;
 import com.kea.bilabonnement.service.BookingService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,23 +25,25 @@ public class BookingController {
     private final BookingService bookingService = new BookingService(searchRepo);
 
     // show the form to search a car
-    @GetMapping("/book-car")
-    public String showBookCarForm(){
-        return "/booking/book-car";
+    @GetMapping("/find-car")
+    public String showFindCarForm(){
+        return "/booking/find-car";
     }
 
-    @PostMapping("/book-car")
-    public String bookCar(
-            @RequestParam List<String> carBrand,
-            @RequestParam List<String> fuelType
+    @PostMapping("/find-car")
+    public String findCar(@RequestParam List<String> carBrand, @RequestParam List<String> fuelType, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("availableCars", bookingService.getAvailableCar(carBrand, fuelType));
+        return "redirect:/booking/car-search-result";
+    }
+
+
+    @GetMapping("/car-search-result")
+    public String searchResults(
+            @ModelAttribute("availableCars") final List<Car> availableCars,
+            Model model
     ){
-
-        List<Car> availableCars = bookingService.getAvailableCar(carBrand, fuelType);
-        for (Car car:availableCars) {
-            System.out.println(car);
-        }
-
-        return "/booking/book-car";
+        model.addAttribute("availableCars", availableCars);
+        return "/booking/car-search-result";
     }
 
 }

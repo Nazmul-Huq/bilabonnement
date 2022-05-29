@@ -42,15 +42,15 @@ public class SearchRepoImpl implements SearchRepo{
                 AND tbl_car.fuel_type= 'electric'  OR tbl_car.fuel_type ='diesel'
                 AND tbl_car.car_brand= ('volvo');
              */
-            String query = "select reg_number from tbl_car join tbl_car_current_status on tbl_car.reg_number=tbl_car_current_status.car_reg_number WHERE tbl_car_current_status.rent_status='available'";
+            String query = "select * from tbl_car join tbl_car_current_status on tbl_car.reg_number=tbl_car_current_status.car_reg_number WHERE tbl_car_current_status.rent_status='available'";
 
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             //preparedStmt.setString(1, "available");
             ResultSet resultSet = preparedStmt.executeQuery();
             while (resultSet.next()){
-                Car car = new Car(
+                  Car car = new Car(
                         resultSet.getInt(1),
-                        resultSet.getString("car_brand"),
+                        resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getString(5),
