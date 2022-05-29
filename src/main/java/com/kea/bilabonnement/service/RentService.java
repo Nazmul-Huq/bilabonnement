@@ -1,6 +1,7 @@
 package com.kea.bilabonnement.service;
 
 import com.kea.bilabonnement.model.RentingAgreement;
+import com.kea.bilabonnement.repo.BilabonnementCRUD;
 import com.kea.bilabonnement.repo.RentRepo;
 
 import java.util.Date;
@@ -8,7 +9,11 @@ import java.util.List;
 
 public class RentService {
 
-    RentRepo rentRepo = new RentRepo();
+    BilabonnementCRUD<RentingAgreement> rentRepo;
+
+    public RentService(BilabonnementCRUD<RentingAgreement> rentRepo){
+
+    }
 
     public void makeRentingAgreement(int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate){
 
