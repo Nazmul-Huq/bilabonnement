@@ -13,10 +13,35 @@
 *** Author Nazmul
 -->
 <div class="body-div">
-    <h1>Search result</h1>
-    <div th:each="car:${availableCars}">
-        <div th:text="${car.getRegNumber()}"></div>
+    <h1>List of Car</h1>
+
+    <div class="div-table" >
+        <div class="table-cell table-header">Brand</div>
+        <div class="table-cell table-header">Model</div>
+        <div class="table-cell table-header">Color</div>
+        <div class="table-cell table-header">Accessories</div>
+        <div class="table-cell table-header">Co2 Emission</div>
+        <div class="table-cell table-header">Fuel Type</div>
+        <div class="table-cell table-header">Driven Km</div>
+        <div class="table-cell table-header">Book Car</div>
+        <div class="table-row" th:each="car:${availableCars}">
+            <div class="table-cell" th:text="${car.getCarBrand()}"></div>
+            <div class="table-cell" th:text="${car.getCarModel()}"></div>
+            <div class="table-cell" th:text="${car.getCarColor()}"></div>
+            <div class="table-cell" th:text="${car.getAccessories()}"></div>
+            <div class="table-cell" th:text="${car.getCo2Emission()}"></div>
+            <div class="table-cell" th:text="${car.getFuelType()}"></div>
+            <div class="table-cell" th:text="${car.getDrivenKM()}"></div>
+            <div class="table-cell">
+                <form th:action="@{/booking/book-car}" method="post">
+                    <input type="hidden" name="carRegNumber" th:value="${car.getRegNumber()}" />
+                    <input type="submit" value="Book Car">
+                </form>
+            </div>
+        </div>
     </div>
+
+
 </div>
 
 <!-- footer content inserted from fragments-->

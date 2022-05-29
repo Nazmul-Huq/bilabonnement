@@ -10,20 +10,24 @@ public class Booking {
     private int carRegNumber;
     private int customerId;
 
+    // default constructor
     public Booking() {
     }
 
+    // constructor without id
     public Booking(int carRegNumber, int customerId) {
         this.carRegNumber = carRegNumber;
         this.customerId = customerId;
     }
 
+    // all args constructor
     public Booking(int id, int carRegNumber, int customerId) {
         this.id = id;
         this.carRegNumber = carRegNumber;
         this.customerId = customerId;
     }
 
+    // getters and setters
     public int getId() {
         return id;
     }
@@ -48,6 +52,7 @@ public class Booking {
         this.customerId = customerId;
     }
 
+    // to string
     @Override
     public String toString() {
         return "Booking{" +

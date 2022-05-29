@@ -14,7 +14,15 @@
 -->
 <div class="body-div">
     <h1>Bestil en Bil</h1>
-
+    <div>
+        <form th:action="@{/booking/final-booking}" method="post">
+            <label for="customerId">Enter Customer Id</label>
+            <input type="number" id="customerId" name="customerId">
+            <label for="carRegNumber">Car Registration Number</label>
+            <input type="number" id="carRegNumber" name="carRegNumber" th:value="${carRegNumber}">
+            <input type="submit" value="Book">
+        </form>
+    </div>
 
 
 

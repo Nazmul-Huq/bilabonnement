@@ -1,6 +1,8 @@
 package com.kea.bilabonnement.controller;
 
 import com.kea.bilabonnement.model.RentingAgreement;
+import com.kea.bilabonnement.repo.BilabonnementCRUD;
+import com.kea.bilabonnement.repo.RentRepo;
 import com.kea.bilabonnement.service.RentService;
 import com.kea.bilabonnement.service.ReportService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -17,7 +19,9 @@ import java.util.List;
 
 @Controller
 public class RentController {
-    RentService rentService = new RentService();
+
+    BilabonnementCRUD<RentingAgreement> rentRepo = new RentRepo();
+    RentService rentService = new RentService(rentRepo);
 
     @InitBinder
     public void initBinderDate(WebDataBinder binder){

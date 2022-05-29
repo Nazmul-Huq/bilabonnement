@@ -21,8 +21,9 @@ public class SearchRepoImpl implements SearchRepo{
     private final Connection connection = DatabaseConnectionHandler.getConnection();
 
     /**
-     * fina a car by given car brand(s) and fuel type(s)
+     * find a car by given car brand(s) and fuel type(s)
      * if none provide then return all available car
+     * Note: the query may not be perfect, it may select more data than it suppose to. Need to modify
      * @param carBrand
      * @param fuelType
      * @return
@@ -33,16 +34,40 @@ public class SearchRepoImpl implements SearchRepo{
         List<Car> availableCars = new ArrayList<>();
 
         try{
-            /*
-                select reg_number
-                from tbl_car
-                join tbl_car_current_status
-                on tbl_car.reg_number=tbl_car_current_status.car_reg_number
-                WHERE tbl_car_current_status.rent_status='available'
-                AND tbl_car.fuel_type= 'electric'  OR tbl_car.fuel_type ='diesel'
-                AND tbl_car.car_brand= ('volvo');
-             */
             String query = "select * from tbl_car join tbl_car_current_status on tbl_car.reg_number=tbl_car_current_status.car_reg_number WHERE tbl_car_current_status.rent_status='available'";
+
+            if (carBrand.size() == 1) {
+                query = query + " AND tbl_car.car_brand= '"+ carBrand.get(0)+"'";
+            } else if (carBrand.size() == 2){
+                query = query + " AND tbl_car.car_brand= '"+ carBrand.get(0)+"'";
+                query = query + " OR tbl_car.car_brand ='"+carBrand.get(1)+"'";
+            } else if (carBrand.size() == 3){
+                query = query + " AND tbl_car.car_brand= '"+ carBrand.get(0)+"'";
+                query = query + " OR tbl_car.car_brand ='"+carBrand.get(1)+"'";
+                query = query + " OR tbl_car.car_brand ='"+carBrand.get(2)+"'";
+            }else if (carBrand.size() == 4){
+                query = query + " AND tbl_car.car_brand= '"+ carBrand.get(0)+"'";
+                query = query + " OR tbl_car.car_brand ='"+carBrand.get(1)+"'";
+                query = query + " OR tbl_car.car_brand ='"+carBrand.get(2)+"'";
+                query = query + " OR tbl_car.car_brand ='"+carBrand.get(3)+"'";
+            }
+
+            if (fuelType.size() == 1) {
+                query = query + " AND tbl_car.fuel_type= '"+ fuelType.get(0)+"'";
+            } else if (fuelType.size() == 2){
+                query = query + " AND tbl_car.fuel_type= '"+ fuelType.get(0)+"'";
+                query = query + " OR tbl_car.fuel_type ='"+fuelType.get(1)+"'";
+            } else if (fuelType.size() == 3){
+                query = query + " AND tbl_car.fuel_type= '"+ fuelType.get(0)+"'";
+                query = query + " OR tbl_car.fuel_type ='"+fuelType.get(1)+"'";
+                query = query + " OR tbl_car.fuel_type ='"+fuelType.get(2)+"'";
+            }else if (fuelType.size() == 4){
+                query = query + " AND tbl_car.fuel_type= '"+ fuelType.get(0)+"'";
+                query = query + " OR tbl_car.fuel_type ='"+ fuelType.get(1)+"'";
+                query = query + " OR tbl_car.fuel_type ='"+ fuelType.get(2)+"'";
+                query = query + " OR tbl_car.fuel_type ='"+ fuelType.get(3)+"'";
+            }
+
 
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             //preparedStmt.setString(1, "available");
