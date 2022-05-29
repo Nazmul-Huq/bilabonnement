@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
+    <title>Bil som Du Kan Låne</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<!--
+*** Author Nazmul
+-->
+<div class="body-div">
+    <h1>List of Car</h1>
+
+    <div class="div-table" >
+        <div class="table-cell table-header">Mærke</div>
+        <div class="table-cell table-header">Model</div>
+        <div class="table-cell table-header">Farve</div>
+        <div class="table-cell table-header">Tilbehør</div>
+        <div class="table-cell table-header">Co2-udledning</div>
+        <div class="table-cell table-header">Brændstoftype</div>
+        <div class="table-cell table-header">Kørt Km</div>
+        <div class="table-cell table-header">Book bil</div>
+        <div class="table-row" th:each="car:${availableCars}">
+            <div class="table-cell" th:text="${car.getCarBrand()}"></div>
+            <div class="table-cell" th:text="${car.getCarModel()}"></div>
+            <div class="table-cell" th:text="${car.getCarColor()}"></div>
+            <div class="table-cell" th:text="${car.getAccessories()}"></div>
+            <div class="table-cell" th:text="${car.getCo2Emission()}"></div>
+            <div class="table-cell" th:text="${car.getFuelType()}"></div>
+            <div class="table-cell" th:text="${car.getDrivenKM()}"></div>
+            <div class="table-cell">
+                <form th:action="@{/booking/book-car}" method="post">
+                    <input type="hidden" name="carRegNumber" th:value="${car.getRegNumber()}" />
+                    <input type="submit" value="Book bil">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>

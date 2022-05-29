@@ -13,10 +13,10 @@
 *** Author Nazmul
 -->
 <div class="body-div">
-    <h1>Bestil en Bil</h1>
+    <h1>Søg en Bil</h1>
 
-    <form th:action="@{/booking/book-car}" method="post">
-        <label> Select Car Brand </label><br>
+    <form th:action="@{/booking/find-car}" method="post">
+        <label> Vælg bilmærke </label><br>
         <input type="checkbox" id="volvo" name="carBrand" value="volvo">
         <label for="volvo">Volvo</label><br>
         <input type="checkbox" id="bmw" name="carBrand" value="bmw">
@@ -26,19 +26,18 @@
         <input type="checkbox" id="volkswagen" name="carBrand" value="volkswagen">
         <label for="volkswagen">Volkswagen</label><br>
 
-        <label> Select Fuel Type </label><br>
+        <label> Vælg brændstoftype </label><br>
         <input type="checkbox" id="benzin" name="fuelType" value="benzin">
-        <label for="bmw">benzin</label><br>
+        <label for="bmw">Benzin</label><br>
         <input type="checkbox" id="diesel" name="fuelType" value="diesel">
-        <label for="diesel">Mercedes</label><br>
+        <label for="diesel">Diesel</label><br>
         <input type="checkbox" id="hybrid" name="fuelType" value="hybrid">
-        <label for="hybrid">Volkswagen</label><br>
+        <label for="hybrid">Hybrid</label><br>
         <input type="checkbox" id="electric" name="fuelType" value="electric">
-        <label for="electric">Electric</label><br>
+        <label for="electric">El</label><br>
 
         <input type="submit" value="Søg Bil">
     </form>
-
 
 </div>
 

@@ -5,7 +5,7 @@
     <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
 
-    <title>Delete Registration Report</title>
+    <title>Slet Registrering rapport</title>
 </head>
 <body>
 
@@ -15,16 +15,16 @@
 <div class="delete-registration-body-div">
     <section class="delete-registration-form-section">
         <form method="post" th:action="@{/report/delete-reg-report}" >
-            <h1>Delete Registration Report</h1>
+            <h1>Slet Registrerings rapport</h1>
 
-            <label for="number"> Input id number of the report:</label>
+            <label for="number"> Indsæt rapport id nummer:</label>
             <input type="number" name="number" id="number" >
 
             <br>
             <br>
 
             <div>
-                <button class="button" role="button">Submit</button>
+                <button class="button" role="button">Slet</button>
             </div>
             <br>
         </form>

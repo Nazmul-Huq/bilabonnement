@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
 
-    <title>Registration Reports</title>
+    <title>Registrerings rapporter</title>
 </head>
 <body>
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-    <h1> Overview of Registration Reports</h1>
+    <h1> Oversigt af Registrerings rapporter</h1>
 
 <table>
     <tr>
-        <th> &nbsp; Registration Date &nbsp; </th>
-        <th> &nbsp; Employee Id &nbsp; </th>
-        <th> &nbsp; Car Registration Number &nbsp; </th>
+        <th> &nbsp; Registrerings Dato &nbsp; </th>
+        <th> &nbsp; Medarbejder Id &nbsp; </th>
+        <th> &nbsp; Registreringsnummer &nbsp; </th>
     </tr>
 
     <tr th:each=" registrationreport : ${registrationreports}">

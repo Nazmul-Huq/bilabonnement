@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
 
-    <title>Condition Reports</title>
+    <title>Tilstands rapporter</title>
 </head>
 <body>
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-    <h1> Overview of Condition Reports</h1>
+    <h1> Oversigt af Tilstands rapporter</h1>
 
 <table>
     <tr>
-        <th> &nbsp; Condition Date &nbsp; </th>
-        <th> &nbsp; Condition Description &nbsp; </th>
-        <th> &nbsp; Condition Level &nbsp; </th>
-        <th> &nbsp; Employee Id &nbsp; </th>
-        <th> &nbsp; Car Registration Number &nbsp; </th>
+        <th> &nbsp; Tilstands Dato &nbsp; </th>
+        <th> &nbsp; Tilstands Beskrivelse &nbsp; </th>
+        <th> &nbsp; Tilstands Niveau &nbsp; </th>
+        <th> &nbsp; Medarbejder Id &nbsp; </th>
+        <th> &nbsp; Registreringsnummer&nbsp; </th>
     </tr>
 
     <tr th:each=" conditionreport : ${conditionreports}">
