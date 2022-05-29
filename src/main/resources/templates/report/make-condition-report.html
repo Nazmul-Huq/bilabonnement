@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
-    <title>Make Condition reports</title>
+    <title>Lav Tilstands rapport</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
@@ -12,34 +12,34 @@
 <div class="make-condition-body-div">
     <section class="condition-form-section">
         <form method="post" th:action="@{/report/add-condition-report}" >
-            <h1>Condition Report</h1>
+            <h1>Tilstands rapport</h1>
 
             <div>
-                <h3> Date: </h3>
+                <h3> Dato: </h3>
 
                 <input type="number" name="conditionDate">
             </div>
 
             <div>
-                <h3> Condition description: </h3> <input type="text" name="conditionDescription">
+                <h3> Tilstands Beskrivelse: </h3> <input type="text" name="conditionDescription">
             </div>
 
             <div>
-                <h3> Condition Level: </h3><input type="number" min="0" max="5" name="conditionLevel">
+                <h3> Tilstands niveau: </h3><input type="number" min="0" max="5" name="conditionLevel">
             </div>
 
             <div>
-                <h3> Employee Id</h3><input type="number" min="0" name="conditionEmployeeId">
+                <h3> medarbejder Id</h3><input type="number" min="0" name="conditionEmployeeId">
             </div>
 
             <div>
-                <h3> Car Registration Number</h3><input type="number" min="0" name="conditionCarRegNumber">
+                <h3> Registreringsnummer</h3><input type="number" min="0" name="conditionCarRegNumber">
             </div>
 
             <br>
 
             <div>
-                <button class="button" role="button">Submit</button>
+                <button class="button" role="button">Send</button>
             </div>
 
             <br>

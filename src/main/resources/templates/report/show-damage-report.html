@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/reportstyle.css}" href="..\static\stylesheets\reportstyle">
-    <title>Damage Reports</title>
+    <title>Skades rapporter</title>
 </head>
 <body>
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-    <h1>Overview of Damage Reports</h1>
+    <h1>Oversigt af skades rapporter</h1>
 
     <table>
         <tr>
-            <th> &nbsp; Damage Description &nbsp; </th>
-            <th> &nbsp; Number of Damage &nbsp; </th>
-            <th> &nbsp; Damage Level &nbsp; </th>
-            <th> &nbsp; Employee Id &nbsp; </th>
-            <th> &nbsp; Car Registration Number &nbsp; </th>
+            <th> &nbsp; Skade Beskrivelse &nbsp; </th>
+            <th> &nbsp; Skade nummer &nbsp; </th>
+            <th> &nbsp; Skade niveau &nbsp; </th>
+            <th> &nbsp; Medarbejder Id &nbsp; </th>
+            <th> &nbsp; Registreringsnummer &nbsp; </th>
         </tr>
 
         <tr th:each="damagereport : ${damagereports}">

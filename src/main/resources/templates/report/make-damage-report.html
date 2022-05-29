@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
-    <title>Make Damage Report</title>
+    <title>Lav Skades Rapport</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
@@ -12,32 +12,32 @@
 <div class="make-damage-body-div">
     <section class="damage-form-section">
         <form method="post" th:action="@{/report/add-damage-report}" >
-            <h1>Damage Report</h1>
+            <h1>Skades Rapport</h1>
 
             <div>
-                <h3> Damage description: </h3> <input type="text" name="damageDescription" id="damage-description">
+                <h3> Skade Beskrivelse: </h3> <input type="text" name="damageDescription" id="damage-description">
             </div>
 
             <div>
-                <h3> Number of Damage: </h3> <input type="number" min="0" name="noOfDamage">
+                <h3> Skade nummer: </h3> <input type="number" min="0" name="noOfDamage">
             </div>
 
             <div>
-                <h3> Damage Level: </h3><input type="number" min="0" max="5" name="damageLevel">
+                <h3> Skade niveau: </h3><input type="number" min="0" max="5" name="damageLevel">
             </div>
 
             <div>
-                <h3> Employee Id</h3><input type="number" min="0" name="employeeId">
+                <h3> Medarbejder Id</h3><input type="number" min="0" name="employeeId">
             </div>
 
             <div>
-                <h3> Car Registration Number</h3><input type="number" min="0" name="carRegNumber">
+                <h3> Registreringsnummer</h3><input type="number" min="0" name="carRegNumber">
             </div>
 
             <br>
 
             <div>
-                <button class="button" role="button">Submit</button>
+                <button class="button" role="button">Send</button>
             </div>
 
             <br>
