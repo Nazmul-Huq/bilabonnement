@@ -14,18 +14,18 @@
 -->
 
 <div class="body-div">
-    <h1>List of Unpaid Invoice</h1>
+    <h1>Liste over ubetalte fakturaer</h1>
     <div class="div-table" >
-        <div class="table-cell table-header">Invoice Number</div>
-        <div class="table-cell table-header">Invoice Date</div>
-        <div class="table-cell table-header">Invoice Receiver</div>
-        <div class="table-cell table-header">Invoice Type</div>
-        <div class="table-cell table-header">Payment Amount</div>
-        <div class="table-cell table-header">Payment Deadline</div>
-        <div class="table-cell table-header">Car Reg Number</div>
-        <div class="table-cell table-header">Employee Id</div>
-        <div class="table-cell table-header">Agreement Number</div>
-        <div class="table-cell table-header">Customer Id</div>
+        <div class="table-cell table-header">Faktura nummer</div>
+        <div class="table-cell table-header">Faktura Dato</div>
+        <div class="table-cell table-header">Faktura Modtager</div>
+        <div class="table-cell table-header">Faktura Type</div>
+        <div class="table-cell table-header">Faktura Beløb</div>
+        <div class="table-cell table-header">Faktura Frist</div>
+        <div class="table-cell table-header">Bilens registreringsnummer</div>
+        <div class="table-cell table-header">Medarbejder-ID</div>
+        <div class="table-cell table-header">Aftalenummer</div>
+        <div class="table-cell table-header">Kunden ID</div>
         <div class="table-row" th:each="individualInvoice:${unpaidInvoices}">
             <div class="table-cell" th:text="${individualInvoice.getInvoiceNumber()}"></div>
             <div class="table-cell" th:text="${individualInvoice.getInvoiceDate()}"></div>

@@ -10,16 +10,16 @@
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
 <!--
-*** Nazmul
+*** Author Nazmul
 -->
 <div class="body-div">
-    <h1> Employee Login </h1>
+    <h1> Medarbejder Login </h1>
     <form method="post" th:action="@{/login/login-employee}">
 
-        <label class="label">Username</label>
+        <label class="label">Brugernavn</label>
         <input type="text" name="username" />
 
-        <label class="label">Password</label>
+        <label class="label">Adgangskode</label>
         <input type="text" name="password" />
 
         <input type="submit" value="Login">

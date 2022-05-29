@@ -14,43 +14,39 @@
 -->
 <div class="body-div">
 
-    <h1>Registar User</h1>
+    <h1>Tilføj Bruger</h1>
     <form method="post" th:action="@{/customer/add-customer}" th:object="${customer}">
 
-        <label class="label">Full Name</label>
+        <label class="label">Fulde navn</label>
         <input type="text" name="name">
 
-        <label class="label">CPR Number</label>
+        <label class="label">CPR nummer</label>
         <input type="number" name="cprNumber">
 
-        <label class="label">Username</label>
+        <label class="label">Brugernavn</label>
         <input type="text" name="username" />
 
-        <label class="label">Password</label>
+        <label class="label">Adgangskode</label>
         <input type="text" name="password" />
 
-        <label class="label">Address</label>
+        <label class="label">Adresse</label>
         <input type="text" name="address">
 
-        <label class="label">Driving License</label>
+        <label class="label">Kørekort</label>
         <input type="text" name="drivingLicense">
 
-        <label class="label">Passport Number</label>
+        <label class="label">Pasnummer</label>
         <input type="text" name="passportNumber">
 
-        <label class="label">Phone Number</label>
+        <label class="label">Telefonnummer</label>
         <input type="number" name="phoneNumber" />
 
-        <label class="label">Credit Rating</label>
+        <label class="label">Kreditvurdering</label>
         <input type="number" name="creditRating" />
 
-        <label class="label">Credit Card</label>
+        <label class="label">Kreditkort</label>
         <input type="number" name="creditCard" />
-
-
-
-
-        <input type="submit" value="Add User">
+        <input type="submit" value="Tilføj Kunde">
     </form>
 
 </div>

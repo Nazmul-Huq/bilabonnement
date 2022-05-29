@@ -17,13 +17,13 @@
 <div th:fragment="menu">
 
     <div class="dropdown">
-        <button class="dropbtn"><a th:href="@{/index}" href="../index">Home</a></button>
+        <button class="dropbtn"><a th:href="@{/index}" href="../index">Hjem</a></button>
     </div>
 
     <div class="dropdown">
-        <button class="dropbtn">Find a Car</button>
+        <button class="dropbtn">Bestilling</button>
         <div class="dropdown-content">
-            <a th:href="@{/booking/find-car}" href="../booking/find-car">Find A Car</a>
+            <a th:href="@{/booking/find-car}" href="../booking/find-car">Bestil en Bil</a>
         </div>
     </div>
 
@@ -60,73 +60,73 @@
     </div>
 
     <div class="dropdown">
-        <button class="dropbtn">Invoice</button>
+        <button class="dropbtn">Faktura</button>
         <div class="dropdown-content">
-            <a th:href="@{/invoice/make-invoice}" href="../invoice/make-invoice">Make Invoice</a>
-            <a th:href="@{/invoice/see-an-invoice-detail}" href="../invoice/see-an-invoice-detail">See An Invoice Detail</a>
-            <a th:href="@{/invoice/see-all-due-invoice}" href="../invoice/see-all-due-invoice">See All Due Invoice</a>
+            <a th:href="@{/invoice/make-invoice}" href="../invoice/make-invoice">Lav Faktura</a>
+            <a th:href="@{/invoice/see-an-invoice-detail}" href="../invoice/see-an-invoice-detail">Se en fakturadetaljer</a>
+            <a th:href="@{/invoice/see-all-due-invoice}" href="../invoice/see-all-due-invoice">Se alle forfaldne fakturaer</a>
         </div>
     </div>
 
     <div class="dropdown">
         <button class="dropbtn">Alarm</button>
         <div class="dropdown-content">
-            <a th:href="@{/alarm/see-recent-alarm}" href="../alarm/see-recent-alarm">See Recent Alarm</a>
-            <a th:href="@{/alarm/see-payment-alarm}" href="../alarm/see-payment-alarm">See Payment Alarm</a>
-            <a th:href="@{/alarm/see-transport-alarm}" href="../alarm/see-transport-alarm">See Transport Alarm</a>
+            <a th:href="@{/alarm/see-recent-alarm}" href="../alarm/see-recent-alarm">Se Seneste alarm</a>
+            <a th:href="@{/alarm/see-payment-alarm}" href="../alarm/see-payment-alarm">Se Betalingsalarm</a>
+            <a th:href="@{/alarm/see-transport-alarm}" href="../alarm/see-transport-alarm">Se Transportalarm</a>
         </div>
     </div>
 
     <div class="dropdown">
-        <button class="dropbtn">Rent</button>
+        <button class="dropbtn">Leje</button>
         <div class="dropdown-content">
-            <a th:href="@{/rent/make-renting-agreement}" href="../rent/make-renting-agreement">Renting Agreement</a>
-            <a th:href="@{/rent/finish-renting-periode}" href="../rent/finish-renting-periode">Finish Renting Periode</a>
-            <a th:href="@{/rent/register-pickup-car}" href="../rent/register-pickup-car">Register Pickup Car</a>
-            <a th:href="@{/rent/register-returned-car}" href="../rent/register-returned-car">Register Returned Car</a>
-            <a th:href="@{/rent/show-renting-agreement.html}" href="../rent/show-renting-agreement.html">Show Renting Agreement</a>
+            <a th:href="@{/rent/make-renting-agreement}" href="../rent/make-renting-agreement">Lejeaftale</a>
+            <a th:href="@{/rent/finish-renting-periode}" href="../rent/finish-renting-periode">Afslut lejeperioden</a>
+            <a th:href="@{/rent/register-pickup-car}" href="../rent/register-pickup-car">Registrer Pickup Car</a>
+            <a th:href="@{/rent/register-returned-car}" href="../rent/register-returned-car">Registrer returneret bil</a>
+            <a th:href="@{/rent/show-renting-agreement.html}" href="../rent/show-renting-agreement.html">Vis lejeaftale</a>
         </div>
     </div>
 
     <div class="dropdown">
-        <button class="dropbtn">Statistic</button>
+        <button class="dropbtn">Dashboard</button>
         <div class="dropdown-content">
-            <a th:href="@{/statistic/average-renting-time}" href="../statistic/average-renting-time">Average Renting Time</a>
-            <a th:href="@{/statistic/average-pay-time}" href="../statistic/average-pay-time">Average Pay Time</a>
+            <a th:href="@{/statistic/average-renting-time}" href="../statistic/average-renting-time">Gennemsnitlig lejetid</a>
+            <a th:href="@{/statistic/average-pay-time}" href="../statistic/average-pay-time">Gennemsnitlig betalingstid</a>
         </div>
     </div>
 
     <div class="dropdown">
         <button class="dropbtn">Transport</button>
         <div class="dropdown-content">
-            <a th:href="@{/transport/order-transport}" href="../transport/order-transport">Order Transport</a>
-            <a th:href="@{/transport/end-a-transport}" href="../transport/end-a-transport">Fuldføre en Forsendelse</a>
+            <a th:href="@{/transport/order-transport}" href="../transport/order-transport">Bestil Transport</a>
+            <a th:href="@{/transport/end-a-transport}" href="../transport/end-a-transport">Afslut transport</a>
         </div>
     </div>
 
     <div class="dropdown">
-        <button class="dropbtn">Customer</button>
+        <button class="dropbtn">Kunde</button>
         <div class="dropdown-content">
-            <a th:href="@{/customer/add-customer}" href="../customer/add-customer">Add customer</a>
-            <a th:href="@{/customer/edit-customer}" href="../customer/edit-customer">Edit customer</a>
-            <a th:href="@{/customer/delete-customer}" href="../customer/delete-customer">Delete customer</a>
+            <a th:href="@{/customer/add-customer}" href="../customer/add-customer">Tilføj Kunde</a>
+            <a th:href="@{/customer/edit-customer}" href="../customer/edit-customer">Redigere Kunde</a>
+            <a th:href="@{/customer/delete-customer}" href="../customer/delete-customer">Slet Kunde</a>
         </div>
     </div>
 
     <div class="dropdown">
-        <button class="dropbtn">Employee</button>
+        <button class="dropbtn">Medarbejder</button>
         <div class="dropdown-content">
-            <a th:href="@{/employee/add-employee}" href="../employee/add-employee">Add Employee</a>
-            <a th:href="@{/employee/edit-employee}" href="../employee/edit-employee">Edit Employee</a>
-            <a th:href="@{/employee/delete-employee}" href="../employee/delete-employee">Delete Employee</a>
+            <a th:href="@{/employee/add-employee}" href="../employee/add-employee">Tilføj en Medarbejder</a>
+            <a th:href="@{/employee/edit-employee}" href="../employee/edit-employee">Redigere en Medarbejder</a>
+            <a th:href="@{/employee/delete-employee}" href="../employee/delete-employee">Slet en Medarbejder</a>
         </div>
     </div>
 
     <div class="dropdown">
         <button class="dropbtn">Login</button>
         <div class="dropdown-content">
-            <a th:href="@{/login/login-employee}" href="../login/login-employee">Employee Login</a>
-            <a th:href="@{/login/login-customer}" href="../login/login-customer">Customer Login</a>
+            <a th:href="@{/login/login-employee}" href="../login/login-employee">Medarbejder Login</a>
+            <a th:href="@{/login/login-customer}" href="../login/login-customer">Kunde Login</a>
 
         </div>
     </div>
