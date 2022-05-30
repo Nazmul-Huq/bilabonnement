@@ -36,7 +36,7 @@ public class AutomaticAlarmGeneratorService {
     }
 
     // call all methods, to check and make alarm
-    public void runAllAlarm(){
+    public void generateAlarm(){
         generatePaymentAlarm();
         generateTransportAlarm();
     }

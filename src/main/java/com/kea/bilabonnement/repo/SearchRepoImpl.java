@@ -71,7 +71,6 @@ public class SearchRepoImpl implements SearchRepo{
 
 
             PreparedStatement preparedStmt = connection.prepareStatement(query);
-            //preparedStmt.setString(1, "available");
             ResultSet resultSet = preparedStmt.executeQuery();
             while (resultSet.next()){
                   Car car = new Car(

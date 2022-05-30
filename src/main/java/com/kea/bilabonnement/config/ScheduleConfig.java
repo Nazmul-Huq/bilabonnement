@@ -38,7 +38,7 @@ public class ScheduleConfig {
      */
     @Scheduled(cron = "${cronExpression}")
     public void scheduleTaskUsingCronExpression() {
-        automaticAlarmGeneratorService.runAllAlarm();
+        automaticAlarmGeneratorService.generateAlarm();
     }
 
 }
