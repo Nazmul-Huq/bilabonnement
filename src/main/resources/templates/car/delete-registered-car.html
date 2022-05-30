@@ -1,0 +1,35 @@
+<!-- Forfatter: Sara -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <title>Title</title>
+</head>
+<body>
+<!-- menu inserted from fragments-->
+<div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
+
+<div class="body-div-delete-car">
+    <section class="delete-car">
+        <form method="post" th:action="@{/car/delete-registered-cars}" >
+            <h2> Slet en registreret bil, med bilens registrerings nummer: </h2>
+
+            <label for="number"> </label>
+            <input type="number" name="regNumber" id="number">
+
+            <button type="submit" name="button"> SLET </button>
+
+        </form>
+    </section>
+    <br>
+    <br>
+
+</div>
+
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
+
+</body>
+</html>

@@ -88,9 +88,6 @@ public class Car {
         return dateOfCar;
     }
 
-
-
-
     //toString
     @Override
     public String toString() {

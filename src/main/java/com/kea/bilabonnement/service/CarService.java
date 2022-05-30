@@ -4,7 +4,6 @@ package com.kea.bilabonnement.service;
 
 import com.kea.bilabonnement.model.Car;
 import com.kea.bilabonnement.repo.BilabonnementCRUD;
-import com.kea.bilabonnement.repo.CarRepo;
 
 import java.sql.Date;
 import java.util.List;
