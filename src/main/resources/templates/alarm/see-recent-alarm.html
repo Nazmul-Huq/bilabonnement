@@ -14,13 +14,13 @@
 -->
 <div class="body-div">
 
-    <h1>Recent Payment Alarms</h1>
+    <h1>Seneste alarm</h1>
     <div class="div-table" >
         <div class="table-cell table-header">Alarm Type</div>
-        <div class="table-cell table-header">Description</div>
-        <div class="table-cell table-header">Receiver</div>
-        <div class="table-cell table-header">Date</div>
-        <div class="table-cell table-header">Car Reg Number</div>
+        <div class="table-cell table-header">Beskrivelse</div>
+        <div class="table-cell table-header">Modtager</div>
+        <div class="table-cell table-header">Dato</div>
+        <div class="table-cell table-header">Bilens registreringsnummer</div>
         <div class="table-cell table-header">Send Alarm</div>
         <div class="table-row" th:each="recentAlarm:${recentAlarms}">
             <div class="table-cell" th:text="${recentAlarm.getAlarmType()}"></div>
@@ -35,7 +35,7 @@
                     <input type="hidden" name="alarmReceiver" th:value="${recentAlarm.getAlarmReceiver()}" />
                     <input type="hidden" name="alarmType" th:value="${recentAlarm.getAlarmType()}" />
                     <input type="hidden" name="carRegNumber" th:value="${recentAlarm.getCarRegNumber()}" />
-                    <input type="submit" value="Send Alarm by Email">
+                    <input type="submit" value="Send alarm via e-mail">
                 </form>
             </div>
         </div>

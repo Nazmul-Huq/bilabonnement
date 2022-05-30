@@ -9,10 +9,10 @@ import java.util.List;
 
 public class RentService {
 
-    BilabonnementCRUD<RentingAgreement> rentRepo;
+   BilabonnementCRUD<RentingAgreement> rentRepo;
 
-    public RentService(BilabonnementCRUD<RentingAgreement> rentRepo){
-
+    public RentService(BilabonnementCRUD<RentingAgreement>rentRepo){
+        this.rentRepo = rentRepo;
     }
 
     public void makeRentingAgreement(int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate){

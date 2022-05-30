@@ -9,8 +9,8 @@ public class PaymentService {
 
     PaymentRepo paymentRepo = new PaymentRepo();
 
-    public List<RentingAgreement> getPaymentList(){
+    public List<RentingAgreement>getPaymentList(){
+
         return paymentRepo.getOverviewOfPayments();
     }
-
 }

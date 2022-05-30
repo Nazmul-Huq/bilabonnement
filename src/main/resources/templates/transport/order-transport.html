@@ -14,28 +14,28 @@
 -->
 <div class="body-div">
 
-    <h1>Order Transport</h1>
+    <h1>Bestil Transport</h1>
     <form method="post" th:action="@{/transport/order-transport}" th:object="${transport}">
 
-        <label class="label">Pickup Date</label>
+        <label class="label">Afhentningsdato</label>
         <input type="date" name="pickupDate">
 
-        <label class="label">Pickup Location</label>
+        <label class="label">Afhentningssted</label>
         <input type="text" name="pickupLocation">
 
-        <label class="label">Delivery Location</label>
+        <label class="label">Leveringssted</label>
         <input type="text" name="deliveryLocation" />
 
-        <label class="label">Delivery Deadline</label>
+        <label class="label">Leverings frist</label>
         <input type="date" name="deliveryDeadline" />
 
-        <label class="label">Note</label>
+        <label class="label">Bemærk</label>
         <input type="text" name="note">
 
-        <label class="label">Car Registration Number</label>
+        <label class="label">Bilens registreringsnummer</label>
         <input type="number" name="carRegNumber">
 
-        <input type="submit" value="Order Transport">
+        <input type="submit" value="Bestil Transport">
     </form>
 
 </div>

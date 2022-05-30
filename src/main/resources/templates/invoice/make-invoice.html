@@ -14,37 +14,37 @@
 -->
 <div class="body-div">
 
-    <h1>Make an Invoice</h1>
+    <h1>Lav Faktura</h1>
     <form method="post" th:action="@{/invoice/make-invoice}">
 
-        <label class="label">Invoice Date</label>
+        <label class="label">Faktura Dato</label>
         <input type="Date" name="invoiceDate">
 
-        <label class="label">Invoice Receiver</label>
+        <label class="label">Faktura Modtager</label>
         <input type="text" name="invoiceReceiver" />
 
-        <label class="label">Invoice Type</label>
+        <label class="label">Faktura Type</label>
         <input type="text" name="invoiceType" />
 
-        <label class="label">Payment Amount</label>
+        <label class="label">Faktura Beløb</label>
         <input type="number" name="paymentAmount" />
 
-        <label class="label">Payment Deadline</label>
+        <label class="label">Faktura Frist</label>
         <input type="date" name="paymentDeadline">
 
-        <label class="label">Car Registration Number</label>
+        <label class="label">Bilens registreringsnummer</label>
         <input type="number" name="carRegNumber" />
 
-        <label class="label">Employee Id</label>
+        <label class="label">Medarbejder-ID</label>
         <input type="number" name="employeeId" />
 
-        <label class="label">Agreement Number</label>
+        <label class="label">Aftalenummer</label>
         <input type="number" name="agreementNumber" />
 
-        <label class="label">Customer Id</label>
+        <label class="label">Kunden ID</label>
         <input type="number" name="customerId" />
 
-        <input type="submit" value="Make Invoice">
+        <input type="submit" value="Lav Faktura">
     </form>
 
 </div>
