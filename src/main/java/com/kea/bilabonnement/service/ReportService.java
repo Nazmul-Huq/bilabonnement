@@ -4,9 +4,6 @@ import com.kea.bilabonnement.model.ConditionReport;
 import com.kea.bilabonnement.model.DamageReport;
 import com.kea.bilabonnement.model.RegReport;
 import com.kea.bilabonnement.repo.BilabonnementCRUD;
-import com.kea.bilabonnement.repo.ConditionReportRepo;
-import com.kea.bilabonnement.repo.DamageReportRepo;
-import com.kea.bilabonnement.repo.RegistrationReportRepo;
 
 import java.util.List;
 
@@ -51,7 +48,8 @@ public class ReportService {
     //------------------------------------------------------------------------------------------------------------------
 
     //Damage
-    public void getSingleDamageEntityById() {
+    public List<DamageReport> getAllDamageReportEntityById(int number) {
+        return damageReportRepo.getAllEntitiesById(number);
 
     }
 
@@ -106,9 +104,10 @@ public class ReportService {
     //------------------------------------------------------------------------------------------------------------------
 
     //Damage
-    public void updateDamageReport(String damageDescription, int damageLevel, int employeeId, int carRagNumber) {
-        DamageReport damageReport = new DamageReport(damageDescription,1, damageLevel, employeeId, carRagNumber);
+    public void updateDamageReport(String damageDescription, int damageNumber, int damageLevel, int employeeId, int carRagNumber) {
+        DamageReport damageReport = new DamageReport(damageDescription,damageNumber, damageLevel, employeeId, carRagNumber);
         damageReportRepo.updateEntity(damageReport);
+
     }
 
     //Condition
