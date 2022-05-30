@@ -25,11 +25,6 @@ public class ReportController {
 
     ReportService reportService = new ReportService(damageReportRepo,conditionReportRepo,registrationReportRepo);
 
-/*
-    public ReportController(ReportService reportService) {
-        this.reportService = reportService;
-    }
- */
 
     //Damage Reports
     //---------------------------------------------------------------------------------------------------
@@ -66,10 +61,26 @@ public class ReportController {
     public String showSingleDamageReport(Model model, int number) {
         System.out.println(reportService.getSingleDamageReportById(number));
 
-        model.addAttribute("damagereport",reportService.getSingleDamageReportById(number));
+        model.addAttribute("damagereports",reportService.getAllDamageReportEntityById(number));
         return "/report/search-damage-result";
     }
 
+    //Update
+    /*@GetMapping("/report/make-damage-report/")
+    public String updateDamageReport(
+            @PathVariable int number,
+            @RequestParam String damageDescription,
+            @RequestParam int noOfDamage,
+            @RequestParam int damageLevel,
+            @RequestParam int employeeId,
+            @RequestParam int carRegNumber
+
+    ) {
+        reportService.updateDamageReport(damageDescription,noOfDamage,damageLevel,employeeId,carRegNumber);
+        return "redirect:/show-damage-report";
+    }
+
+     */
 
     //Delete
     @GetMapping("/report/delete-damage-report")
