@@ -2,6 +2,8 @@ package com.kea.bilabonnement.model;
 
 //Forfatter: Sara
 
+import java.sql.Date;
+
 public class Car {
 
     //Attributes
@@ -16,11 +18,11 @@ public class Car {
     private int co2Emission;
     private int stelPrice;
     private String fuelType;
-    private int dateOfCar;
+    private Date dateOfCar;
 
 
     //Constructor
-    public Car(int regNumber, String carBrand, String carModel, String carColor, String accessories, int chasisLevel, int drivenKM, int tax, int co2Emission, int stelPrice, String fuelType, int dateOfCar) {
+    public Car(int regNumber, String carBrand, String carModel, String carColor, String accessories, int chasisLevel, int drivenKM, int tax, int co2Emission, int stelPrice, String fuelType, Date dateOfCar) {
 
         this.regNumber = regNumber;
         this.carBrand = carBrand;
@@ -82,7 +84,7 @@ public class Car {
         return fuelType;
     }
 
-    public int getDateOfCar() {
+    public Date getDateOfCar() {
         return dateOfCar;
     }
 

@@ -1,5 +1,7 @@
 package com.kea.bilabonnement.repo;
 
+//Forfatter: Sara
+
 import com.kea.bilabonnement.model.Car;
 import com.kea.bilabonnement.utility.DatabaseConnectionHandler;
 
@@ -32,7 +34,7 @@ public class CarRepo implements BilabonnementCRUD<Car>{
             prepStmt.setInt(9,entity.getCo2Emission());
             prepStmt.setInt(10,entity.getStelPrice());
             prepStmt.setString(11,entity.getFuelType());
-            prepStmt.setInt(12,entity.getDateOfCar());
+            prepStmt.setDate(12,entity.getDateOfCar());
 
 
             prepStmt.executeUpdate();
@@ -70,7 +72,7 @@ public class CarRepo implements BilabonnementCRUD<Car>{
                 rs.getInt(9),
                 rs.getInt(10),
                 rs.getString(11),
-                rs.getInt(12));
+                rs.getDate(12));
 
                 SingleEntityIdCar.add(SingleEntityCarID);
 
@@ -106,7 +108,7 @@ public class CarRepo implements BilabonnementCRUD<Car>{
                 rs.getInt(9),
                 rs.getInt(10),
                 rs.getString(11),
-                rs.getInt(12)
+                rs.getDate(12)
                 );
 
             allCarsEntities.add(allCars);
@@ -140,7 +142,7 @@ public class CarRepo implements BilabonnementCRUD<Car>{
                         rs.getInt(9),
                         rs.getInt(10),
                         rs.getString(11),
-                        rs.getInt(12));
+                        rs.getDate(12));
 
                 prepStmt.executeUpdate();
 
@@ -172,7 +174,7 @@ public class CarRepo implements BilabonnementCRUD<Car>{
             prepStmt.setInt(9,entity.getCo2Emission());
             prepStmt.setInt(10,entity.getStelPrice());
             prepStmt.setString(11,entity.getFuelType());
-            prepStmt.setInt(12,entity.getDateOfCar());
+            prepStmt.setDate(12,entity.getDateOfCar());
 
 
             prepStmt.executeUpdate();

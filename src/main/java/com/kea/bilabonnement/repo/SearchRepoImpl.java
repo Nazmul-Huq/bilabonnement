@@ -69,6 +69,7 @@ public class SearchRepoImpl implements SearchRepo{
             }
 
 
+
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             //preparedStmt.setString(1, "available");
             ResultSet resultSet = preparedStmt.executeQuery();
@@ -80,19 +81,21 @@ public class SearchRepoImpl implements SearchRepo{
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getInt(6),
-                        resultSet.getString(7),
+                        resultSet.getInt(7),
                         resultSet.getInt(8),
                         resultSet.getInt(9),
                         resultSet.getInt(10),
-                        resultSet.getInt(11),
-                        resultSet.getString(12),
-                        resultSet.getDate(13)
-                        );
+                        resultSet.getString(11),
+                        resultSet.getDate(12)
+                  );
                 availableCars.add(car);
             }
             return availableCars;
         } catch (SQLException e){
             return availableCars;
         }
+
+
     }
+
 }
