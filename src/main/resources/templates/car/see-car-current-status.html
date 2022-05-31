@@ -4,7 +4,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
+    <th:block th:insert="~{/fragment/fragments :: link}"></th:block>
     <title>Title</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
     <br>
     <h3> Oversigt over bilens nuværende lokation </h3>
 
-    <div class="div-table" style="text-align: center" >
+    <div class="div-table" style="text-align: center">
         <div class="table-cell table-header">Registrerings nummer:</div>
         <div class="table-cell table-header">Bilmærke:</div>
         <div class="table-cell table-header">Bil model:</div>
@@ -31,21 +31,21 @@
         <div class="table-cell table-header">Brændstof:</div>
         <div class="table-cell table-header">Dato på bilen:</div>
 
-        <div class="table-row" th:each="showCar:${showCar}">
+        <div class="table-row" th:each="showCar:${showCars}">
             <div class="table-cell" th:text="${showCar.getRegNumber()}"></div>
             <div class="table-cell" th:text="${showCar.getCarBrand()}"></div>
             <div class="table-cell" th:text="${showCar.getCarModel()}"></div>
             <div class="table-cell" th:text="${showCar.getCarColor()}"></div>
             <div class="table-cell" th:text="${showCar.getAccessories()}"></div>
-            <div class="table-cell" th:text="${showCar.getChassisLevel()}"></div>
+            <div class="table-cell" th:text="${showCar.getChasisLevel()}"></div>
             <div class="table-cell" th:text="${showCar.getDrivenKM()}"></div>
             <div class="table-cell" th:text="${showCar.getTax()}"></div>
             <div class="table-cell" th:text="${showCar.getCo2Emission()}"></div>
             <div class="table-cell" th:text="${showCar.getStelPrice()}"></div>
             <div class="table-cell" th:text="${showCar.getFuelType()}"></div>
-            <div class="table-cell" th:text="${showCar.getDatoOfCar()}"></div>
+            <div class="table-cell" th:text="${showCar.getDateOfCar()}"></div>
         </div>
-
+    </div>
 
 
 </div>

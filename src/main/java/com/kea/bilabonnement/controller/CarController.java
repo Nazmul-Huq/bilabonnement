@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
+import java.util.List;
 
 @Controller
 public class CarController {
@@ -64,7 +65,11 @@ public class CarController {
 
     @GetMapping("/car/see-car-current-status")
     public String showCarsCurrentStatus(Model model){
-        model.addAttribute("showCar", bilService.getAllCars());
+        List<Car> list = bilService.getAllCars();
+        for (int i = 0; i <list.size() ; i++) {
+            System.out.println(list.get(i));
+        }
+        model.addAttribute("showCars", list);
         return "/car/see-car-current-status";
     }
 
