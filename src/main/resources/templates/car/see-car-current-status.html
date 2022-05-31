@@ -17,11 +17,34 @@
     <br>
     <h3> Oversigt over bilens nuværende lokation </h3>
 
-    <div class="table-row" th:each="car:${showCars}">
-        <div th:text="${car.getRegNumber()}"></div>
+    <div class="div-table" style="text-align: center" >
+        <div class="table-cell table-header">Registrerings nummer:</div>
+        <div class="table-cell table-header">Bilmærke:</div>
+        <div class="table-cell table-header">Bil model:</div>
+        <div class="table-cell table-header">Farve på bilen:</div>
+        <div class="table-cell table-header">Tilbehør til bilen:</div>
+        <div class="table-cell table-header">Bilens chasis:</div>
+        <div class="table-cell table-header">Kørte km:</div>
+        <div class="table-cell table-header">Skat:</div>
+        <div class="table-cell table-header">CO2 udledning:</div>
+        <div class="table-cell table-header">Fastlagt pris:</div>
+        <div class="table-cell table-header">Brændstof:</div>
+        <div class="table-cell table-header">Dato på bilen:</div>
 
-
-    </div>
+        <div class="table-row" th:each="showCar:${showCar}">
+            <div class="table-cell" th:text="${showCar.getRegNumber()}"></div>
+            <div class="table-cell" th:text="${showCar.getCarBrand()}"></div>
+            <div class="table-cell" th:text="${showCar.getCarModel()}"></div>
+            <div class="table-cell" th:text="${showCar.getCarColor()}"></div>
+            <div class="table-cell" th:text="${showCar.getAccessories()}"></div>
+            <div class="table-cell" th:text="${showCar.getChassisLevel()}"></div>
+            <div class="table-cell" th:text="${showCar.getDrivenKM()}"></div>
+            <div class="table-cell" th:text="${showCar.getTax()}"></div>
+            <div class="table-cell" th:text="${showCar.getCo2Emission()}"></div>
+            <div class="table-cell" th:text="${showCar.getStelPrice()}"></div>
+            <div class="table-cell" th:text="${showCar.getFuelType()}"></div>
+            <div class="table-cell" th:text="${showCar.getDatoOfCar()}"></div>
+        </div>
 
 
 

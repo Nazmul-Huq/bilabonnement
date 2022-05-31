@@ -29,11 +29,6 @@ public class CarController {
         return "car/register-new-car";
     }
 
-    @GetMapping("/car/see-car-current-status")
-    public String currentStatusCar(){
-        return "/car/see-car-current-status";
-    }
-
     @PostMapping("/car/add-register-new-car")
     public String registerCarInput(
             @RequestParam int registreringsnummer,
@@ -69,7 +64,7 @@ public class CarController {
 
     @GetMapping("/car/see-car-current-status")
     public String showCarsCurrentStatus(Model model){
-        model.addAttribute("showCars", bilService.getAllCars());
+        model.addAttribute("showCar", bilService.getAllCars());
         return "/car/see-car-current-status";
     }
 
