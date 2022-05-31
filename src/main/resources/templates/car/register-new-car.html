@@ -1,19 +1,87 @@
+<!-- Forfatter: Sara -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
-    <title>Car</title>
+    <title>Register Bil</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-<div class="body-div">
-    Write body content here.
-    Maybe add one more div here with your own name and modify in the css
+<div class="body-div-register-car">
+    <section class="register-car">
+        <form method="post" th:action="@{/car/add-register-new-car}">
+            <h1>Registrer en ny bil til systemet</h1>
+
+            <section style="margin-left: 75px">
+
+                <br>
+                <h3> Registrerings nummer: </h3>
+                <br>
+                <input type="number" name="registreringsnummer">
+                <br>
+                <br>
+                <h3> Bilmærke: </h3>
+                <input type="text" name="bilmærke">
+                <br>
+                <br>
+                <h3> Bilens model: </h3>
+                <input type="text" name="bilmodel">
+                <br>
+                <br>
+                <h3> Bilens farve: </h3>
+                <input type="text" name="bilfarve">
+                <br>
+                <br>
+                <h3> Tilbehør: </h3>
+                <input type="text" name="tilbehør">
+                <br>
+                <br>
+                <h3> Bilens chassis niveau: </h3>
+                <input type="number" name="chassis">
+                <br>
+                <br>
+                <h3> Kørte kilometer: </h3>
+                <input type="number" name="kørtekm">
+                <br>
+                <br>
+                <h3> Skat: </h3>
+                <input type="number" name="tax">
+                <br>
+                <br>
+                <h3> CO2 udledning: </h3>
+                <input type="number" name="co2">
+                <br>
+                <br>
+                <h3> Fastsat pris: </h3>
+                <input type="number" name="fastsatpris">
+                <br>
+                <br>
+                <h3> Brændstof: </h3>
+                <input type="text" name="brændstof">
+                <br>
+                <br>
+                <h3> Dato for bilen: </h3>
+                <input type="date" name="dato">
+
+                <br>
+                <br>
+
+                <button type="submit"> Godkend </button>
+
+            </section>
+
+        </form>
+
+    </section>
 
 </div>
+
+<br>
+<br>
 
 <!-- footer content inserted from fragments-->
 <div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>

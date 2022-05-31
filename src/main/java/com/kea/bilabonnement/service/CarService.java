@@ -4,9 +4,9 @@ package com.kea.bilabonnement.service;
 
 import com.kea.bilabonnement.model.Car;
 import com.kea.bilabonnement.repo.BilabonnementCRUD;
-import com.kea.bilabonnement.repo.CarRepo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class CarService {
 
@@ -35,12 +35,15 @@ public class CarService {
         carRepo.updateEntity(updateCarChanges);
     }
 
-    //get single entity by id -
+    //get single entity by id - viser en enhed fra 'cars' i systemet fra dens ID
     public void getCarByID(int id) {
         carRepo.getSingleEntityById(id);
     }
 
-    //Get all tabels
+    //Get all tables - viser alle enheder inde under 'cars' i systemet
+    public List<Car> getAllCars() {
+        return carRepo.getAllEntities();
+    }
 
 
 

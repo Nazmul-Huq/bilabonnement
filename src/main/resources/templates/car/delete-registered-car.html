@@ -11,19 +11,20 @@
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-<div class="body-div-see-cars-current-status">
-    <h1> Oversigt over bilernes status </h1>
+<div class="body-div-delete-car">
+    <section class="delete-car">
+        <form method="post" th:action="@{/car/delete-registered-cars}" >
+            <h2> Slet en registreret bil, med bilens registrerings nummer: </h2>
+
+            <label for="number"> </label>
+            <input type="number" name="regNumber" id="number">
+
+            <button type="submit" name="button"> SLET </button>
+
+        </form>
+    </section>
     <br>
     <br>
-    <h3> Oversigt over bilens nuværende lokation </h3>
-
-    <div class="table-row" th:each="car:${showCars}">
-        <div th:text="${car.getRegNumber()}"></div>
-
-
-    </div>
-
-
 
 </div>
 
