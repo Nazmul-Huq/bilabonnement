@@ -12,12 +12,12 @@ import java.util.List;
 @Controller
 public class PaymentController {
 
-    PaymentService paymentService;
+    PaymentService paymentService = new PaymentService();
 
-    @GetMapping("/rent/overview-of-payments")
+    @GetMapping("/rent/overview-of-payments.html")
     public String overviewOfPayments(Model model){
-
         model.addAttribute("showPayments", paymentService.getPaymentList());
+        model.addAttribute("showTotalPayments", paymentService.getTotalPaymentList());
         return "/rent/overview-of-payments";
     }
 }

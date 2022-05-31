@@ -29,12 +29,15 @@
             <div class="table-cell" th:text="${showAgreement.getCustomerId()}"></div>
             <div class="table-cell" th:text="${showAgreement.getCarRegNumber()}"></div>
             <div class="table-cell" th:text="${showAgreement.getEmployeeId()}"></div>
-            <div class="table-cell" th:text="${showAgreement.getAgreementDate()}"></div>
             <div class="table-cell" th:text="${showAgreement.isRentingStatus()}"></div>
+            <div class="table-cell" th:text="${showAgreement.getAgreementDate()}"></div>
             <div class="table-cell" th:text="${showAgreement.getEndingDate()}"></div>
         </div>
     </div>
     </div>
 </div>
 </body>
+<br>
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
 </html>
