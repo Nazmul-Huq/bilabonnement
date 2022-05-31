@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
     Connection conn = DatabaseConnectionHandler.getConnection();
@@ -19,7 +20,9 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
     public boolean addEntity(RentingAgreement entity) {
 
         try{
-            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(`price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            prepStmt = conn.prepareStatement("INSERT INTO db_bilabonnement.tbl_renting_agreement(" +
+                    "`price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
             prepStmt.setInt(1, entity.getPrice());
             prepStmt.setString(2, entity.getDescription());
@@ -119,10 +122,11 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             //prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET agreement_number=?, price=?, description=?, customer_id=?, car_reg_number=?, employee_id=?, renting_status=?, agreement_date=?" +
                     //"WHERE agreement_number, price, description, customer_id, car_reg_number, employee_id, renting_status, agreement_date");
 
-            prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET renting_status=?, ending_date=? WHERE (agreement_number=?)");
+            prepStmt = conn.prepareStatement("UPDATE db_bilabonnement.tbl_renting_agreement SET renting_status=?, agreement_date=?, ending_date=? WHERE (agreement_number=?)");
 
 
             prepStmt.setBoolean(1, entity.isRentingStatus());
+            prepStmt.setDate(2, entity.getAgreementDate());
             prepStmt.setDate(2, entity.getEndingDate());
             prepStmt.setInt(3, entity.getAgreementNumber());
 

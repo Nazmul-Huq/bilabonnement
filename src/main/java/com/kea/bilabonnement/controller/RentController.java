@@ -74,8 +74,6 @@ public class RentController {
         return "/rent/show-renting-agreement";
     }
 
-
-
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {
         String name = ex.getParameterName();

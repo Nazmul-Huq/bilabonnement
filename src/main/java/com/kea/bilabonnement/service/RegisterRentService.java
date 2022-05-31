@@ -12,19 +12,13 @@ public class RegisterRentService {
 
     RegisterRentRepo registerRentRepo = new RegisterRentRepo();
 
-    public void registerReturnedCars(int carRegNumber, double drivenReturnKm, int conditionReport, Date returnDate, int employeeId){
-
+    public void registerReturnedCars(int carRegNumber, double drivenReturnKm, String conditionReport, Date returnDate, int employeeId){
         RegisterRent registerRent = new RegisterRent(carRegNumber, drivenReturnKm, conditionReport, returnDate, employeeId);
         registerRentRepo.addEntity(registerRent);
     }
 
-    public void registerPickupCar(int location, int carRegNumber, double drivenPickupKm, int conditionReport, Date returnDate, int employeeId){
-
+    public void registerPickupCar(String location, int carRegNumber, double drivenPickupKm, String conditionReport, Date returnDate, int employeeId){
         RegisterRent registerRent = new RegisterRent(location, carRegNumber, drivenPickupKm, conditionReport, returnDate, employeeId);
         registerRentRepo.addEntity(registerRent);
     }
-
-    //public List<ConditionReport> showingConditionReport(){
-        //return registerRentRepo.getConditionReport();
-    //}
 }

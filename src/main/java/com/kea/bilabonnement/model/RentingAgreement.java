@@ -13,15 +13,16 @@ public class RentingAgreement {
     private int carRegNumber;
     private int employeeId;
     private boolean rentingStatus;
-    private Date endingDate;
     private Date agreementDate;
+    private Date endingDate;
+
 
 
     public RentingAgreement(){
 
     }
 
-    public RentingAgreement(int agreementNumber, int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date endingDate, Date agreementDate) {
+    public RentingAgreement(int agreementNumber, int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus, Date agreementDate, Date endingDate) {
         this.agreementNumber = agreementNumber;
         this.price = price;
         this.description = description;
@@ -30,8 +31,9 @@ public class RentingAgreement {
         this.carRegNumber = carRegNumber;
         this.employeeId = employeeId;
         this.rentingStatus = rentingStatus;
-        this.endingDate = endingDate;
         this.agreementDate = agreementDate;
+        this.endingDate = endingDate;
+
     }
 
     //Constructor without agreementNumber for "make renting agreement"

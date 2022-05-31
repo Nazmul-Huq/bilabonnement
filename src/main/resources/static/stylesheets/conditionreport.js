@@ -1,15 +1,12 @@
 function showConditionReport(int){
     if (int == null){
-        document.getElementById("txtHint").innerHTML = null;
+        document.getElementById("conditionReport").innerHTML = "";
         return;
-    } else {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 & this.status == 200){
-                document.getElementById("txtHint").innerHTML = this.responseType;
-            }
-        };
-        xmlhttp.open("GET", "getuser.php?q=" + int, true);
-        xmlhttp.send();
     }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function (){
+        document.getElementById("conditionReport").innerHTML = this.responseType;
+    }
+    xhttp.open("GET", "getconditionreport.php?q=" + int);
+    xhttp.send();
 }

@@ -15,22 +15,21 @@ public class RegisterRentController {
 
     RegisterRentService registerRentService = new RegisterRentService();
 
-    @GetMapping("/rent/register-pickup-car.php")
+    @GetMapping("/rent/register-pickup-car")
     public String registerPickupCar(){
-        return "register-pickup-car.php";
+        return "/rent/register-pickup-car";
     }
 
-    @PostMapping("/rent/add-pickup-car.php")
+    @PostMapping("/rent/add-pickup-car")
     public String addPickupCar(
-            @RequestParam int id,
-            @RequestParam int drivenPickupKm,
-            @RequestParam Date pickupDate,
-            @RequestParam String conditionReport,
+            @RequestParam String location,
             @RequestParam int carRegNumber,
-            @RequestParam int customerId,
-            @RequestParam int employeeId
-            ){
-      return "redirect:/rent/register-pickup-car.php";
+            @RequestParam int drivenPickupKm,
+            @RequestParam String conditionReport,
+            @RequestParam Date pickupDate,
+            @RequestParam int employeeId){
+        registerRentService.registerPickupCar(location, carRegNumber, drivenPickupKm, conditionReport, pickupDate, employeeId);
+      return "redirect:/rent/register-pickup-car";
     }
 
     @GetMapping("/rent/register-returned-car")
@@ -40,14 +39,12 @@ public class RegisterRentController {
 
     @PostMapping("/rent/add-returned-car")
     public String addReturnCar(
-            @RequestParam int id,
-            @RequestParam int drivenReturnKm,
-            @RequestParam Date returnDate,
-            @RequestParam String conditionReport,
             @RequestParam int carRegNumber,
-            @RequestParam int customerId,
-            @RequestParam int employeeId
-    ) {
+            @RequestParam int drivenReturnKm,
+            @RequestParam String conditionReport,
+            @RequestParam Date returnDate,
+            @RequestParam int employeeId) {
+        registerRentService.registerReturnedCars(carRegNumber, drivenReturnKm, conditionReport, returnDate, employeeId);
         return "redirect:/rent/register-returned-car";
     }
 }

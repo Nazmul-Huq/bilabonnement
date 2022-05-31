@@ -14,10 +14,10 @@ class RentServiceTest {
     void getAgreementList() {
 
         //Arrange
-        RentTestRepo rentRepo = new RentTestRepo();
-        RentServiceTest rentService = new RentServiceTest();
+
 
         //Assign
+
 
         //Assert
     }

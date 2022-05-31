@@ -30,15 +30,13 @@
         <br>
         <div>
             <label>Tilstandsreport
-                <select name="users" onchange="showUser(this.value)">
-                    <option value="">Vælg registreringsnr.</option>
-                    <option value="1">124454</option>
-                    <option value="2"></option>
-                    <option value="3"></option>
-                    <option value="4"></option>
-                    <option value="5"></option>
-                    <option value="6"></option>
-                </select>
+                <label id="conditionReport">Tilstandsreport
+                    <select name="conditionReport" onchange="showConditionReport(this.value)">
+                        <option value="">Vælg tilstandsreport via registeringsnr.:</option>
+                        <option value="124454"> Regnr. 124454</option>
+                        <option value="98765432"> Regnr. 98765432</option>
+                    </select>
+                </label>
             </label>
         </div>
         <br>
