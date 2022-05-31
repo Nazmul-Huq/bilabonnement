@@ -57,9 +57,28 @@ public class RentingAgreement {
         this.rentingStatus = rentingStatus;
     }
 
+    //Constructor for "overviewOfPayments"
+    public RentingAgreement(int carRegNumber, int price){
+        this.carRegNumber = carRegNumber;
+        this.price = price;
+    }
+
+    //Constructor for "getTotalPayment"
     public RentingAgreement(int price){
         this.price = price;
     }
+
+    //Constructor used for testing
+    public RentingAgreement(int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus){
+        this.price = price;
+        this.description = description;
+        this.type = type;
+        this.customerId = customerId;
+        this.carRegNumber = carRegNumber;
+        this.employeeId = employeeId;
+        this.rentingStatus = rentingStatus;
+    }
+
     public int getAgreementNumber(){
         return agreementNumber;
     }

@@ -144,26 +144,17 @@ public class PaymentRepo implements BilabonnementCRUD<Payment> {
         return false;
     }
 
-    public List<RentingAgreement> getOverviewOfPayments() {
+    public List<RentingAgreement>getTotalPayment(){
 
-        List<RentingAgreement> overviewOfPayments = new ArrayList<>();
+        List<RentingAgreement>overviewOfPayments = new ArrayList<>();
 
-        try {
-            prepStmt = conn.prepareStatement("SELECT agree.car_reg_number, agree.type, agree.renting_status, agree-price" +
-                    "FROM tbl_registration_rent AS reg" +
-                    "INNER JOIN tbl_renting_agreement AS agree" +
-                    "Inner JOIN customer" +
-                    "ON tbl_reg.car_reg_number = agree.car_reg_number");
+        try{
+            prepStmt = conn.prepareStatement("SELECT sum(price) AS sumAmount FROM tbl_renting_agreement");
             rs = prepStmt.executeQuery();
 
-            while (rs.next()) {
-                rs.getInt("car_reg_number");
-                rs.getString("type");
-                rs.getBoolean("renting_status");
-                rs.getInt("price");
-
-                RentingAgreement payment = new RentingAgreement();
-                overviewOfPayments.add(payment);
+            while (rs.next()){
+                RentingAgreement totalPayments = new RentingAgreement(rs.getInt("sumAmount"));
+                overviewOfPayments.add(totalPayments);
             }
         }
         catch (Exception e){
@@ -171,5 +162,27 @@ public class PaymentRepo implements BilabonnementCRUD<Payment> {
         }
         return overviewOfPayments;
     }
+
+    public List<RentingAgreement>getOverviewOfPayments(){
+
+        List<RentingAgreement>overviewOfPayments = new ArrayList<>();
+
+        try {
+            prepStmt = conn.prepareStatement("SELECT car_reg_number, price FROM tbl_renting_agreement");
+            rs = prepStmt.executeQuery();
+
+            while (rs.next()) {
+                RentingAgreement payments = new RentingAgreement(
+                        rs.getInt("car_reg_number"),
+                        rs.getInt("price"));
+                overviewOfPayments.add(payments);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return overviewOfPayments;
+    }
+
 }
 

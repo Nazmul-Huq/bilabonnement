@@ -52,9 +52,7 @@ public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
             prepStmt = conn.prepareStatement("SELECT * FROM db_bilabonnement.tbl_renting_agreement WHERE customer_id=" + id);
             rs = prepStmt.executeQuery();
 
-            if (rs.next() == false){
-                conn.close();
-            } else {
+            while(rs.next()){
                 rs.getInt("agreement_number");
                 rs.getInt("price");
                 rs.getString("description");

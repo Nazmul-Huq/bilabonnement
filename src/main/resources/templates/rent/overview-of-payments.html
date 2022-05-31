@@ -12,20 +12,26 @@
   <div style="text-align: center">
     <h1>Oversigt over lejeaftaler</h1>
     <div class="div-table" style="text-align: center" >
-      <div class="table-cell table-header">Registrerings</div>
-      <div class="table-cell table-header">Type</div>
-      <div class="table-cell table-header">Leje status</div>
+      <div class="table-cell table-header">Registeringsnr.</div>
       <div class="table-cell table-header">Pris</div>
 
-
       <div class="table-row" th:each="showPayment:${showPayments}">
-        <div class="table-cell" th:text="${showPayment.getCarRegNumber()}"></div>
-        <div class="table-cell" th:text="${showPayment.getType()}"></div>
-        <div class="table-cell" th:text="${showPayment.isRentingStatus()}"></div>
-        <div class="table-cell" th:text="${showPayment.getPrice()}"></div>
+        <div class="table-cell" th:text="${showPayment.getCarRegNumber()}">Registeringsnr.</div>
+        <div class="table-cell" th:text="${showPayment.getPrice()}">Pris</div>
+      </div>
+    </div>
+
+    <div class="div-table" style="text-align: center" >
+      <div class="table-cell table-header">Total</div>
+
+      <div class="table-row" th:each="showTotalPayment:${showTotalPayments}">
+        <div class="table-cell" th:text="${showTotalPayment.getPrice()}">Total</div>
       </div>
     </div>
   </div>
 </div>
 </body>
+<br>
+<!-- footer content inserted from fragments-->
+<div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
 </html>
