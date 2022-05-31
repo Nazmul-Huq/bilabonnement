@@ -1,3 +1,5 @@
+//Author: Mo
+
 package com.kea.bilabonnement.controller;
 
 import com.kea.bilabonnement.model.ConditionReport;
@@ -65,22 +67,6 @@ public class ReportController {
         return "/report/search-damage-result";
     }
 
-    //Update
-    /*@GetMapping("/report/make-damage-report/")
-    public String updateDamageReport(
-            @PathVariable int number,
-            @RequestParam String damageDescription,
-            @RequestParam int noOfDamage,
-            @RequestParam int damageLevel,
-            @RequestParam int employeeId,
-            @RequestParam int carRegNumber
-
-    ) {
-        reportService.updateDamageReport(damageDescription,noOfDamage,damageLevel,employeeId,carRegNumber);
-        return "redirect:/show-damage-report";
-    }
-
-     */
 
     //Delete
     @GetMapping("/report/delete-damage-report")
@@ -127,7 +113,7 @@ public class ReportController {
         return "redirect:/report/make-condition-report";
     }
 
-
+    //Read
     @GetMapping("/report/show-condition-report")
     public String showConditionReports(Model model) {
         model.addAttribute("conditionreports", reportService.getAllConditionReports());
@@ -165,6 +151,7 @@ public class ReportController {
         return "redirect:/report/make-registration-report";
     }
 
+    //Read
     @GetMapping("/report/show-registration-report")
     public String showRegistrationReports(Model model) {
         model.addAttribute("registrationreports", reportService.getAllRegistrationReports());

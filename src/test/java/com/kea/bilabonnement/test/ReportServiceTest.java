@@ -1,3 +1,5 @@
+//Author: Mo
+
 package com.kea.bilabonnement.test;
 
 import com.kea.bilabonnement.model.ConditionReport;
