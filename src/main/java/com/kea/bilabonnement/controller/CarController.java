@@ -7,6 +7,7 @@ import com.kea.bilabonnement.repo.BilabonnementCRUD;
 import com.kea.bilabonnement.repo.CarRepo;
 import com.kea.bilabonnement.service.CarService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,5 +66,12 @@ public class CarController {
 
         return "/car/delete-registered-car";
     }
+
+    @GetMapping("/car/see-car-current-status")
+    public String showCarsCurrentStatus(Model model){
+        model.addAttribute("showCars", bilService.getAllCars());
+        return "/car/see-car-current-status";
+    }
+
 
 }

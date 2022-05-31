@@ -1,3 +1,5 @@
+<!-- Forfatter: Sara -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -9,9 +11,19 @@
 <!-- menu inserted from fragments-->
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
 
-<div class="body-div">
-    Write body content here.
-    Maybe add one more div here with your own name and modify in the css
+<div class="body-div-see-cars-current-status">
+    <h1> Oversigt over bilernes status </h1>
+    <br>
+    <br>
+    <h3> Oversigt over bilens nuværende lokation </h3>
+
+    <div class="table-row" th:each="car:${showCars}">
+        <div th:text="${car.get()}"></div>
+
+
+    </div>
+
+
 
 </div>
 
