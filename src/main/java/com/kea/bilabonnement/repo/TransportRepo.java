@@ -26,7 +26,34 @@ public class TransportRepo implements CheckAddAlarm<Transport>, BilabonnementCRU
 
     @Override
     public List<Transport> getOutdatedEntities(Date date) {
-    return null;
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        List<Transport> transports = new ArrayList<>();
+
+
+        try {
+            String query = "SELECT * FROM tbl_transport Where delivery_date is null AND delivery_deadline = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setDate(1, sqlDate);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Transport transport = new Transport(
+                        resultSet.getInt(1),
+                        resultSet.getDate(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getDate(5),
+                        resultSet.getString(6),
+                        resultSet.getDate(7),
+                        resultSet.getInt(8)
+                );
+                transports.add(transport);
+
+            }
+        } catch (SQLException e)
+        {
+            System.out.println("Something wrong with database");
+        }
+        return transports;
     }
 
     @Override
