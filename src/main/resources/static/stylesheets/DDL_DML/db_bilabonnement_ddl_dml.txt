@@ -1,0 +1,422 @@
+DROP DATABASE `db_bilabonnement`;
+
+CREATE DATABASE  IF NOT EXISTS `db_bilabonnement` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db_bilabonnement`;
+
+
+DROP TABLE IF EXISTS `tbl_registration_rent`;
+DROP TABLE IF EXISTS `tbl_location`;
+DROP TABLE IF EXISTS `tbl_reg_report`;
+DROP TABLE IF EXISTS `tbl_car`;
+DROP TABLE IF EXISTS `tbl_customer`;
+DROP TABLE IF EXISTS `tbl_employee`;
+DROP TABLE IF EXISTS `tbl_car_current_status`;
+DROP TABLE IF EXISTS `tbl_booking`;
+DROP TABLE IF EXISTS `tbl_renting_agreement`;
+DROP TABLE IF EXISTS `tbl_transport`;
+DROP TABLE IF EXISTS `tbl_condition_report`;
+DROP TABLE IF EXISTS `tbl_damage_report`;
+DROP TABLE IF EXISTS `tbl_invoice`;
+DROP TABLE IF EXISTS `tbl_payment`;
+DROP TABLE IF EXISTS `tbl_alarm`;
+DROP TABLE IF EXISTS `tbl_lease`;
+
+
+CREATE TABLE `tbl_car` (
+  `reg_number` int NOT NULL,
+  `car_brand` varchar(45) NOT NULL,
+  `car_model` varchar(45) NOT NULL,
+  `car_color` varchar(45) NOT NULL,
+  `accesories_level` varchar(45) NOT NULL,
+  `chasis_number` int NOT NULL,
+  `driven_km` int NOT NULL,
+  `tax` int NOT NULL,
+  `co2_emission` int NOT NULL,
+  `stel_price` int NOT NULL,
+  `fuel_type` varchar(45) NOT NULL,
+  `reg_date` date NOT NULL,
+  PRIMARY KEY (`reg_number`),
+  UNIQUE KEY `reg_number_UNIQUE` (`reg_number`),
+  UNIQUE KEY `chasis_number_UNIQUE` (`chasis_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `tbl_customer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `cpr_number` int NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `address` varchar(45) NOT NULL,
+  `driving_license` varchar(45) NOT NULL,
+  `passport_number` varchar(45) NOT NULL,
+  `phone_number` int NOT NULL,
+  `credit_rating` int NOT NULL,
+  `credit_card` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `cpr_number_UNIQUE` (`cpr_number`),
+  UNIQUE KEY `driving_licens_UNIQUE` (`driving_license`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_employee` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `cpr_number` int NOT NULL,
+  `hire_date` date NOT NULL,
+  `department` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cpr_number_UNIQUE` (`cpr_number`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_car_current_status` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `location` varchar(45) NOT NULL,
+  `rent_status` varchar(45) DEFAULT NULL,
+  `sell_status` varchar(45) DEFAULT NULL,
+  `car_reg_number` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `current_status_car_reg_number_idx` (`car_reg_number`),
+  CONSTRAINT `current_status_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_booking` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `car_reg_number` int DEFAULT NULL,
+  `customer_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `booking_car_reg_number_idx` (`car_reg_number`),
+  KEY `booking_customer_id_idx` (`customer_id`),
+  CONSTRAINT `booking_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`),
+  CONSTRAINT `booking_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `tbl_customer` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_transport` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `pickup_date` date NOT NULL,
+  `pickup_location` varchar(45) DEFAULT NULL,
+  `delivery_loaction` varchar(45) DEFAULT NULL,
+  `delivery_deadline` date NOT NULL,
+  `note` mediumtext NOT NULL,
+  `delivery_date` date DEFAULT NULL,
+  `car_reg_number` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `transport_car_reg_number_idx` (`car_reg_number`),
+  CONSTRAINT `transport_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_renting_agreement` (
+  `agreement_number` int NOT NULL AUTO_INCREMENT,
+  `price` int NOT NULL,
+  `description` mediumtext,
+  `type` varchar(45) NOT NULL,
+  `customer_id` int NOT NULL,
+  `car_reg_number` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `renting_status` tinyint NOT NULL,
+  `agreement_date` date NOT NULL,
+  `ending_date` date NOT NULL,
+  PRIMARY KEY (`agreement_number`),
+  UNIQUE KEY `agreement_number_UNIQUE` (`agreement_number`),
+  KEY `customer_id_idx` (`customer_id`),
+  KEY `car_reg_number_idx` (`car_reg_number`),
+  KEY `employee_id_idx` (`employee_id`),
+  CONSTRAINT `rent_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`),
+  CONSTRAINT `rent_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `tbl_customer` (`id`),
+  CONSTRAINT `rent_employee_id` FOREIGN KEY (`employee_id`) REFERENCES `tbl_employee` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_invoice` (
+  `invoice_number` int NOT NULL AUTO_INCREMENT,
+  `invoice_date` date NOT NULL,
+  `invoice_receiver` varchar(45) NOT NULL,
+  `invoice_type` varchar(45) NOT NULL,
+  `payment_amount` int NOT NULL,
+  `payment_deadline` date NOT NULL,
+  `car_reg_number` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `agreement_number` int NOT NULL,
+  `customer_id` int NOT NULL,
+  PRIMARY KEY (`invoice_number`),
+  UNIQUE KEY `invoice_number_UNIQUE` (`invoice_number`),
+  KEY `invoice_car_reg_number_idx` (`car_reg_number`),
+  KEY `invoice_employee_id_idx` (`employee_id`),
+  KEY `invoice_agreement_number_idx` (`agreement_number`),
+  KEY `invoice_customer_id_idx` (`customer_id`),
+  CONSTRAINT `invoice_agreement_number` FOREIGN KEY (`agreement_number`) REFERENCES `tbl_renting_agreement` (`agreement_number`),
+  CONSTRAINT `invoice_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`),
+  CONSTRAINT `invoice_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `tbl_customer` (`id`),
+  CONSTRAINT `invoice_employee_id` FOREIGN KEY (`employee_id`) REFERENCES `tbl_employee` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+CREATE TABLE `tbl_payment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `invoice_date` date NOT NULL,
+  `pay_date` date NOT NULL,
+  `invoice_number` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `payment_invoice_number_idx` (`invoice_number`),
+  CONSTRAINT `payment_invoice_number` FOREIGN KEY (`invoice_number`) REFERENCES `tbl_invoice` (`invoice_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_alarm` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `alarm_description` mediumtext NOT NULL,
+  `alarm_date` date NOT NULL,
+  `alarm_reveiver` varchar(45) NOT NULL,
+  `alarm_type` varchar(45) NOT NULL,
+  `car_reg_number` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `alarm_car_reg_number_idx` (`car_reg_number`),
+  CONSTRAINT `alarm_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_lease` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `leasing_price` int DEFAULT NULL,
+  `leasing_company` varchar(45) DEFAULT NULL,
+  `leasing_start_date` date DEFAULT NULL,
+  `leasing_finish_date` date DEFAULT NULL,
+  `reg_certificate` varchar(45) DEFAULT NULL,
+  `car_reg_number` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `lease_car_reg_number_idx` (`car_reg_number`),
+  CONSTRAINT `lease_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+CREATE TABLE `tbl_condition_report` (
+  `id_number` int NOT NULL AUTO_INCREMENT,
+  `condition_date` int NOT NULL,
+  `condition_description` mediumtext NOT NULL,
+  `condition_level` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `car_reg_number` int NOT NULL,
+  PRIMARY KEY (`id_number`),
+  UNIQUE KEY `number_UNIQUE` (`id_number`),
+  KEY `condition_employee_id_idx` (`employee_id`),
+  KEY `condition_car_reg_number_idx` (`car_reg_number`),
+  CONSTRAINT `condition_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`),
+  CONSTRAINT `condition_employee_id` FOREIGN KEY (`employee_id`) REFERENCES `tbl_employee` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `tbl_damage_report` (
+  `id_number` int NOT NULL AUTO_INCREMENT,
+  `damage_description` varchar(45) NOT NULL,
+  `no_of_damage` int NOT NULL,
+  `damage_level` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `car_reg_number` int NOT NULL,
+  PRIMARY KEY (`id_number`),
+  UNIQUE KEY `number_UNIQUE` (`id_number`),
+  KEY `employee_id_idx` (`employee_id`),
+  KEY `car_registration_number_idx` (`car_reg_number`),
+  CONSTRAINT `tbl_damage_employee_id` FOREIGN KEY (`employee_id`) REFERENCES `tbl_employee` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+CREATE TABLE `tbl_reg_report` (
+  `id_number` int NOT NULL AUTO_INCREMENT,
+  `reg_date` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `car_reg_number` int NOT NULL,
+  PRIMARY KEY (`id_number`),
+  UNIQUE KEY `number_UNIQUE` (`id_number`),
+  KEY `report_employee_id_idx` (`employee_id`),
+  KEY `report_car_reg_number_idx` (`car_reg_number`),
+  CONSTRAINT `report_car_reg_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`),
+  CONSTRAINT `report_employee_id` FOREIGN KEY (`employee_id`) REFERENCES `tbl_employee` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `tbl_location` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `address` varchar(45) NOT NULL,
+  `organiaztion` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `tbl_registration_rent` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `driven_pickup_km` double NOT NULL,
+  `pickup_date` date NOT NULL,
+  `driven_return_km` double NOT NULL,
+  `return_date` date NOT NULL,
+  `condition_report` int NOT NULL,
+  `car_reg_number` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `location` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `reg_car_number_idx` (`car_reg_number`),
+  KEY `reg_rent_customer_id_idx` (`customer_id`),
+  KEY `reg_rent_emplyee_id_idx` (`employee_id`),
+  KEY `re_rent_location_idx` (`location`),
+  CONSTRAINT `location` FOREIGN KEY (`location`) REFERENCES `tbl_location` (`id`),
+  CONSTRAINT `reg_rent_car_number` FOREIGN KEY (`car_reg_number`) REFERENCES `tbl_car` (`reg_number`),
+  CONSTRAINT `reg_rent_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `tbl_customer` (`id`),
+  CONSTRAINT `reg_rent_emplyee_id` FOREIGN KEY (`employee_id`) REFERENCES `tbl_employee` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('11111', 'volvo', 'v60', 'gul', 'automatisk klima', '11111', '500', '10000', '76', '10000', 'benzin', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('22222', 'bmw', 'b60', 'rød', 'automatisk klima', '22222', '500', '10000', '76', '10000', 'benzin', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('33333', 'mercedez', 'm80', 'gron', 'automatisk klima', '33333', '500', '10000', '76', '10000', 'benzin', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('44444', 'volkswagen', 'vw60', 'hvid', 'automatisk klima', '44444', '500', '10000', '76', '10000', 'benzin', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('55555', 'volkswagen', 'vw70', 'sort', 'automatisk klima', '55555', '500', '10000', '76', '10000', 'hybrid', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('66666', 'bmw', 'bmw60', 'sort', 'automatisk klima', '66666', '500', '10000', '76', '10000', 'diesel', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('77777', 'volvo', 'v70', 'sort', 'automatisk klima', '77777', '500', '10000', '76', '10000', 'electric', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('88888', 'mercedez', 'm10', 'sort', 'automatisk klima', '88888', '500', '10000', '76', '10000', 'benzin', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_car` (`reg_number`, `car_brand`, `car_model`, `car_color`, `accesories_level`, `chasis_number`, `driven_km`, `tax`, `co2_emission`, `stel_price`, `fuel_type`, `reg_date`) VALUES ('99999', 'mercedez', 'm60', 'hvid', 'automatisk klima', '99999', '500', '10000', '76', '10000', 'benzin', '2022-01-01');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_customer` (`id`, `name`, `cpr_number`, `username`, `password`, `address`, `driving_license`, `passport_number`, `phone_number`, `credit_rating`, `credit_card`) VALUES ('1', 'Peter', '11111', 'peter', '11111', 'Hundige Alle 20, 2670, Greve', '11111', '11111', '11111', '1', '11111');
+INSERT INTO `db_bilabonnement`.`tbl_customer` (`id`, `name`, `cpr_number`, `username`, `password`, `address`, `driving_license`, `passport_number`, `phone_number`, `credit_rating`, `credit_card`) VALUES ('2', 'John', '22222', 'john', '22222', 'Hundige Alle 20, 2670, Greve', '22222', '22222', '22222', '2', '22222');
+INSERT INTO `db_bilabonnement`.`tbl_customer` (`id`, `name`, `cpr_number`, `username`, `password`, `address`, `driving_license`, `passport_number`, `phone_number`, `credit_rating`, `credit_card`) VALUES ('3', 'Martin', '33333', 'martin', '33333', 'Hundige Alle 20, 2670, Greve', '33333', '33333', '33333', '1', '33333');
+INSERT INTO `db_bilabonnement`.`tbl_customer` (`id`, `name`, `cpr_number`, `username`, `password`, `address`, `driving_license`, `passport_number`, `phone_number`, `credit_rating`, `credit_card`) VALUES ('4', 'Olivia', '44444', 'olivia', '44444', 'Hundige Alle 20, 2670, Greve', '44444', '44444', '44444', '4', '44444');
+INSERT INTO `db_bilabonnement`.`tbl_customer` (`id`, `name`, `cpr_number`, `username`, `password`, `address`, `driving_license`, `passport_number`, `phone_number`, `credit_rating`, `credit_card`) VALUES ('5', 'Klara', '55555', 'klara', '55555', 'Hundige Alle 20, 2670, Greve', '55555', '55555', '55555', '5', '55555');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_employee` (`id`, `name`, `cpr_number`, `hire_date`, `department`, `username`, `password`) VALUES ('1', 'Oliver', '11111', '2022-01-01', 'ceo', 'oliver', '11111');
+INSERT INTO `db_bilabonnement`.`tbl_employee` (`id`, `name`, `cpr_number`, `hire_date`, `department`, `username`, `password`) VALUES ('2', 'Jhonny', '22222', '2022-01-01', 'admin', 'jhonny', '22222');
+INSERT INTO `db_bilabonnement`.`tbl_employee` (`id`, `name`, `cpr_number`, `hire_date`, `department`, `username`, `password`) VALUES ('3', 'Robert', '33333', '2022-01-01', 'accountant', 'robert', '33333');
+INSERT INTO `db_bilabonnement`.`tbl_employee` (`id`, `name`, `cpr_number`, `hire_date`, `department`, `username`, `password`) VALUES ('4', 'Pia', '44444', '2022-01-01', 'hr_manager', 'pia', '44444');
+INSERT INTO `db_bilabonnement`.`tbl_employee` (`id`, `name`, `cpr_number`, `hire_date`, `department`, `username`, `password`) VALUES ('5', 'Bianca', '55555', '2022-01-01', 'logistic', 'bianca', '55555');
+INSERT INTO `db_bilabonnement`.`tbl_employee` (`id`, `name`, `cpr_number`, `hire_date`, `department`, `username`, `password`) VALUES ('6', 'Lykke', '66666', '2022-01-01', 'workshop_manager', 'lykke', '66666');
+INSERT INTO `db_bilabonnement`.`tbl_employee` (`id`, `name`, `cpr_number`, `hire_date`, `department`, `username`, `password`) VALUES ('7', 'Oli', '77777', '2022-01-01', 'mechanic', 'oli', '77777');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('1', 'copenhagen', 'rent', 'ingen', '11111');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('2', 'copenhagen', 'rent', 'ingen', '22222');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('3', 'copenhagen', 'rent', 'ingen', '33333');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('4', 'copenhagen', 'rent', 'ingen', '44444');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('5', 'copenhagen', 'available', 'ingen', '55555');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('6', 'copenhagen', 'available', 'ingen', '66666');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('7', 'copenhagen', 'available', 'ingen', '77777');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('8', 'copenhagen', 'rent', 'sold', '88888');
+INSERT INTO `db_bilabonnement`.`tbl_car_current_status` (`id`, `location`, `rent_status`, `sell_status`, `car_reg_number`) VALUES ('9', 'copenhagen', 'rent', 'sold', '99999');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_booking` (`id`, `car_reg_number`, `customer_id`) VALUES ('1', '55555', '1');
+INSERT INTO `db_bilabonnement`.`tbl_booking` (`id`, `car_reg_number`, `customer_id`) VALUES ('2', '66666', '2');
+INSERT INTO `db_bilabonnement`.`tbl_booking` (`id`, `car_reg_number`, `customer_id`) VALUES ('3', '77777', '3');
+
+INSERT INTO `db_bilabonnement`.`tbl_transport` (`id`, `pickup_date`, `pickup_location`, `delivery_loaction`, `delivery_deadline`, `note`, `delivery_date`, `car_reg_number`) VALUES ('1', '2022-01-15', 'copenhagen', 'køge', '2022-01-20', 'none', '2022-01-18', '22222');
+INSERT INTO `db_bilabonnement`.`tbl_transport` (`id`, `pickup_date`, `pickup_location`, `delivery_loaction`, `delivery_deadline`, `note`, `car_reg_number`) VALUES ('2', '2022-01-15', 'copenhagen', 'køge', '2022-01-20', 'none', '33333');
+
+
+
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('1', '100', 'bil leje', 'leje', '1', '11111', '1', '1', '2022-01-01', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('2', '100', 'bil leje', 'leje', '1', '22222', '1', '1', '2022-01-01', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('3', '100', 'bil leje', 'leje', '2', '77777', '1', '1', '2022-01-01', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('4', '100', 'bil leje', 'leje', '3', '33333', '1', '1', '2022-01-01', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('5', '100', 'bil leje', 'leje', '2', '66666', '1', '1', '2022-01-01', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('6', '100', 'bil leje', 'leje', '1', '44444', '1', '1', '2022-01-01', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('7', '100', 'bil leje', 'leje', '3', '55555', '1', '1', '2022-01-01', '2022-01-01');
+INSERT INTO `db_bilabonnement`.`tbl_renting_agreement` (`agreement_number`, `price`, `description`, `type`, `customer_id`, `car_reg_number`, `employee_id`, `renting_status`, `agreement_date`, `ending_date`) VALUES ('8', '100', 'bil leje', 'leje', '1', '88888', '1', '1', '2022-01-01', '2022-01-01');
+
+
+
+INSERT INTO `db_bilabonnement`.`tbl_invoice` (`invoice_number`, `invoice_date`, `invoice_receiver`, `invoice_type`, `payment_amount`, `payment_deadline`, `car_reg_number`, `employee_id`, `agreement_number`, `customer_id`) VALUES ('1', '2022-01-01', 'none', 'rent', '100', '2022-01-10', '11111', '1', '2', '1');
+INSERT INTO `db_bilabonnement`.`tbl_invoice` (`invoice_number`, `invoice_date`, `invoice_receiver`, `invoice_type`, `payment_amount`, `payment_deadline`, `car_reg_number`, `employee_id`, `agreement_number`, `customer_id`) VALUES ('2', '2022-01-01', 'none', 'rent', '100', '2022-01-10', '22222', '4', '1', '2');
+INSERT INTO `db_bilabonnement`.`tbl_invoice` (`invoice_number`, `invoice_date`, `invoice_receiver`, `invoice_type`, `payment_amount`, `payment_deadline`, `car_reg_number`, `employee_id`, `agreement_number`, `customer_id`) VALUES ('3', '2022-01-01', 'none', 'damage', '100', '2022-01-10', '11111', '1', '1', '3');
+INSERT INTO `db_bilabonnement`.`tbl_invoice` (`invoice_number`, `invoice_date`, `invoice_receiver`, `invoice_type`, `payment_amount`, `payment_deadline`, `car_reg_number`, `employee_id`, `agreement_number`, `customer_id`) VALUES ('4', '2022-01-01', 'none', 'sell', '100', '2022-01-10', '44444', '2', '1', '2');
+INSERT INTO `db_bilabonnement`.`tbl_invoice` (`invoice_number`, `invoice_date`, `invoice_receiver`, `invoice_type`, `payment_amount`, `payment_deadline`, `car_reg_number`, `employee_id`, `agreement_number`, `customer_id`) VALUES ('5', '2022-01-01', 'none', 'damage', '100', '2022-01-10', '11111', '1', '1', '1');
+INSERT INTO `db_bilabonnement`.`tbl_invoice` (`invoice_number`, `invoice_date`, `invoice_receiver`, `invoice_type`, `payment_amount`, `payment_deadline`, `car_reg_number`, `employee_id`, `agreement_number`, `customer_id`) VALUES ('6', '2022-01-01', 'none', 'damage', '100', '2022-01-10', '33333', '1', '1', '1');
+INSERT INTO `db_bilabonnement`.`tbl_invoice` (`invoice_number`, `invoice_date`, `invoice_receiver`, `invoice_type`, `payment_amount`, `payment_deadline`, `car_reg_number`, `employee_id`, `agreement_number`, `customer_id`) VALUES ('7', '2022-01-01', 'none', 'damage', '100', '2022-01-10', '66666', '1', '1', '1');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_payment` (`id`, `invoice_date`, `pay_date`, `invoice_number`) VALUES ('1', '2022-01-01', '2022-01-05', '1');
+INSERT INTO `db_bilabonnement`.`tbl_payment` (`id`, `invoice_date`, `pay_date`, `invoice_number`) VALUES ('2', '2022-01-01', '2022-01-05', '2');
+INSERT INTO `db_bilabonnement`.`tbl_payment` (`id`, `invoice_date`, `pay_date`, `invoice_number`) VALUES ('3', '2022-01-01', '2022-01-05', '3');
+INSERT INTO `db_bilabonnement`.`tbl_payment` (`id`, `invoice_date`, `pay_date`, `invoice_number`) VALUES ('4', '2022-01-01', '2022-01-05', '1');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (1,'payement missing for invoice no #1111','2022-05-16','accountant','payment',11111);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (2,'payment missing for invoice number: 2, Customer Id:  2, Agreement Number:  3','2022-05-01','accountant','payment',22222);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (3,'payment missing for invoice number: 2, Customer Id:  2, Agreement Number:  3','2022-05-16','accountant','payment',33333);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (4,'payment missing for invoice number: 2, Customer Id:  2, Agreement Number:  3','2022-05-16','accountant','payment',22222);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (5,'payment missing for invoice number: 2, Customer Id:  2, Agreement Number:  3','2022-05-16','accountant','payment',22222);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (6,'payment missing for invoice number: 2, Customer Id:  2, Agreement Number:  3','2022-05-16','accountant','payment',44444);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (7,'payment missing for invoice number: 2, Customer Id:  2, Agreement Number:  3','2022-05-16','accountant','payment',55555);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (8,'Delivery pending for number: 1, Delivery time:  2022-05-16, Car registration number:  22222','2022-05-17','manager','transport',22222);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (9,'payment missing for Invoice Number: 2, Customer Id:  2, Agreement Number:  3','2022-05-18','accountant','payment',22222);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (10,'payment missing for Invoice Number: 2, Customer Id:  2, Agreement Number:  3','2022-05-18','accountant','payment',22222);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (11,'Delivery pending for Transport Number: 1, Delivery time:  2022-05-17, Car registration number:  22222','2022-05-18','manager','transport',11111);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (12,'payment missing for Invoice Number: 2, Customer Id:  2, Agreement Number:  3','2022-05-18','accountant','payment',77777);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (13,'Delivery pending for Transport Number: 1, Delivery time:  2022-05-17, Car registration number:  22222','2022-05-18','manager','transport',66666);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (14,'payment missing for Invoice Number: 2, Customer Id:  2, Agreement Number:  3','2022-05-18','accountant','payment',99999);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (15,'Delivery pending for Transport Number: 1, Delivery time:  2022-05-17, Car registration number:  22222','2022-05-18','manager','transport',88888);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (16,'payment missing for Invoice Number: 3, Customer Id:  1, Agreement Number:  1','2022-05-24','accountant','payment',11111);
+INSERT INTO `db_bilabonnement`.`tbl_alarm` VALUES (17,'payment missing for Invoice Number: 4, Customer Id:  1, Agreement Number:  1','2022-05-24','accountant','payment',22222);
+
+
+INSERT INTO `db_bilabonnement`.`tbl_lease` (`id`, `leasing_price`, `leasing_company`, `leasing_start_date`, `leasing_finish_date`, `reg_certificate`, `car_reg_number`) VALUES ('1', '35000', 'nordea', '2022-01-01', '2022-05-01', '88888', '88888');
+INSERT INTO `db_bilabonnement`.`tbl_lease` (`id`, `leasing_price`, `leasing_company`, `leasing_start_date`, `reg_certificate`, `car_reg_number`) VALUES ('2', '35000', 'nordea', '2022-01-01', '99999', '99999');
+
+
+
+INSERT INTO `db_bilabonnement`.`tbl_damage_report` (`id_number`, `damage_description`, `no_of_damage`, `damage_level`, `employee_id`, `car_reg_number`) VALUES ('1', 'ødelagt forlygte', '1', '3', '1', '11111');
+INSERT INTO `db_bilabonnement`.`tbl_damage_report` (`id_number`, `damage_description`, `no_of_damage`, `damage_level`, `employee_id`, `car_reg_number`) VALUES ('2', 'ny side rude', '1', '5', '2', '22222');
+INSERT INTO `db_bilabonnement`.`tbl_damage_report` (`id_number`, `damage_description`, `no_of_damage`, `damage_level`, `employee_id`, `car_reg_number`) VALUES ('3', 'hul i fører dør side', '1', '4', '3', '33333');
+INSERT INTO `db_bilabonnement`.`tbl_damage_report` (`id_number`, `damage_description`, `no_of_damage`, `damage_level`, `employee_id`, `car_reg_number`) VALUES ('4', 'højre forfælge mangler', '1', '1', '1', '44444');
+INSERT INTO `db_bilabonnement`.`tbl_damage_report` (`id_number`, `damage_description`, `no_of_damage`, `damage_level`, `employee_id`, `car_reg_number`) VALUES ('5', 'revne i forruden', '1', '3', '2', '55555');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_condition_report` (`id_number`, `condition_date`, `condition_description`, `condition_level`, `employee_id`, `car_reg_number`) VALUES ('1', '02042012', 'okay tilstand', '3', '1', '11111');
+INSERT INTO `db_bilabonnement`.`tbl_condition_report` (`id_number`, `condition_date`, `condition_description`, `condition_level`, `employee_id`, `car_reg_number`) VALUES ('2', '05022022', 'dårlig tilstand', '5', '2', '22222');
+INSERT INTO `db_bilabonnement`.`tbl_condition_report` (`id_number`, `condition_date`, `condition_description`, `condition_level`, `employee_id`, `car_reg_number`) VALUES ('3', '11062021', 'middelt tilstand', '4', '3', '33333');
+INSERT INTO `db_bilabonnement`.`tbl_condition_report` (`id_number`, `condition_date`, `condition_description`, `condition_level`, `employee_id`, `car_reg_number`) VALUES ('4', '24012022', 'fin tilstand', '1', '1', '44444');
+INSERT INTO `db_bilabonnement`.`tbl_condition_report` (`id_number`, `condition_date`, `condition_description`, `condition_level`, `employee_id`, `car_reg_number`) VALUES ('5', '31052022', 'okay tilstand', '3', '2', '55555');
+
+INSERT INTO `db_bilabonnement`.`tbl_reg_report` (`id_number`, `reg_date`, `employee_id`, `car_reg_number`) VALUES ('1', '04042021', '1', '11111');
+INSERT INTO `db_bilabonnement`.`tbl_reg_report` (`id_number`, `reg_date`, `employee_id`, `car_reg_number`) VALUES ('2', '07032022', '2', '22222');
+INSERT INTO `db_bilabonnement`.`tbl_reg_report` (`id_number`, `reg_date`, `employee_id`, `car_reg_number`) VALUES ('3', '13062021', '3', '33333');
+INSERT INTO `db_bilabonnement`.`tbl_reg_report` (`id_number`, `reg_date`, `employee_id`, `car_reg_number`) VALUES ('4', '09022020', '1', '44444');
+INSERT INTO `db_bilabonnement`.`tbl_reg_report` (`id_number`, `reg_date`, `employee_id`, `car_reg_number`) VALUES ('5', '25072019', '3', '55555');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_location` VALUES (1,'Silkeborg','Nørrevænget 9-23','DS Salon Silkeborg');
+INSERT INTO `db_bilabonnement`.`tbl_location` VALUES (2,'Aalborg','Håndværkervej 22','DS Salon Aalborg');
+INSERT INTO `db_bilabonnement`.`tbl_location` VALUES (3,'Holstebro','Hjaltesvej 4','DS Salon Holstebro');
+INSERT INTO `db_bilabonnement`.`tbl_location` VALUES (4,'Odense','Bondovej 13-15','DS Salon Odense');
+INSERT INTO `db_bilabonnement`.`tbl_location` VALUES (5,'Virum','Virumgårdsvej 4-10','DS Salon Virum');
+INSERT INTO `db_bilabonnement`.`tbl_location` VALUES (6,'Århus','Slet Parkvej 2','DS Salon Århus');
+
+
+INSERT INTO `db_bilabonnement`.`tbl_registration_rent` (`id`, `driven_pickup_km`, `pickup_date`, `driven_return_km`, `return_date`, `condition_report`, `car_reg_number`, `customer_id`, `employee_id`, `location`) VALUES ('1', '50000', '2022-05-22', '0', '2022-05-22', '11111', '11111', '1', '1', '1');
+INSERT INTO `db_bilabonnement`.`tbl_registration_rent` (`id`, `driven_pickup_km`, `pickup_date`, `driven_return_km`, `return_date`, `condition_report`, `car_reg_number`, `customer_id`, `employee_id`, `location`) VALUES ('2', '50000', '2022-05-22', '0', '2022-05-22', '22222', '22222', '1', '1', '1');
