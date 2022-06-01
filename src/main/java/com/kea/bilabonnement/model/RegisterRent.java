@@ -2,6 +2,7 @@ package com.kea.bilabonnement.model;
 
 import java.util.Date;
 
+/**Written by Søs**/
 public class RegisterRent {
 
     private int id;

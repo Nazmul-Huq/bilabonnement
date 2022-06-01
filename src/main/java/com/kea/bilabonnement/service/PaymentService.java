@@ -5,6 +5,7 @@ import com.kea.bilabonnement.repo.PaymentRepo;
 
 import java.util.List;
 
+/**Written by Søs**/
 public class PaymentService {
 
     PaymentRepo paymentRepo = new PaymentRepo();

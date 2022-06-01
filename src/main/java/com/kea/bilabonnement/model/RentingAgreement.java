@@ -3,6 +3,7 @@ package com.kea.bilabonnement.model;
 import java.sql.Date;
 import java.util.List;
 
+/**Written by Søs**/
 public class RentingAgreement {
 
     private int agreementNumber;
@@ -70,16 +71,6 @@ public class RentingAgreement {
         this.price = price;
     }
 
-    //Constructor used for testing
-    public RentingAgreement(int price, String description, String type, int customerId, int carRegNumber, int employeeId, boolean rentingStatus){
-        this.price = price;
-        this.description = description;
-        this.type = type;
-        this.customerId = customerId;
-        this.carRegNumber = carRegNumber;
-        this.employeeId = employeeId;
-        this.rentingStatus = rentingStatus;
-    }
 
     public int getAgreementNumber(){
         return agreementNumber;

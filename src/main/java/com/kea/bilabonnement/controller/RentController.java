@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.List;
 
+/**Written by Søs**/
 @Controller
 public class RentController {
 

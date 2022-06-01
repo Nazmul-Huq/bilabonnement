@@ -7,6 +7,7 @@ import com.kea.bilabonnement.repo.RentRepo;
 import java.util.Date;
 import java.util.List;
 
+/**Written by Søs**/
 public class RentService {
 
    BilabonnementCRUD<RentingAgreement> rentRepo;
@@ -21,9 +22,9 @@ public class RentService {
         rentRepo.addEntity(rentingAgreement);
 
     }
-    public void endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, Date endingDate, boolean rentingStatus){
+    public boolean endRentingAgreement(int agreementNumber, int carRegNumber, int customerId, String description, int employeeId, Date endingDate, boolean rentingStatus){
         RentingAgreement rentingAgreement = new RentingAgreement(agreementNumber, carRegNumber, customerId, description, employeeId, (java.sql.Date) endingDate, rentingStatus);
-        rentRepo.updateEntity(rentingAgreement);
+        return rentRepo.updateEntity(rentingAgreement);
     }
 
     public List<RentingAgreement> getAgreementList() {

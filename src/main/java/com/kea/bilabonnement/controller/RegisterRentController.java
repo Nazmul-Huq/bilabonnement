@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
 
-
+/**Written by Søs**/
 @Controller
 public class RegisterRentController {
 

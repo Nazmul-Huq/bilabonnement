@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**Written by Søs**/
 public class RentRepo implements BilabonnementCRUD<RentingAgreement> {
 
     Connection conn = DatabaseConnectionHandler.getConnection();
