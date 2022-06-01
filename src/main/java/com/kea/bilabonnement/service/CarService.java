@@ -36,8 +36,8 @@ public class CarService {
     }
 
     //get single entity by id - viser en enhed fra 'cars' i systemet fra dens ID
-    public void getCarByID(int id) {
-        carRepo.getSingleEntityById(id);
+    public Car getCarByID(int id) {
+        return carRepo.getSingleEntityById(id);
     }
 
     //Get all tables - viser alle enheder inde under 'cars' i systemet

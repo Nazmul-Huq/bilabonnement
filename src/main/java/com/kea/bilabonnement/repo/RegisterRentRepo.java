@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**Written by Søs**/
 public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
 
     Connection conn = DatabaseConnectionHandler.getConnection();
@@ -34,7 +35,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
             prepStmt.setDate(3, (Date) entity.getPickupDate());
             prepStmt.setDouble(4, entity.getDrivenReturnKm());
             prepStmt.setDate(5, (Date) entity.getReturnDate());
-            prepStmt.setInt(6, entity.getConditionReport());
+            prepStmt.setString(6, entity.getConditionReport());
             prepStmt.setInt(7, entity.getCarRegNumber());
             prepStmt.setInt(8, entity.getCustomerId());
             prepStmt.setInt(9, entity.getEmployeeId());
@@ -129,7 +130,7 @@ public class RegisterRentRepo implements BilabonnementCRUD<RegisterRent> {
             prepStmt.setDate(3, (Date) entity.getPickupDate());
             prepStmt.setDouble(4, entity.getDrivenReturnKm());
             prepStmt.setDate(5, (Date) entity.getReturnDate());
-            prepStmt.setInt(6, entity.getConditionReport());
+            prepStmt.setString(6, entity.getConditionReport());
             prepStmt.setInt(7, entity.getCarRegNumber());
             prepStmt.setInt(8, entity.getCustomerId());
             prepStmt.setInt(9, entity.getEmployeeId());

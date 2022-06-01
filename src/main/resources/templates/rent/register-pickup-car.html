@@ -1,42 +1,38 @@
+<!-- Written by Søs-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/stylesheets/index.css}" href="..\static\stylesheets\index.css">
-    <title>Registrering af PickUp biler</title>
+    <title>Registrering af hentet biler</title>
 </head>
 <body>
 <!-- menu inserted from fragments-->
-<?php
 <div class="menu-div" th:insert="/fragment/fragments.html::menu"></div>
-<script src="conditionreport.js" defer></script>
 
 <div class="body-div">
     <form style="text-align: center;
-   "th:action="@{/rent/add-pickup-car}" method="post">
-
-        <h1>Registrering af PickUp biler
+    "th:action="@{/rent/add-pickup-car}" method="post">
+        <h1> Registrering af hentet biler
         </h1>
         <div>
-            <label>Lokation:
-                <select name="location" onchange="showLocation(this.value)">
-                    <option value="">Vælg DS forhandler</option>
-                    <option value="1">Silkeborg</option>
-                    <option value="2">Aalborg</option>
-                    <option value="3">Holstebro</option>
-                    <option value="4">Odense</option>
-                    <option value="5">Virum</option>
-                    <option value="6">Århus</option>
+            <label>Lokation.:
+                <select name="location" placeholder="Hvor bliver bilen hentet">
+                    <option value="Silkeborg">Silkeborg</option>
+                    <option value="Aalborg">Aalborg</option>
+                    <option value="Holstebro">Holstebro</option>
+                    <option value="Odense">Odense</option>
+                    <option value="Virum">Virum</option>
+                    <option value="Århus">Århus</option>
                 </select>
             </label>
         </div>
         <br>
         <div>
-            <label>Registreringsnr.:
-                <input type="number" name="carRegNumber" placeholder="Registreringsnr.">
+            <label>Registeringsnr.:
+                <input type="number" name="carRegNumber" placeholder="Registeringsnr.">
             </label>
         </div>
-        <!--Todo automatic showing of type, condition report and id-->
         <br>
         <div>
             <label>Kørte km.:
@@ -45,14 +41,18 @@
         </div>
         <br>
         <div>
-            <label>Tilstandsreport
-                <!--<div th:each="conditionReport: ${conditionReportForReturned}"></div>-->
+            <label id="conditionReport">Tilstandsreport
+                <select name="conditionReport">
+                    <option value="">Vælg tilstandsreport via registeringsnr.:</option>
+                    <option value="124454"> Regnr. 11111</option>
+                    <option value="98765432"> Regnr. 22222</option>
+                </select>
             </label>
         </div>
         <br>
         <div>
             <label>Dato:
-                <input type="date" name="returnDate">
+                <input type="date" name="pickupDate">
             </label>
         </div>
         <br>
@@ -66,8 +66,9 @@
     </form>
 </div>
 
+
 <!-- footer content inserted from fragments-->
 <div class="footer-div" th:insert="/fragment/fragments.html::footer"></div>
- ?>
+
 </body>
 </html>

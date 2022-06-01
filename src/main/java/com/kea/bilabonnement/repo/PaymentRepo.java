@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**Written by Søs**/
 public class PaymentRepo implements BilabonnementCRUD<Payment> {
 
     Connection conn = DatabaseConnectionHandler.getConnection();

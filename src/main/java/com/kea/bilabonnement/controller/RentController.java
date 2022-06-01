@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.List;
 
+/**Written by Søs**/
 @Controller
 public class RentController {
 
@@ -73,8 +74,6 @@ public class RentController {
         model.addAttribute("showAgreements", agreementList);
         return "/rent/show-renting-agreement";
     }
-
-
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {

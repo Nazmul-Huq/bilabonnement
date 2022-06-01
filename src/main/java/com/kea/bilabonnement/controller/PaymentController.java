@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-
+/**Written by Søs**/
 @Controller
 public class PaymentController {
 
